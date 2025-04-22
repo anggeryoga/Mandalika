@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fakultas - Universitas Terbuka Mandalika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .faculty-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .faculty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .program-card {
+            transition: all 0.2s ease;
+        }
+        .program-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        }
+        .wave-shape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .wave-shape svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 150px;
+        }
+        .wave-shape .shape-fill {
+            fill: #FFFFFF;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- Faculty of Law and Social Sciences -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Fakultas Hukum, Ilmu Sosial dan Ilmu Politik</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Program 1 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-file-invoice-dollar text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">D3 – Perpajakan</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Program studi yang mempersiapkan lulusan untuk memiliki kompetensi di bidang perpajakan dengan pendekatan praktis.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 2 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-archive text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">D4 – Kearsipan</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Program studi yang fokus pada pengelolaan arsip dan dokumen penting untuk kebutuhan organisasi modern.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 3 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-briefcase text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Ilmu Administrasi Bisnis</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mengembangkan kompetensi di bidang administrasi bisnis untuk mendukung operasional perusahaan secara efektif.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 4 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-landmark text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Ilmu Administrasi Negara</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempersiapkan ahli administrasi yang mampu mengelola birokrasi pemerintahan secara profesional.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 5 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-gavel text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Ilmu Hukum</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mengembangkan pemahaman mendalam tentang sistem hukum dan penerapannya dalam masyarakat.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 6 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-comments text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Ilmu Komunikasi</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mengembangkan keterampilan komunikasi efektif untuk berbagai konteks profesional dan media.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 7 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-university text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Ilmu Pemerintahan</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempelajari teori dan praktik pemerintahan untuk membangun tata kelola yang baik dan demokratis.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 8 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-book text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Ilmu Perpustakaan</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mengembangkan kompetensi dalam pengelolaan sistem informasi dan perpustakaan di era digital.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 9 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-file-alt text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Perpajakan</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Program studi yang mendalami aspek teoritis dan praktis dalam bidang perpajakan dan akuntansi pajak.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 10 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-language text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Sastra Inggris Bidang Minat Penerjemah</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mengembangkan kompetensi bahasa Inggris dan keterampilan penerjemahan untuk kebutuhan profesional.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 11 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-users text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Sosiologi</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempelajari struktur sosial, perubahan sosial, dan interaksi manusia dalam masyarakat modern.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Faculty of Education -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Fakultas Keguruan dan Ilmu Pendidikan</h2>
+                <div class="w-24 h-1 bg-green-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Program 1 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-chalkboard-teacher text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – PGSD</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Pendidikan Guru Sekolah Dasar mempersiapkan calon guru SD yang profesional dan berkarakter.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 2 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-child text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – PPAUD</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Pendidikan Guru Pendidikan Anak Usia Dini untuk pengembangan pendidikan anak usia dini yang berkualitas.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 3 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-book-open text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Pendidikan Bahasa dan Sastra Indonesia</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mengembangkan kompetensi pengajaran bahasa dan sastra Indonesia untuk berbagai jenjang pendidikan.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 4 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-globe-americas text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Pendidikan Bahasa Inggris</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempersiapkan guru bahasa Inggris yang kompeten dengan penguasaan bahasa dan metodologi pengajaran.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 5 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-dna text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Pendidikan Biologi</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mengembangkan guru biologi yang menguasai konsep biologi dan strategi pengajarannya.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 6 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-chart-line text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Pendidikan Ekonomi</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempersiapkan guru ekonomi yang memahami konsep ekonomi dan mampu mengajarkannya secara efektif.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 7 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-atom text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Pendidikan Fisika</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mengembangkan kompetensi guru fisika dengan penguasaan konsep dan eksperimen fisika.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 8 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-flask text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Pendidikan Kimia</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempersiapkan guru kimia yang menguasai konsep kimia dan mampu melakukan eksperimen laboratorium.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 9 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-square-root-alt text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Pendidikan Matematika</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mengembangkan guru matematika yang mampu menjelaskan konsep matematika secara jelas dan menarik.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 10 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-flag text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Pendidikan Pancasila dan Kewarganegaraan</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempersiapkan guru PPKn yang mampu menanamkan nilai-nilai Pancasila dan kewarganegaraan.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 11 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-mosque text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Pendidikan Agama Islam</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mengembangkan guru agama Islam yang memahami ajaran Islam dan metodologi pengajarannya.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 12 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-laptop-code text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Teknologi Pendidikan</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempelajari pemanfaatan teknologi dalam proses pembelajaran untuk meningkatkan efektivitas pendidikan.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Faculty of Science and Technology -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Fakultas Sains dan Teknologi</h2>
+                <div class="w-24 h-1 bg-purple-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Program 1 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-tractor text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Agribisnis (Minat Pertanian)</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempelajari bisnis pertanian modern dengan pendekatan agribisnis untuk meningkatkan produktivitas.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 2 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-paw text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Agribisnis (Minat Peternakan)</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Fokus pada pengembangan bisnis peternakan dengan manajemen modern dan teknologi terkini.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 3 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-fish text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Agribisnis (Minat Perikanan)</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempelajari bisnis perikanan dari hulu ke hilir dengan pendekatan agribisnis yang berkelanjutan.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 4 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-microscope text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Biologi</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempelajari kehidupan pada berbagai tingkat organisasi dari molekul hingga ekosistem.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 5 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-calculator text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Matematika</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mengembangkan pemahaman mendalam tentang teori matematika dan aplikasinya dalam berbagai bidang.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 6 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-city text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Perencanaan Wilayah dan Kota</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempelajari perencanaan tata ruang untuk menciptakan wilayah dan kota yang berkelanjutan dan layak huni.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 7 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-database text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Sistem Informasi</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mengintegrasikan teknologi informasi dengan proses bisnis untuk menciptakan solusi sistem informasi.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 8 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-chart-bar text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Statistika</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempelajari metode pengumpulan, analisis, dan interpretasi data untuk pengambilan keputusan.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 9 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-utensils text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Teknologi Pangan</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempelajari pengolahan, pengawetan, dan pengembangan produk pangan yang aman dan bergizi.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 10 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-chart-pie text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Sains Data</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Menggabungkan statistik, ilmu komputer, dan pengetahuan domain untuk mengekstrak wawasan dari data.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Faculty of Economics and Business -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Fakultas Ekonomi dan Bisnis</h2>
+                <div class="w-24 h-1 bg-yellow-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Program 1 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-calculator text-yellow-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Akuntansi</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempelajari prinsip akuntansi untuk menghasilkan laporan keuangan yang akurat dan relevan.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-yellow-600 text-white rounded-full hover:bg-yellow-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 2 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-file-invoice-dollar text-yellow-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Akuntansi Keuangan Publik</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Spesialisasi akuntansi yang fokus pada pengelolaan keuangan sektor publik dan pemerintahan.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-yellow-600 text-white rounded-full hover:bg-yellow-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 3 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-chart-line text-yellow-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Ekonomi Pembangunan</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempelajari teori dan kebijakan ekonomi untuk mendorong pembangunan yang berkelanjutan.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-yellow-600 text-white rounded-full hover:bg-yellow-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 4 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-hand-holding-usd text-yellow-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Ekonomi Syariah</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempelajari prinsip ekonomi Islam dan penerapannya dalam lembaga keuangan syariah.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-yellow-600 text-white rounded-full hover:bg-yellow-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 5 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-briefcase text-yellow-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Manajemen</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mengembangkan keterampilan manajerial untuk mengelola organisasi secara efektif dan efisien.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-yellow-600 text-white rounded-full hover:bg-yellow-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 6 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-umbrella-beach text-yellow-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S1 – Pariwisata</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempelajari manajemen industri pariwisata untuk mengembangkan destinasi yang berkelanjutan.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-yellow-600 text-white rounded-full hover:bg-yellow-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Graduate Program -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Program Pascasarjana</h2>
+                <div class="w-24 h-1 bg-red-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Program 1 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-leaf text-red-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S2 – Studi Lingkungan</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mempelajari isu lingkungan secara multidisiplin untuk pengelolaan lingkungan yang berkelanjutan.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 2 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-fish text-red-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S2 – Manajemen Perikanan</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mengembangkan strategi pengelolaan sumber daya perikanan yang berkelanjutan dan bertanggung jawab.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 3 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-landmark text-red-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S2 – Administrasi Publik</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mendalami teori dan praktik administrasi publik untuk meningkatkan tata kelola pemerintahan.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 4 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-briefcase text-red-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S2 – Manajemen</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mengembangkan pemikiran strategis dan keterampilan manajerial tingkat lanjut untuk kepemimpinan.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 5 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-school text-red-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S2 – Pendidikan Dasar</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mendalami teori dan praktik pendidikan dasar untuk meningkatkan kualitas pembelajaran di sekolah dasar.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 6 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-square-root-alt text-red-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S2 – Pendidikan Matematika</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mengembangkan pendekatan inovatif dalam pengajaran matematika untuk berbagai jenjang pendidikan.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 7 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-globe-americas text-red-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S2 – Pendidikan Bahasa Inggris</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mendalami metodologi pengajaran bahasa Inggris dan pengembangan materi pembelajaran yang efektif.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Program 8 -->
+                <div class="faculty-card bg-white rounded-lg overflow-hidden program-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-child text-red-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">S2 – Pendidikan Anak Usia Dini</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Mendalami teori dan praktik pendidikan anak usia dini untuk pengembangan program PAUD yang berkualitas.</p>
+                        <a href="#" class="inline-block px-6 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="gradient-bg text-white rounded-xl p-8 md:p-12 mb-20 relative overflow-hidden">
+            <div class="relative z-10">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Tertarik untuk Bergabung?</h2>
+                    <p class="text-xl text-blue-200 mb-8">Pilih program studi yang sesuai dengan minat dan bakat Anda, dan mulailah perjalanan akademik Anda di Universitas Terbuka Mandalika.</p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="#" class="px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition">Daftar Sekarang</a>
+                        <a href="#" class="px-8 py-3 border border-white text-white font-semibold rounded-full hover:bg-white hover:bg-opacity-10 transition">Hubungi Kami</a>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white to-transparent"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Universitas Terbuka Mandalika</h3>
+                    <p class="text-gray-400">Jl. Pendidikan No. 1, Mandalika, Nusa Tenggara Barat</p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Beranda</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Profil</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Fakultas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Penerimaan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Kontak</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Layanan</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Perpustakaan Digital</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Sistem Akademik</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">E-Learning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Beasiswa</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Karir</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Kontak Kami</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400"><i class="fas fa-phone-alt mr-2"></i> (0370) 1234567</li>
+                        <li class="flex items-center text-gray-400"><i class="fas fa-envelope mr-2"></i> info@utmandalika.ac.id</li>
+                        <li class="flex items-center text-gray-400"><i class="fas fa-map-marker-alt mr-2"></i> Lihat di Peta</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 Universitas Terbuka Mandalika. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Kebijakan Privasi</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Syarat & Ketentuan</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Peta Situs</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for mobile menu toggle (can be expanded)
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('header button');
+            const mobileMenu = document.createElement('div');
+            mobileMenu.className = 'fixed inset-0 bg-blue-900 z-50 flex flex-col items-center justify-center hidden';
+            mobileMenu.innerHTML = `
+                <button class="absolute top-6 right-6 text-3xl text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+                <ul class="text-white text-2xl space-y-8 text-center">
+                    <li><a href="#" class="hover:text-blue-200">Beranda</a></li>
+                    <li><a href="#" class="hover:text-blue-200">Profil</a></li>
+                    <li><a href="#" class="font-bold underline">Fakultas</a></li>
+                    <li><a href="#" class="hover:text-blue-200">Penerimaan</a></li>
+                    <li><a href="#" class="hover:text-blue-200">Kontak</a></li>
+                </ul>
+            `;
+            document.body.appendChild(mobileMenu);
+
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.remove('hidden');
+            });
+
+            mobileMenu.querySelector('button').addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
