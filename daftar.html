@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Universitas Terbuka Mandalika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .form-page {
+            display: none;
+        }
+        .form-page.active {
+            display: block;
+        }
+        .progress-step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e5e7eb;
+            color: #6b7280;
+            font-weight: 600;
+        }
+        .progress-step.active {
+            background-color: #1e40af;
+            color: white;
+        }
+        .progress-step.completed {
+            background-color: #10b981;
+            color: white;
+        }
+        .progress-line {
+            flex: 1;
+            height: 2px;
+            background-color: #e5e7eb;
+        }
+        .progress-line.completed {
+            background-color: #10b981;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-blue-900 mb-2">Pendaftaran Mahasiswa Baru</h1>
+            <p class="text-lg text-gray-600">Universitas Terbuka Mandalika</p>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="flex items-center justify-between mb-12">
+            <div class="flex flex-col items-center">
+                <div class="progress-step active" id="step-1">1</div>
+                <span class="text-sm mt-2 text-blue-900 font-medium">Data Pribadi</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="flex flex-col items-center">
+                <div class="progress-step" id="step-2">2</div>
+                <span class="text-sm mt-2 text-gray-500 font-medium">Data Pendidikan</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="flex flex-col items-center">
+                <div class="progress-step" id="step-3">3</div>
+                <span class="text-sm mt-2 text-gray-500 font-medium">Program Studi</span>
+            </div>
+        </div>
+
+        <!-- Form Container -->
+        <form id="registration-form" class="bg-white rounded-xl shadow-md p-6 md:p-8">
+            <!-- Page 1: Personal Data -->
+            <div class="form-page active" id="page-1">
+                <h2 class="text-2xl font-bold text-blue-900 mb-6">Data Pribadi</h2>
+                
+                <div class="space-y-5">
+                    <div>
+                        <label for="fullname" class="block text-gray-700 font-medium mb-2">Nama Lengkap <span class="text-red-500">*</span></label>
+                        <input type="text" id="fullname" name="fullname" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="nik" class="block text-gray-700 font-medium mb-2">NIK <span class="text-red-500">*</span></label>
+                        <input type="text" id="nik" name="nik" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="birthplace" class="block text-gray-700 font-medium mb-2">Tempat Lahir <span class="text-red-500">*</span></label>
+                        <input type="text" id="birthplace" name="birthplace" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="birthdate" class="block text-gray-700 font-medium mb-2">Tanggal Lahir <span class="text-red-500">*</span></label>
+                        <input type="date" id="birthdate" name="birthdate" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Jenis Kelamin <span class="text-red-500">*</span></label>
+                        <div class="flex space-x-4">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="gender" value="L" required class="h-5 w-5 text-blue-600">
+                                <span class="ml-2 text-gray-700">Laki-laki</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="gender" value="P" required class="h-5 w-5 text-blue-600">
+                                <span class="ml-2 text-gray-700">Perempuan</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-end mt-8">
+                    <button type="button" onclick="nextPage(1)" class="bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded-lg transition">
+                        Selanjutnya <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Page 2: Education Data -->
+            <div class="form-page" id="page-2">
+                <h2 class="text-2xl font-bold text-blue-900 mb-6">Data Pendidikan</h2>
+                
+                <div class="space-y-5">
+                    <div>
+                        <label for="last-education" class="block text-gray-700 font-medium mb-2">Pendidikan Terakhir <span class="text-red-500">*</span></label>
+                        <select id="last-education" name="last_education" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Pilih pendidikan terakhir</option>
+                            <option value="SMA">SMA/Sederajat</option>
+                            <option value="D1">Diploma 1 (D1)</option>
+                            <option value="D2">Diploma 2 (D2)</option>
+                            <option value="D3">Diploma 3 (D3)</option>
+                            <option value="D4">Diploma 4 (D4)/Sarjana Terapan</option>
+                            <option value="S1">Sarjana (S1)</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="school-name" class="block text-gray-700 font-medium mb-2">Nama Sekolah/Universitas <span class="text-red-500">*</span></label>
+                        <input type="text" id="school-name" name="school_name" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="graduation-year" class="block text-gray-700 font-medium mb-2">Tahun Lulus <span class="text-red-500">*</span></label>
+                        <input type="number" id="graduation-year" name="graduation_year" min="1900" max="2099" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="major" class="block text-gray-700 font-medium mb-2">Jurusan (Jika ada)</label>
+                        <input type="text" id="major" name="major"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="certificate-number" class="block text-gray-700 font-medium mb-2">Nomor Ijazah <span class="text-red-500">*</span></label>
+                        <input type="text" id="certificate-number" name="certificate_number" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-8">
+                    <button type="button" onclick="prevPage(2)" class="text-blue-900 hover:text-blue-700 font-bold py-2 px-6 rounded-lg transition">
+                        <i class="fas fa-arrow-left mr-2"></i> Sebelumnya
+                    </button>
+                    <button type="button" onclick="nextPage(2)" class="bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded-lg transition">
+                        Selanjutnya <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Page 3: Study Program -->
+            <div class="form-page" id="page-3">
+                <h2 class="text-2xl font-bold text-blue-900 mb-6">Pilihan Program Studi</h2>
+                
+                <div class="space-y-5">
+                    <div>
+                        <label for="study-program" class="block text-gray-700 font-medium mb-2">Program Studi <span class="text-red-500">*</span></label>
+                        <select id="study-program" name="study_program" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Pilih program studi</option>
+                            <option value="Teknik Informatika">Teknik Informatika (S1)</option>
+                            <option value="Manajemen">Manajemen (S1)</option>
+                            <option value="Akuntansi">Akuntansi (S1)</option>
+                            <option value="Hukum">Hukum (S1)</option>
+                            <option value="Ilmu Komunikasi">Ilmu Komunikasi (S1)</option>
+                            <option value="Pendidikan Guru SD">Pendidikan Guru SD (S1)</option>
+                            <option value="Sistem Informasi">Sistem Informasi (S1)</option>
+                            <option value="Psikologi">Psikologi (S1)</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="study-level" class="block text-gray-700 font-medium mb-2">Jenjang Pendidikan <span class="text-red-500">*</span></label>
+                        <select id="study-level" name="study_level" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Pilih jenjang pendidikan</option>
+                            <option value="D3">Diploma 3 (D3)</option>
+                            <option value="D4">Diploma 4 (D4)</option>
+                            <option value="S1">Sarjana (S1)</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="entry-year" class="block text-gray-700 font-medium mb-2">Tahun Masuk <span class="text-red-500">*</span></label>
+                        <select id="entry-year" name="entry_year" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Pilih tahun masuk</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="entry-semester" class="block text-gray-700 font-medium mb-2">Semester Masuk <span class="text-red-500">*</span></label>
+                        <select id="entry-semester" name="entry_semester" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Pilih semester masuk</option>
+                            <option value="Ganjil">Ganjil (September)</option>
+                            <option value="Genap">Genap (Maret)</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="learning-method" class="block text-gray-700 font-medium mb-2">Metode Pembelajaran <span class="text-red-500">*</span></label>
+                        <select id="learning-method" name="learning_method" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Pilih metode pembelajaran</option>
+                            <option value="Online">Online Penuh</option>
+                            <option value="Hybrid">Hybrid (Online + Tatap Muka)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-8">
+                    <button type="button" onclick="prevPage(3)" class="text-blue-900 hover:text-blue-700 font-bold py-2 px-6 rounded-lg transition">
+                        <i class="fas fa-arrow-left mr-2"></i> Sebelumnya
+                    </button>
+                    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg transition">
+                        <i class="fas fa-paper-plane mr-2"></i> Kirim Pendaftaran
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Form navigation
+        function nextPage(currentPage) {
+            // Validate current page before proceeding
+            if (validatePage(currentPage)) {
+                document.getElementById(`page-${currentPage}`).classList.remove('active');
+                document.getElementById(`page-${currentPage + 1}`).classList.add('active');
+                
+                // Update progress steps
+                document.getElementById(`step-${currentPage}`).classList.remove('active');
+                document.getElementById(`step-${currentPage}`).classList.add('completed');
+                document.getElementById(`step-${currentPage + 1}`).classList.add('active');
+                
+                // Update progress line
+                const progressLines = document.querySelectorAll('.progress-line');
+                if (currentPage === 1) {
+                    progressLines[0].classList.add('completed');
+                } else if (currentPage === 2) {
+                    progressLines[1].classList.add('completed');
+                }
+            }
+        }
+        
+        function prevPage(currentPage) {
+            document.getElementById(`page-${currentPage}`).classList.remove('active');
+            document.getElementById(`page-${currentPage - 1}`).classList.add('active');
+            
+            // Update progress steps
+            document.getElementById(`step-${currentPage}`).classList.remove('active');
+            document.getElementById(`step-${currentPage - 1}`).classList.add('active');
+            document.getElementById(`step-${currentPage - 1}`).classList.remove('completed');
+            
+            // Update progress line
+            const progressLines = document.querySelectorAll('.progress-line');
+            if (currentPage === 2) {
+                progressLines[0].classList.remove('completed');
+            } else if (currentPage === 3) {
+                progressLines[1].classList.remove('completed');
+            }
+        }
+        
+        // Simple validation for each page
+        function validatePage(pageNumber) {
+            let isValid = true;
+            
+            if (pageNumber === 1) {
+                const requiredFields = ['fullname', 'nik', 'birthplace', 'birthdate', 'gender'];
+                for (const field of requiredFields) {
+                    const element = document.getElementsByName(field)[0];
+                    if (!element.value) {
+                        element.classList.add('border-red-500');
+                        isValid = false;
+                    } else {
+                        element.classList.remove('border-red-500');
+                    }
+                }
+            } else if (pageNumber === 2) {
+                const requiredFields = ['last_education', 'school_name', 'graduation_year', 'certificate_number'];
+                for (const field of requiredFields) {
+                    const element = document.getElementsByName(field)[0];
+                    if (!element.value) {
+                        element.classList.add('border-red-500');
+                        isValid = false;
+                    } else {
+                        element.classList.remove('border-red-500');
+                    }
+                }
+            }
+            
+            if (!isValid) {
+                alert('Harap lengkapi semua field yang wajib diisi!');
+            }
+            
+            return isValid;
+        }
+        
+        // Form submission
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validatePage(3)) {
+                // Here you would typically send the form data to the server
+                // For demonstration, we'll just show an alert
+                
+                // Collect all form data
+                const formData = new FormData(this);
+                const formObject = {};
+                formData.forEach((value, key) => {
+                    formObject[key] = value;
+                });
+                
+                console.log('Form data:', formObject); // For debugging
+                
+                // Show success message
+                alert('Pendaftaran berhasil dikirim! Kami akan menghubungi Anda segera.');
+                
+                // Reset form (optional)
+                this.reset();
+                
+                // Go back to first page
+                document.querySelectorAll('.form-page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                document.getElementById('page-1').classList.add('active');
+                
+                // Reset progress steps
+                document.querySelectorAll('.progress-step').forEach(step => {
+                    step.classList.remove('active', 'completed');
+                });
+                document.getElementById('step-1').classList.add('active');
+                
+                document.querySelectorAll('.progress-line').forEach(line => {
+                    line.classList.remove('completed');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
