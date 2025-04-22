@@ -1,66 +1,92 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Universitas Terbuka Mandalika - Belajar Fleksibel Dimana Saja</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
-        
+
         .hero-gradient {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
         }
-        
+
         .card-hover:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
-        
+
         .transition-all {
             transition: all 0.3s ease;
         }
+
+        .faq-question .fa-chevron-down {
+            transition: transform 0.3s ease-in-out;
+            /* Pastikan ada transisi di sini juga */
+        }
+
+        .faq-question.active .fa-chevron-down {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
+
 <body class="bg-gray-50">
     <!-- Header/Navigation -->
     <header class="sticky top-0 z-50 bg-white shadow-md">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <div class="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center text-white font-bold text-xl mr-3">
+                <div
+                    class="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center text-white font-bold text-xl mr-3">
                     UTM
                 </div>
                 <h1 class="text-xl md:text-2xl font-bold text-blue-900">Universitas Terbuka</h1>
             </div>
-            
+
             <nav class="hidden md:block">
                 <ul class="flex space-x-8">
-                    <li><a href="#beranda" class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
-                    <li><a href="#tentang" class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
-                    <li><a href="#program" class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a></li>
-                    <li><a href="#pendaftaran" class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Pendaftaran</a></li>
-                    <li><a href="#kontak" class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
+                    <li><a href="#beranda"
+                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
+                    <li><a href="#tentang"
+                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
+                    <li><a href="#program"
+                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a>
+                    </li>
+                    <li><a href="#pendaftaran"
+                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Pendaftaran</a></li>
+                    <li><a href="#kontak"
+                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
                 </ul>
             </nav>
-            
+
             <button class="md:hidden text-blue-900" id="mobile-menu-button">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
-        
+
         <!-- Mobile Menu -->
         <div class="md:hidden hidden bg-white w-full py-4 px-4 shadow-lg" id="mobile-menu">
             <ul class="space-y-4">
-                <li><a href="#beranda" class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
-                <li><a href="#tentang" class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
-                <li><a href="#program" class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a></li>
-                <li><a href="#pendaftaran" class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Pendaftaran</a></li>
-                <li><a href="#kontak" class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
+                <li><a href="#beranda"
+                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
+                <li><a href="#tentang"
+                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
+                <li><a href="#program"
+                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a>
+                </li>
+                <li><a href="#pendaftaran"
+                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Pendaftaran</a>
+                </li>
+                <li><a href="#kontak"
+                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
             </ul>
         </div>
     </header>
@@ -69,17 +95,19 @@
     <section id="beranda" class="hero-gradient text-white py-16 md:py-24">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-10 md:mb-0">
-                <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">Belajar dari Mana Saja, <span class="text-yellow-300">Kapan Saja</span></h2>
-                <p class="text-lg md:text-xl mb-8 opacity-90">Pendidikan tinggi berkualitas yang bisa diakses secara fleksibel untuk semua kalangan di seluruh Indonesia.</p>
-                <a href="#pendaftaran" class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold py-3 px-8 rounded-full transition-all inline-block">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">Belajar dari Mana Saja, <span
+                        class="text-yellow-300">Kapan Saja</span></h2>
+                <p class="text-lg md:text-xl mb-8 opacity-90">Pendidikan tinggi berkualitas yang bisa diakses secara
+                    fleksibel untuk semua kalangan di seluruh Indonesia.</p>
+                <a href="#pendaftaran"
+                    class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold py-3 px-8 rounded-full transition-all inline-block">
                     Daftar Sekarang
                 </a>
             </div>
             <div class="md:w-1/2 flex justify-center">
                 <div class="bg-white bg-opacity-20 rounded-2xl p-4 border border-white border-opacity-30">
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                         alt="Siswa belajar online" 
-                         class="rounded-xl w-full max-w-md shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                        alt="Siswa belajar online" class="rounded-xl w-full max-w-md shadow-2xl">
                 </div>
             </div>
         </div>
@@ -92,48 +120,59 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Tentang Kami</h2>
                 <div class="w-20 h-1 bg-yellow-400 mx-auto"></div>
             </div>
-            
+
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
                     <p class="text-lg text-gray-700 mb-6">
-                        Universitas Terbuka Mandalika adalah perguruan tinggi negeri yang menyelenggarakan pendidikan tinggi secara terbuka dan jarak jauh. Kami hadir untuk memberikan akses pendidikan tinggi yang berkualitas bagi seluruh masyarakat Indonesia tanpa batasan waktu dan tempat.
+                        Universitas Terbuka Mandalika adalah perguruan tinggi negeri yang menyelenggarakan pendidikan
+                        tinggi secara terbuka dan jarak jauh. Kami hadir untuk memberikan akses pendidikan tinggi yang
+                        berkualitas bagi seluruh masyarakat Indonesia tanpa batasan waktu dan tempat.
                     </p>
                     <p class="text-lg text-gray-700 mb-6">
-                        Dengan sistem pembelajaran berbasis teknologi digital, kami memungkinkan mahasiswa untuk belajar secara mandiri, fleksibel, dan terjangkau.
+                        Dengan sistem pembelajaran berbasis teknologi digital, kami memungkinkan mahasiswa untuk belajar
+                        secara mandiri, fleksibel, dan terjangkau.
                     </p>
                 </div>
-                
+
                 <div class="md:w-1/2 grid grid-cols-2 gap-6">
                     <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-yellow-400">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mb-4">
+                        <div
+                            class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mb-4">
                             <i class="fas fa-bullseye text-xl"></i>
                         </div>
                         <h3 class="text-xl font-bold text-blue-900 mb-2">Visi</h3>
-                        <p class="text-gray-700">Menjadi universitas terbuka terdepan di Indonesia yang menghasilkan lulusan berdaya saing global.</p>
+                        <p class="text-gray-700">Menjadi universitas terbuka terdepan di Indonesia yang menghasilkan
+                            lulusan berdaya saing global.</p>
                     </div>
-                    
+
                     <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-yellow-400">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mb-4">
+                        <div
+                            class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mb-4">
                             <i class="fas fa-rocket text-xl"></i>
                         </div>
                         <h3 class="text-xl font-bold text-blue-900 mb-2">Misi</h3>
-                        <p class="text-gray-700">Menyediakan pendidikan tinggi berkualitas yang terjangkau dan dapat diakses oleh seluruh masyarakat.</p>
+                        <p class="text-gray-700">Menyediakan pendidikan tinggi berkualitas yang terjangkau dan dapat
+                            diakses oleh seluruh masyarakat.</p>
                     </div>
-                    
+
                     <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-yellow-400">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mb-4">
+                        <div
+                            class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mb-4">
                             <i class="fas fa-graduation-cap text-xl"></i>
                         </div>
                         <h3 class="text-xl font-bold text-blue-900 mb-2">Kualitas</h3>
-                        <p class="text-gray-700">Kurikulum berbasis kompetensi yang sesuai dengan kebutuhan dunia kerja.</p>
+                        <p class="text-gray-700">Kurikulum berbasis kompetensi yang sesuai dengan kebutuhan dunia kerja.
+                        </p>
                     </div>
-                    
+
                     <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-yellow-400">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mb-4">
+                        <div
+                            class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mb-4">
                             <i class="fas fa-globe-asia text-xl"></i>
                         </div>
                         <h3 class="text-xl font-bold text-blue-900 mb-2">Jangkauan</h3>
-                        <p class="text-gray-700">Tersedia untuk seluruh wilayah Indonesia dengan dukungan pusat pembelajaran di berbagai kota.</p>
+                        <p class="text-gray-700">Tersedia untuk seluruh wilayah Indonesia dengan dukungan pusat
+                            pembelajaran di berbagai kota.</p>
                     </div>
                 </div>
             </div>
@@ -146,9 +185,10 @@
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Program Studi</h2>
                 <div class="w-20 h-1 bg-yellow-400 mx-auto"></div>
-                <p class="text-lg text-gray-600 mt-6 max-w-2xl mx-auto">Pilih program studi yang sesuai dengan minat dan kebutuhan karir Anda.</p>
+                <p class="text-lg text-gray-600 mt-6 max-w-2xl mx-auto">Pilih program studi yang sesuai dengan minat dan
+                    kebutuhan karir Anda.</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Teknik Informatika -->
                 <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all card-hover">
@@ -157,14 +197,15 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-blue-900 mb-2">Teknik Informatika</h3>
-                        <p class="text-gray-600 mb-4">Mempelajari pengembangan perangkat lunak, kecerdasan buatan, dan sistem informasi.</p>
+                        <p class="text-gray-600 mb-4">Mempelajari pengembangan perangkat lunak, kecerdasan buatan, dan
+                            sistem informasi.</p>
                         <div class="flex justify-between items-center">
                             <span class="text-sm text-gray-500">Gelar: S.Kom</span>
                             <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">Detail →</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Manajemen -->
                 <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all card-hover">
                     <div class="h-48 bg-blue-800 flex items-center justify-center">
@@ -172,14 +213,15 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-blue-900 mb-2">Manajemen</h3>
-                        <p class="text-gray-600 mb-4">Mempelajari pengelolaan bisnis, pemasaran, keuangan, dan sumber daya manusia.</p>
+                        <p class="text-gray-600 mb-4">Mempelajari pengelolaan bisnis, pemasaran, keuangan, dan sumber
+                            daya manusia.</p>
                         <div class="flex justify-between items-center">
                             <span class="text-sm text-gray-500">Gelar: S.M</span>
                             <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">Detail →</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Hukum -->
                 <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all card-hover">
                     <div class="h-48 bg-blue-700 flex items-center justify-center">
@@ -187,14 +229,15 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-blue-900 mb-2">Hukum</h3>
-                        <p class="text-gray-600 mb-4">Mempelajari sistem hukum Indonesia dan internasional serta penerapannya.</p>
+                        <p class="text-gray-600 mb-4">Mempelajari sistem hukum Indonesia dan internasional serta
+                            penerapannya.</p>
                         <div class="flex justify-between items-center">
                             <span class="text-sm text-gray-500">Gelar: S.H</span>
                             <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">Detail →</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Pendidikan Guru SD -->
                 <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all card-hover">
                     <div class="h-48 bg-blue-600 flex items-center justify-center">
@@ -202,14 +245,15 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-blue-900 mb-2">Pendidikan Guru SD</h3>
-                        <p class="text-gray-600 mb-4">Mempersiapkan calon guru SD yang profesional dengan pendekatan pembelajaran modern.</p>
+                        <p class="text-gray-600 mb-4">Mempersiapkan calon guru SD yang profesional dengan pendekatan
+                            pembelajaran modern.</p>
                         <div class="flex justify-between items-center">
                             <span class="text-sm text-gray-500">Gelar: S.Pd</span>
                             <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">Detail →</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Akuntansi -->
                 <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all card-hover">
                     <div class="h-48 bg-blue-500 flex items-center justify-center">
@@ -217,14 +261,15 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-blue-900 mb-2">Akuntansi</h3>
-                        <p class="text-gray-600 mb-4">Mempelajari prinsip akuntansi, audit, perpajakan, dan sistem informasi akuntansi.</p>
+                        <p class="text-gray-600 mb-4">Mempelajari prinsip akuntansi, audit, perpajakan, dan sistem
+                            informasi akuntansi.</p>
                         <div class="flex justify-between items-center">
                             <span class="text-sm text-gray-500">Gelar: S.Ak</span>
                             <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">Detail →</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Ilmu Komunikasi -->
                 <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all card-hover">
                     <div class="h-48 bg-blue-400 flex items-center justify-center">
@@ -232,7 +277,8 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-blue-900 mb-2">Ilmu Komunikasi</h3>
-                        <p class="text-gray-600 mb-4">Mempelajari strategi komunikasi, media, public relations, dan penyiaran.</p>
+                        <p class="text-gray-600 mb-4">Mempelajari strategi komunikasi, media, public relations, dan
+                            penyiaran.</p>
                         <div class="flex justify-between items-center">
                             <span class="text-sm text-gray-500">Gelar: S.I.Kom</span>
                             <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">Detail →</a>
@@ -240,14 +286,17 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="text-center mt-12">
-                <a href="#" class="inline-block border-2 border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white font-bold py-3 px-8 rounded-full transition-all">
+                <a href="#"
+                    class="inline-block border-2 border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white font-bold py-3 px-8 rounded-full transition-all">
                     Lihat Semua Program Studi
                 </a>
             </div>
         </div>
     </section>
+
+
 
     <!-- Kenapa Pilih Kami Section -->
     <section class="py-16 bg-white">
@@ -256,75 +305,189 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Kenapa Pilih Kami?</h2>
                 <div class="w-20 h-1 bg-yellow-400 mx-auto"></div>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="text-center p-6">
-                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mx-auto mb-6">
+                    <div
+                        class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mx-auto mb-6">
                         <i class="fas fa-calendar-alt text-3xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-blue-900 mb-3">Akses Fleksibel</h3>
-                    <p class="text-gray-600">Belajar kapan saja dan dimana saja sesuai waktu luang Anda tanpa harus datang ke kampus.</p>
+                    <p class="text-gray-600">Belajar kapan saja dan dimana saja sesuai waktu luang Anda tanpa harus
+                        datang ke kampus.</p>
                 </div>
-                
+
                 <div class="text-center p-6">
-                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mx-auto mb-6">
+                    <div
+                        class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mx-auto mb-6">
                         <i class="fas fa-wallet text-3xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-blue-900 mb-3">Biaya Terjangkau</h3>
-                    <p class="text-gray-600">Biaya pendidikan yang lebih hemat dibandingkan perguruan tinggi konvensional.</p>
+                    <p class="text-gray-600">Biaya pendidikan yang lebih hemat dibandingkan perguruan tinggi
+                        konvensional.</p>
                 </div>
-                
+
                 <div class="text-center p-6">
-                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mx-auto mb-6">
+                    <div
+                        class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mx-auto mb-6">
                         <i class="fas fa-book text-3xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-blue-900 mb-3">Kurikulum Terbaru</h3>
-                    <p class="text-gray-600">Materi pembelajaran selalu diperbarui sesuai perkembangan ilmu pengetahuan dan kebutuhan industri.</p>
+                    <p class="text-gray-600">Materi pembelajaran selalu diperbarui sesuai perkembangan ilmu pengetahuan
+                        dan kebutuhan industri.</p>
                 </div>
-                
+
                 <div class="text-center p-6">
-                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mx-auto mb-6">
+                    <div
+                        class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mx-auto mb-6">
                         <i class="fas fa-user-tie text-3xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-blue-900 mb-3">Dosen Profesional</h3>
-                    <p class="text-gray-600">Dibimbing oleh dosen-dosen berkualitas dengan pengalaman akademik dan profesional.</p>
+                    <p class="text-gray-600">Dibimbing oleh dosen-dosen berkualitas dengan pengalaman akademik dan
+                        profesional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Pertanyaan yang Sering Diajukan (FAQ)</h2>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item mb-4">
+                        <button
+                            class="faq-question text-xl font-medium text-blue-900 w-full text-left py-3 px-5 bg-white hover:bg-blue-50 rounded-lg shadow-md transition-colors duration-300 flex items-center justify-between">
+                            Apa itu Universitas Terbuka Mandalika?
+                            <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                        </button>
+                        <div
+                            class="faq-answer text-gray-700 py-3 px-5 hidden overflow-hidden transition-all duration-300">
+                            Universitas Terbuka Mandalika adalah perguruan tinggi negeri yang menyelenggarakan
+                            pendidikan jarak jauh (PJJ) dengan metode belajar fleksibel dan terjangkau.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item mb-4">
+                        <button
+                            class="faq-question text-xl font-medium text-blue-900 w-full text-left py-3 px-5 bg-white hover:bg-blue-50 rounded-lg shadow-md transition-colors duration-300 flex items-center justify-between">
+                            Bagaimana sistem pembelajaran di UT Mandalika?
+                            <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                        </button>
+                        <div
+                            class="faq-answer text-gray-700 py-3 px-5 hidden overflow-hidden transition-all duration-300">
+                            Pembelajaran dilakukan secara online melalui platform digital, modul cetak, dan tutorial.
+                            Mahasiswa dapat belajar mandiri dengan bimbingan dosen.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item mb-4">
+                        <button
+                            class="faq-question text-xl font-medium text-blue-900 w-full text-left py-3 px-5 bg-white hover:bg-blue-50 rounded-lg shadow-md transition-colors duration-300 flex items-center justify-between">
+                            Apakah UT Mandalika diakreditasi?
+                            <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                        </button>
+                        <div
+                            class="faq-answer text-gray-700 py-3 px-5 hidden overflow-hidden transition-all duration-300">
+                            Ya, UT Mandalika telah terakreditasi oleh Badan Akreditasi Nasional Perguruan Tinggi
+                            (BAN-PT) dengan peringkat yang baik.
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item mb-4">
+                        <button
+                            class="faq-question text-xl font-medium text-blue-900 w-full text-left py-3 px-5 bg-white hover:bg-blue-50 rounded-lg shadow-md transition-colors duration-300 flex items-center justify-between">
+                            Apa saja program studi yang tersedia?
+                            <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                        </button>
+                        <div
+                            class="faq-answer text-gray-700 py-3 px-5 hidden overflow-hidden transition-all duration-300">
+                            Kami menawarkan berbagai program studi dari jenjang Diploma, Sarjana, hingga Magister.
+                            Silakan lihat daftar lengkapnya di halaman Program Studi.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item mb-4">
+                        <button
+                            class="faq-question text-xl font-medium text-blue-900 w-full text-left py-3 px-5 bg-white hover:bg-blue-50 rounded-lg shadow-md transition-colors duration-300 flex items-center justify-between">
+                            Bagaimana cara mendaftar di UT Mandalika?
+                            <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                        </button>
+                        <div
+                            class="faq-answer text-gray-700 py-3 px-5 hidden overflow-hidden transition-all duration-300">
+                            Pendaftaran dilakukan secara online melalui portal pendaftaran di website resmi kami.
+                            Siapkan dokumen yang diperlukan seperti ijazah, KTP, dan pas foto.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 6 -->
+                    <div class="faq-item mb-4">
+                        <button
+                            class="faq-question text-xl font-medium text-blue-900 w-full text-left py-3 px-5 bg-white hover:bg-blue-50 rounded-lg shadow-md transition-colors duration-300 flex items-center justify-between">
+                            Berapa biaya kuliah di UT Mandalika?
+                            <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                        </button>
+                        <div
+                            class="faq-answer text-gray-700 py-3 px-5 hidden overflow-hidden transition-all duration-300">
+                            Biaya kuliah bervariasi tergantung program studi dan jumlah SKS yang diambil. Informasi
+                            biaya kuliah dapat dilihat di halaman Pendaftaran atau menghubungi bagian keuangan.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+
     <!-- CTA Pendaftaran Section -->
     <section id="pendaftaran" class="py-16 bg-blue-900 text-white">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-6">Siap Memulai Perjalanan Akademik Anda?</h2>
-            <p class="text-xl opacity-90 mb-8 max-w-2xl mx-auto">Daftarkan diri Anda sekarang dan raih gelar sarjana dengan cara yang fleksibel dan terjangkau.</p>
-            
+            <p class="text-xl opacity-90 mb-8 max-w-2xl mx-auto">Daftarkan diri Anda sekarang dan raih gelar sarjana
+                dengan cara yang fleksibel dan terjangkau.</p>
+
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="daftar.html" class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold py-4 px-8 rounded-full transition-all inline-block">
+                <a href="daftar.html"
+                    class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold py-4 px-8 rounded-full transition-all inline-block">
                     Daftar Online Sekarang
                 </a>
-                <a href="#" class="bg-transparent hover:bg-blue-800 border-2 border-white text-white font-bold py-4 px-8 rounded-full transition-all inline-block">
+                <a href="#"
+                    class="bg-transparent hover:bg-blue-800 border-2 border-white text-white font-bold py-4 px-8 rounded-full transition-all inline-block">
                     Hubungi Kami
                 </a>
             </div>
-            
+
             <div class="mt-12 bg-white bg-opacity-10 rounded-xl p-6 max-w-4xl mx-auto">
                 <h3 class="text-xl font-bold mb-4">Persyaratan Pendaftaran</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
                     <div class="flex items-start">
-                        <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                        <div
+                            class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                             <i class="fas fa-check text-xs"></i>
                         </div>
                         <p>Fotokopi Ijazah SMA/SMK/MA atau sederajat</p>
                     </div>
                     <div class="flex items-start">
-                        <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                        <div
+                            class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                             <i class="fas fa-check text-xs"></i>
                         </div>
                         <p>Fotokopi KTP dan KK</p>
                     </div>
                     <div class="flex items-start">
-                        <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                        <div
+                            class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                             <i class="fas fa-check text-xs"></i>
                         </div>
                         <p>Pas foto latar merah 3x4 (4 lembar)</p>
@@ -340,12 +503,14 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-blue-900 font-bold text-lg mr-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-blue-900 font-bold text-lg mr-3">
                             UTM
                         </div>
                         <h3 class="text-xl font-bold">Universitas Terbuka Mandalika</h3>
                     </div>
-                    <p class="text-blue-200 mb-4">Pendidikan tinggi berkualitas yang bisa diakses secara fleksibel untuk semua kalangan.</p>
+                    <p class="text-blue-200 mb-4">Pendidikan tinggi berkualitas yang bisa diakses secara fleksibel untuk
+                        semua kalangan.</p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-white hover:text-yellow-400 transition-all">
                             <i class="fab fa-facebook-f"></i>
@@ -361,29 +526,36 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h4 class="text-lg font-bold mb-4">Link Cepat</h4>
                     <ul class="space-y-2">
-                        <li><a href="#beranda" class="text-blue-200 hover:text-yellow-400 transition-all">Beranda</a></li>
-                        <li><a href="#tentang" class="text-blue-200 hover:text-yellow-400 transition-all">Tentang Kami</a></li>
-                        <li><a href="#program" class="text-blue-200 hover:text-yellow-400 transition-all">Program Studi</a></li>
-                        <li><a href="#pendaftaran" class="text-blue-200 hover:text-yellow-400 transition-all">Pendaftaran</a></li>
-                        <li><a href="#" class="text-blue-200 hover:text-yellow-400 transition-all">Portal Mahasiswa</a></li>
+                        <li><a href="#beranda" class="text-blue-200 hover:text-yellow-400 transition-all">Beranda</a>
+                        </li>
+                        <li><a href="#tentang" class="text-blue-200 hover:text-yellow-400 transition-all">Tentang
+                                Kami</a></li>
+                        <li><a href="#program" class="text-blue-200 hover:text-yellow-400 transition-all">Program
+                                Studi</a></li>
+                        <li><a href="#pendaftaran"
+                                class="text-blue-200 hover:text-yellow-400 transition-all">Pendaftaran</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-yellow-400 transition-all">Portal Mahasiswa</a>
+                        </li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="text-lg font-bold mb-4">Program Studi</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-blue-200 hover:text-yellow-400 transition-all">Teknik Informatika</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-yellow-400 transition-all">Teknik
+                                Informatika</a></li>
                         <li><a href="#" class="text-blue-200 hover:text-yellow-400 transition-all">Manajemen</a></li>
                         <li><a href="#" class="text-blue-200 hover:text-yellow-400 transition-all">Hukum</a></li>
-                        <li><a href="#" class="text-blue-200 hover:text-yellow-400 transition-all">Pendidikan Guru SD</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-yellow-400 transition-all">Pendidikan Guru
+                                SD</a></li>
                         <li><a href="#" class="text-blue-200 hover:text-yellow-400 transition-all">Akuntansi</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="text-lg font-bold mb-4">Kontak Kami</h4>
                     <ul class="space-y-3">
@@ -406,7 +578,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="border-t border-blue-800 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <p class="text-blue-300 mb-4 md:mb-0">© 2023 Universitas Terbuka Mandalika. All rights reserved.</p>
@@ -421,23 +593,48 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-900 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all">
+    <button id="back-to-top"
+        class="fixed bottom-8 right-8 bg-blue-900 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <!-- JavaScript -->
+
+    <script>
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                // Tutup semua FAQ yang terbuka
+                faqQuestions.forEach(otherQuestion => {
+                    if (otherQuestion !== question) {
+                        const otherAnswer = otherQuestion.nextElementSibling;
+                        otherAnswer.classList.add('hidden');
+                        otherQuestion.classList.remove('active');
+                        otherQuestion.querySelector('i').classList.remove('rotate-180');
+                    }
+                });
+
+                const answer = question.nextElementSibling;
+                answer.classList.toggle('hidden');
+                question.classList.toggle('active');
+                question.querySelector('i').classList.toggle('rotate-180');
+            });
+        });
+    </script>
+
     <script>
         // Mobile Menu Toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        
+
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-        
+
         // Back to Top Button
         const backToTopButton = document.getElementById('back-to-top');
-        
+
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 backToTopButton.classList.remove('opacity-0', 'invisible');
@@ -447,25 +644,25 @@
                 backToTopButton.classList.add('opacity-0', 'invisible');
             }
         });
-        
+
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-        
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-                
+
                 if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                    
+
                     // Close mobile menu if open
                     if (!mobileMenu.classList.contains('hidden')) {
                         mobileMenu.classList.add('hidden');
@@ -475,4 +672,5 @@
         });
     </script>
 </body>
+
 </html>
