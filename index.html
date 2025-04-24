@@ -36,6 +36,14 @@
         .faq-question.active .fa-chevron-down {
             transform: rotate(180deg);
         }
+            /* Style untuk Tab */
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
     </style>
 </head>
 
@@ -114,72 +122,74 @@
         </div>
     </section>
 
-    <!-- Tentang Kami Section -->
-    <section id="tentang" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Tentang Kami</h2>
-                <div class="w-20 h-1 bg-yellow-400 mx-auto"></div>
-            </div>
-
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-                    <p class="text-lg text-gray-700 mb-6">
-                        Universitas Terbuka Mandalika adalah perguruan tinggi negeri yang menyelenggarakan pendidikan
-                        tinggi secara terbuka dan jarak jauh. Kami hadir untuk memberikan akses pendidikan tinggi yang
-                        berkualitas bagi seluruh masyarakat Indonesia tanpa batasan waktu dan tempat.
-                    </p>
-                    <p class="text-lg text-gray-700 mb-6">
-                        Dengan sistem pembelajaran berbasis teknologi digital, kami memungkinkan mahasiswa untuk belajar
-                        secara mandiri, fleksibel, dan terjangkau.
-                    </p>
+        <!-- Tentang Kami Section -->
+        <section id="tentang" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Tentang Kami</h2>
+                    <div class="w-20 h-1 bg-yellow-400 mx-auto"></div>
                 </div>
-
-                <div class="md:w-1/2 grid grid-cols-2 gap-6">
-                    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-yellow-400">
-                        <div
-                            class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mb-4">
-                            <i class="fas fa-bullseye text-xl"></i>
+    
+                <div class="flex flex-col lg:flex-row items-stretch gap-8">
+                    <div class="w-full lg:w-1/2">
+                        <div class="bg-white bg-opacity-10 rounded-xl p-6">
+                            <p class="text-lg text-gray-700 mb-6">
+                                Universitas Terbuka Mandalika adalah perguruan tinggi negeri yang menyelenggarakan pendidikan tinggi
+                                secara terbuka dan jarak jauh. Kami memberikan akses pendidikan berkualitas bagi seluruh masyarakat
+                                Indonesia, tanpa batasan waktu dan tempat, melalui pembelajaran berbasis teknologi digital yang mandiri,
+                                fleksibel, dan terjangkau.
+                            </p>
+                            <p class="text-lg text-gray-700 mb-6">
+                                SALUT (Sentra Layanan Universitas Terbuka) Mandalika Jepara adalah pusat layanan resmi UT di Jepara,
+                                memudahkan akses layanan akademik dan administratif bagi mahasiswa UT, khususnya di Jepara dan sekitarnya.
+                                Sebagai mitra UT, SALUT mendekatkan pendidikan tinggi terbuka dan jarak jauh kepada masyarakat,
+                                memberikan pendampingan, fasilitas, dan bimbingan dari tim profesional.
+                            </p>
                         </div>
-                        <h3 class="text-xl font-bold text-blue-900 mb-2">Visi</h3>
-                        <p class="text-gray-700">Menjadi universitas terbuka terdepan di Indonesia yang menghasilkan
-                            lulusan berdaya saing global.</p>
                     </div>
-
-                    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-yellow-400">
-                        <div
-                            class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mb-4">
-                            <i class="fas fa-rocket text-xl"></i>
+    
+                    <div class="w-full lg:w-1/2">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-yellow-400">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mb-4">
+                                    <i class="fas fa-bullseye text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-blue-900 mb-2">Visi</h3>
+                                <p class="text-gray-700">Menjadi pusat layanan pendidikan terbuka yang unggul dan terpercaya di Jepara,
+                                    dalam mendukung akses pendidikan tinggi yang fleksibel dan berkualitas bagi seluruh masyarakat.</p>
+                            </div>
+    
+                            <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-yellow-400">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mb-4">
+                                    <i class="fas fa-rocket text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-blue-900 mb-2">Misi</h3>
+                                <p class="text-gray-700">Memberikan layanan pendidikan tinggi terbuka yang profesional, mudah diakses,
+                                    dan mendukung pengembangan masyarakat Jepara melalui sistem belajar jarak jauh Universitas Terbuka.</p>
+                            </div>
+    
+                            <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-yellow-400">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mb-4">
+                                    <i class="fas fa-graduation-cap text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-blue-900 mb-2">Fleksibilitas</h3>
+                                <p class="text-gray-700">Sistem pembelajaran jarak jauh yang memungkinkan mahasiswa belajar kapan saja
+                                    dan di mana saja sesuai ritme mereka.</p>
+                            </div>
+    
+                            <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-yellow-400">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mb-4">
+                                    <i class="fas fa-globe-asia text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-blue-900 mb-2">Pendampingan</h3>
+                                <p class="text-gray-700">Mahasiswa mendapatkan layanan pendukung, seperti tutorial, bimbingan akademik,
+                                    dan kemudahan akses informasi melalui pusat layanan terdekat.</p>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-blue-900 mb-2">Misi</h3>
-                        <p class="text-gray-700">Menyediakan pendidikan tinggi berkualitas yang terjangkau dan dapat
-                            diakses oleh seluruh masyarakat.</p>
-                    </div>
-
-                    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-yellow-400">
-                        <div
-                            class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mb-4">
-                            <i class="fas fa-graduation-cap text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-blue-900 mb-2">Kualitas</h3>
-                        <p class="text-gray-700">Kurikulum berbasis kompetensi yang sesuai dengan kebutuhan dunia kerja.
-                        </p>
-                    </div>
-
-                    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-yellow-400">
-                        <div
-                            class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mb-4">
-                            <i class="fas fa-globe-asia text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-blue-900 mb-2">Jangkauan</h3>
-                        <p class="text-gray-700">Tersedia untuk seluruh wilayah Indonesia dengan dukungan pusat
-                            pembelajaran di berbagai kota.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
+        </section>
     <!-- Program Studi Section -->
     <section id="program" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
@@ -289,7 +299,7 @@
             </div>
 
             <div class="text-center mt-12">
-                <a href="#"
+                <a href="fakultas.html"
                     class="inline-block border-2 border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white font-bold py-3 px-8 rounded-full transition-all">
                     Lihat Semua Program Studi
                 </a>
@@ -470,30 +480,210 @@
             </div>
 
             <div class="mt-12 bg-white bg-opacity-10 rounded-xl p-6 max-w-4xl mx-auto">
-                <h3 class="text-xl font-bold mb-4">Persyaratan Pendaftaran</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
-                    <div class="flex items-start">
-                        <div
-                            class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                            <i class="fas fa-check text-xs"></i>
+                <div class="tabs flex justify-center space-x-4 mb-6">
+                    <button class="tab-button active bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-semibold py-3 px-6 rounded-full transition-colors duration-300 inline-block focus:outline-none" data-tab="keguruan">Keguruan & Ilmu Pendidikan</button>
+                    <button class="tab-button bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-semibold py-3 px-6 rounded-full transition-colors duration-300 inline-block focus:outline-none" data-tab="non-keguruan">Non Keguruan</button>
+                    <button class="tab-button bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-semibold py-3 px-6 rounded-full transition-colors duration-300 inline-block focus:outline-none" data-tab="rpl">RPL</button>
+                </div>
+            
+                <div id="keguruan" class="tab-content active">
+                    <h4 class="text-lg font-semibold mb-2">Syarat Pendaftaran:</h4>
+                    <div class="grid grid-cols-1 gap-4 text-left">
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Foto Coppy Ijasah Legalisir</p>
                         </div>
-                        <p>Fotokopi Ijazah SMA/SMK/MA atau sederajat</p>
-                    </div>
-                    <div class="flex items-start">
-                        <div
-                            class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                            <i class="fas fa-check text-xs"></i>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>File Foto berwarna</p>
                         </div>
-                        <p>Fotokopi KTP dan KK</p>
-                    </div>
-                    <div class="flex items-start">
-                        <div
-                            class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                            <i class="fas fa-check text-xs"></i>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Foto KTP asli</p>
                         </div>
-                        <p>Pas foto latar merah 3x4 (4 lembar)</p>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Materai 10.000, 1 lembar</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Mengisi Formulir</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Membayar admisi Rp.100.000 dan jas almamater 200.000</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>SK sebagai Guru dengan minimal 1 tahun mengajar</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Surat Keterangan Aktif mengajar dengan minimal 1 tahun mengajar</p>
+                        </div>
                     </div>
                 </div>
+            
+                <div id="non-keguruan" class="tab-content">
+                    <h4 class="text-lg font-semibold mb-2">Syarat Pendaftaran:</h4>
+                    <div class="grid grid-cols-1 gap-4 text-left">
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Foto Coppy Ijasah Legalisir</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>File Foto berwarna</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Foto KTP asli</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Materai 10.000, 1 lembar</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Mengisi Formulir</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Membayar admisi Rp.100.000 dan jas almamater 200.000</p>
+                        </div>
+                    </div>
+                </div>
+            
+                <div id="rpl" class="tab-content">
+                    <h4 class="text-lg font-semibold mb-2">Syarat Pendaftaran:</h4>
+                    <div class="grid grid-cols-1 gap-4 text-left">
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Foto Ijasah SLTA Asli</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>File Foto berwarna</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Foto KTP asli</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Materai 10.000, 1 lembar</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Mengisi Formulir</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Membayar admisi Rp.100.000 dan jas almamater 200.000</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Biaya RPL 300.000</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Transkip Nilai Legalisir</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Ijasah Legalisir</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Piagam atau sertifikat</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Daftar Riwayat Hidup</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>SK sebagai Guru dengan minimal 1 tahun mengajar (Bagi Guru)</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p>Surat Keterangan Aktif mengajar dengan minimal 1 tahun mengajar (Bagi Guru)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                // JavaScript untuk Tab
+                const tabButtons = document.querySelectorAll('.tab-button');
+                const tabContents = document.querySelectorAll('.tab-content');
+            
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        // Nonaktifkan semua tombol dan konten
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        tabContents.forEach(content => content.classList.remove('active'));
+            
+                        // Aktifkan tombol dan konten yang sesuai
+                        const tabId = button.dataset.tab;
+                        button.classList.add('active');
+                        document.getElementById(tabId).classList.add('active');
+                    });
+                });
+            </script>
             </div>
         </div>
     </section>
@@ -672,6 +862,7 @@
             });
         });
     </script>
+
 </body>
 
 </html>
