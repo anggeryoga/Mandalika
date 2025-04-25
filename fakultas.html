@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +8,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        
         .program-card {
             transition: all 0.2s ease;
         }
+
         .program-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
+
         .gradient-bg {
             background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
         }
+
         .search-highlight {
             background-color: #fef08a;
             padding: 0 2px;
@@ -25,76 +28,86 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-50">
- <!-- Header/Navigation -->
- <header class="sticky top-0 z-50 bg-white shadow-md">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-        <div class="flex items-center">
-            <img 
-            src="https://h2rsi9anqnqbkvkf.public.blob.vercel-storage.com/logo%20png-ZrL40pGfMwfAfzTRn55W3PnAxdjHLe.png" 
-            alt="UTM Logo" 
-            class="w-20 h-20 mr-3 object-contain" />
-        
-            <h1 class="text-xl md:text-2xl font-bold text-blue-900">SALUT MANDALIKA JEPARA</h1>
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://h2rsi9anqnqbkvkf.public.blob.vercel-storage.com/logo%20png-ZrL40pGfMwfAfzTRn55W3PnAxdjHLe.png"
+                    alt="UTM Logo" class="w-20 h-20 mr-3 object-contain" />
+
+                <h1 class="text-xl md:text-2xl font-bold text-blue-900">SALUT MANDALIKA JEPARA</h1>
+            </div>
+
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6 items-center">
+                    <li><a href="index.html#beranda"
+                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
+                    <li><a href="index.html#tentang"
+                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
+                    <li><a href="fakultas.html"
+                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a>
+                    </li>
+                    <li><a href="index.html#pendaftaran"
+                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Pendaftaran</a></li>
+                    <li><a href="gallery.html"
+                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Gallery</a></li>
+                    <li><a href="index.html#kontak"
+                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
+                    <li>
+                        <a href="daftar.html"
+                            class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md flex items-center">
+                            <span>Daftar</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="md:hidden text-blue-900" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
         </div>
 
-        <nav class="hidden md:block">
-            <ul class="flex space-x-6 items-center">
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white w-full py-4 px-4 shadow-lg" id="mobile-menu">
+            <ul class="space-y-4">
                 <li><a href="index.html#beranda"
-                        class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
+                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
                 <li><a href="index.html#tentang"
-                        class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
+                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
                 <li><a href="fakultas.html"
-                        class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a>
+                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a>
                 </li>
                 <li><a href="index.html#pendaftaran"
-                        class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Pendaftaran</a></li>
+                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Pendaftaran</a>
+                </li>
+                <li><a href="gallery.html"
+                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Gallery</a>
+                </li>
                 <li><a href="index.html#kontak"
-                        class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
-                <li>
-                    <a href="daftar.html" 
-                       class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md flex items-center">
-                        <span>Daftar</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
+                <li class="mt-6">
+                    <a href="daftar.html"
+                        class="inline-block bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md w-full text-center">
+                        <span>Daftar Sekarang</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 inline" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
                         </svg>
                     </a>
                 </li>
             </ul>
-        </nav>
-
-        <button class="md:hidden text-blue-900" id="mobile-menu-button">
-            <i class="fas fa-bars text-2xl"></i>
-        </button>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div class="md:hidden hidden bg-white w-full py-4 px-4 shadow-lg" id="mobile-menu">
-        <ul class="space-y-4">
-            <li><a href="index.html#beranda"
-                    class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
-            <li><a href="index.html#tentang"
-                    class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
-            <li><a href="fakultas.html"
-                    class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a>
-            </li>
-            <li><a href="index.html#pendaftaran"
-                    class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Pendaftaran</a>
-            </li>
-            <li><a href="index.html#kontak"
-                    class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
-            <li class="mt-6">
-                <a href="daftar.html" 
-                   class="inline-block bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md w-full text-center">
-                    <span>Daftar Sekarang</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 inline" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </li>
-        </ul>
-    </div>
-</header>
+        </div>
+    </header>
 
 
     <!-- Main Content -->
@@ -105,9 +118,11 @@
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Cari Program Studi</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label for="faculty-search" class="block text-sm font-medium text-gray-700 mb-2">Cari berdasarkan Fakultas</label>
+                        <label for="faculty-search" class="block text-sm font-medium text-gray-700 mb-2">Cari
+                            berdasarkan Fakultas</label>
                         <div class="relative">
-                            <select id="faculty-filter" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <select id="faculty-filter"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                                 <option value="all">Semua Fakultas</option>
                                 <option value="FHISIP">Fakultas Hukum, Ilmu Sosial dan Ilmu Politik</option>
                                 <option value="FKIP">Fakultas Keguruan dan Ilmu Pendidikan</option>
@@ -121,10 +136,11 @@
                         </div>
                     </div>
                     <div>
-                        <label for="program-search" class="block text-sm font-medium text-gray-700 mb-2">Cari berdasarkan Nama Program</label>
+                        <label for="program-search" class="block text-sm font-medium text-gray-700 mb-2">Cari
+                            berdasarkan Nama Program</label>
                         <div class="relative">
-                            <input type="text" id="program-search" placeholder="Masukkan nama program..." 
-                                   class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <input type="text" id="program-search" placeholder="Masukkan nama program..."
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                             <div class="absolute inset-y-0 right-0 flex items-center pr-3">
                                 <i class="fas fa-search text-gray-400"></i>
                             </div>
@@ -161,7 +177,8 @@
                         <i class="fas fa-chalkboard-teacher mr-3 text-green-600"></i>
                         Fakultas Keguruan dan Ilmu Pendidikan
                     </h2>
-                    <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">12 Program</span>
+                    <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">12
+                        Program</span>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- Program cards will be inserted here by JavaScript -->
@@ -175,7 +192,8 @@
                         <i class="fas fa-flask mr-3 text-purple-600"></i>
                         Fakultas Sains dan Teknologi
                     </h2>
-                    <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">10 Program</span>
+                    <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">10
+                        Program</span>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- Program cards will be inserted here by JavaScript -->
@@ -189,7 +207,8 @@
                         <i class="fas fa-chart-line mr-3 text-yellow-600"></i>
                         Fakultas Ekonomi dan Bisnis
                     </h2>
-                    <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">6 Program</span>
+                    <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">6
+                        Program</span>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- Program cards will be inserted here by JavaScript -->
@@ -223,10 +242,15 @@
             <div class="relative z-10">
                 <div class="max-w-4xl mx-auto text-center">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4">Tertarik untuk Bergabung?</h2>
-                    <p class="text-xl text-blue-200 mb-8">Pilih program studi yang sesuai dengan minat dan bakat Anda, dan mulailah perjalanan akademik Anda di Universitas Terbuka Mandalika.</p>
+                    <p class="text-xl text-blue-200 mb-8">Pilih program studi yang sesuai dengan minat dan bakat Anda,
+                        dan mulailah perjalanan akademik Anda di Universitas Terbuka Mandalika.</p>
                     <div class="flex flex-col sm:flex-row justify-center gap-4">
-                        <a href="daftar.html" class="px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition">Daftar Sekarang</a>
-                        <a href="#" class="px-8 py-3 border border-white text-white font-semibold rounded-full hover:bg-white hover:bg-opacity-10 transition">Hubungi Kami</a>
+                        <a href="daftar.html"
+                            class="px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition">Daftar
+                            Sekarang</a>
+                        <a href="#"
+                            class="px-8 py-3 border border-white text-white font-semibold rounded-full hover:bg-white hover:bg-opacity-10 transition">Hubungi
+                            Kami</a>
                     </div>
                 </div>
             </div>
@@ -239,46 +263,55 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-4">
-                        <img 
-                        src="https://h2rsi9anqnqbkvkf.public.blob.vercel-storage.com/logo%20ut%20-5Lmkckg9zmeFKxmBpQ3Yn1e16qdBj7.png" 
-                        alt="UTM Logo" 
-                        class="w-12 h-12 rounded-full mr-3 object-cover" />
+                        <img src="https://h2rsi9anqnqbkvkf.public.blob.vercel-storage.com/logo%20ut%20-5Lmkckg9zmeFKxmBpQ3Yn1e16qdBj7.png"
+                            alt="UTM Logo" class="w-12 h-12 rounded-full mr-3 object-cover" />
                         <h3 class="text-xl font-bold">Salut Mandalika Jepara</h3>
                     </div>
-                    <p class="text-blue-200 mb-4">Pendidikan tinggi berkualitas yang bisa diakses secara fleksibel untuk semua kalangan.</p>
+                    <p class="text-blue-200 mb-4">Pendidikan tinggi berkualitas yang bisa diakses secara fleksibel untuk
+                        semua kalangan.</p>
                     <div class="flex space-x-4">
-                        <a href="https://www.instagram.com/ut_mandalikajepara/" target="_blank" class="text-white hover:text-yellow-400 transition-all">
+                        <a href="https://www.instagram.com/ut_mandalikajepara/" target="_blank"
+                            class="text-white hover:text-yellow-400 transition-all">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://wa.me/+6285225617090" target="_blank" class="text-white hover:text-yellow-400 transition-all">
+                        <a href="https://wa.me/+6285225617090" target="_blank"
+                            class="text-white hover:text-yellow-400 transition-all">
                             <i class="fab fa-whatsapp"></i>
                         </a>
-                        <a href="https://www.tiktok.com/@utmandalikajepara" target="_blank" class="text-white hover:text-yellow-400 transition-all">
-                          <i class="fa-brands fa-tiktok"></i>
+                        <a href="https://www.tiktok.com/@utmandalikajepara" target="_blank"
+                            class="text-white hover:text-yellow-400 transition-all">
+                            <i class="fa-brands fa-tiktok"></i>
                         </a>
                     </div>
                 </div>
                 <div>
                     <h4 class="text-lg font-bold mb-4">Link Cepat</h4>
                     <ul class="space-y-2">
-                        <li><a href="#beranda" class="text-blue-200 hover:text-yellow-400 transition-all">Beranda</a></li>
-                        <li><a href="#tentang" class="text-blue-200 hover:text-yellow-400 transition-all">Tentang Kami</a></li>
-                        <li><a href="#program" class="text-blue-200 hover:text-yellow-400 transition-all">Program Studi</a></li>
-                        <li><a href="#pendaftaran" class="text-blue-200 hover:text-yellow-400 transition-all">Pendaftaran</a></li>
-                        <li><a href="#" class="text-blue-200 hover:text-yellow-400 transition-all">Portal Mahasiswa</a></li>
+                        <li><a href="#beranda" class="text-blue-200 hover:text-yellow-400 transition-all">Beranda</a>
+                        </li>
+                        <li><a href="#tentang" class="text-blue-200 hover:text-yellow-400 transition-all">Tentang
+                                Kami</a></li>
+                        <li><a href="#program" class="text-blue-200 hover:text-yellow-400 transition-all">Program
+                                Studi</a></li>
+                        <li><a href="#pendaftaran"
+                                class="text-blue-200 hover:text-yellow-400 transition-all">Pendaftaran</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-yellow-400 transition-all">Portal Mahasiswa</a>
+                        </li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-bold mb-4">Akademik</h4>
                     <div>
-                        <h5 class="text-md font-semibold mb-2 border-b border-blue-500 pb-2">1. Fakultas (Jenjang Sarjana/S1)</h5>
+                        <h5 class="text-md font-semibold mb-2 border-b border-blue-500 pb-2">1. Fakultas (Jenjang
+                            Sarjana/S1)</h5>
                         <p class="text-blue-200">Fakultas Ekonomi dan Bisnis (FEB)</p>
                         <p class="text-blue-200">Fakultas Keguruan dan Ilmu Pendidikan (FKIP)</p>
                         <p class="text-blue-200">Fakultas Sains dan Teknologi (FST)</p>
                         <p class="text-blue-200">Fakultas Hukum, Ilmu Sosial, dan Ilmu Politik (FHISIP)</p>
                     </div>
                     <div class="mt-4">
-                        <h5 class="text-md font-semibold mb-2 border-b border-blue-500 pb-2">2. Sekolah Pascasarjana (Jenjang S2)</h5>
+                        <h5 class="text-md font-semibold mb-2 border-b border-blue-500 pb-2">2. Sekolah Pascasarjana
+                            (Jenjang S2)</h5>
                         <p class="text-blue-200">Sekolah Pascasarjana (SPs)</p>
                     </div>
                 </div>
@@ -287,7 +320,8 @@
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-yellow-400 mt-1 mr-3"></i>
-                            <span class="text-blue-200">Jl. Raya Jepara - Pati KM 17, Blok ruko No.3, Sekuro, Kec. Mlonggo, Kabupaten Jepara, Jawa Tengah 59452</span>
+                            <span class="text-blue-200">Jl. Raya Jepara - Pati KM 17, Blok ruko No.3, Sekuro, Kec.
+                                Mlonggo, Kabupaten Jepara, Jawa Tengah 59452</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone-alt text-yellow-400 mt-1 mr-3"></i>
@@ -328,7 +362,7 @@
             { faculty: 'FHISIP', name: 'S1 – Perpajakan', icon: 'file-alt', color: 'blue', description: 'Program studi yang mendalami aspek teoritis dan praktis dalam bidang perpajakan dan akuntansi pajak.' },
             { faculty: 'FHISIP', name: 'S1 – Sastra Inggris Bidang Minat Penerjemah', icon: 'language', color: 'blue', description: 'Mengembangkan kompetensi bahasa Inggris dan keterampilan penerjemahan untuk kebutuhan profesional.' },
             { faculty: 'FHISIP', name: 'S1 – Sosiologi', icon: 'users', color: 'blue', description: 'Mempelajari struktur sosial, perubahan sosial, dan interaksi manusia dalam masyarakat modern.' },
-            
+
             // FKIP Programs
             { faculty: 'FKIP', name: 'S1 – PGSD', icon: 'chalkboard-teacher', color: 'green', description: 'Pendidikan Guru Sekolah Dasar mempersiapkan calon guru SD yang profesional dan berkarakter.' },
             { faculty: 'FKIP', name: 'S1 – PPAUD', icon: 'child', color: 'green', description: 'Pendidikan Guru Pendidikan Anak Usia Dini untuk pengembangan pendidikan anak usia dini yang berkualitas.' },
@@ -342,7 +376,7 @@
             { faculty: 'FKIP', name: 'S1 – Pendidikan Pancasila dan Kewarganegaraan', icon: 'flag', color: 'green', description: 'Mempersiapkan guru PPKn yang mampu menanamkan nilai-nilai Pancasila dan kewarganegaraan.' },
             { faculty: 'FKIP', name: 'S1 – Pendidikan Agama Islam', icon: 'mosque', color: 'green', description: 'Mengembangkan guru agama Islam yang memahami ajaran Islam dan metodologi pengajarannya.' },
             { faculty: 'FKIP', name: 'S1 – Teknologi Pendidikan', icon: 'laptop-code', color: 'green', description: 'Mempelajari pemanfaatan teknologi dalam proses pembelajaran untuk meningkatkan efektivitas pendidikan.' },
-            
+
             // FST Programs
             { faculty: 'FST', name: 'S1 – Agribisnis (Minat Pertanian)', icon: 'tractor', color: 'purple', description: 'Mempelajari bisnis pertanian modern dengan pendekatan agribisnis untuk meningkatkan produktivitas.' },
             { faculty: 'FST', name: 'S1 – Agribisnis (Minat Peternakan)', icon: 'paw', color: 'purple', description: 'Fokus pada pengembangan bisnis peternakan dengan manajemen modern dan teknologi terkini.' },
@@ -354,7 +388,7 @@
             { faculty: 'FST', name: 'S1 – Statistika', icon: 'chart-bar', color: 'purple', description: 'Mempelajari metode pengumpulan, analisis, dan interpretasi data untuk pengambilan keputusan.' },
             { faculty: 'FST', name: 'S1 – Teknologi Pangan', icon: 'utensils', color: 'purple', description: 'Mempelajari pengolahan, pengawetan, dan pengembangan produk pangan yang aman dan bergizi.' },
             { faculty: 'FST', name: 'S1 – Sains Data', icon: 'chart-pie', color: 'purple', description: 'Menggabungkan statistik, ilmu komputer, dan pengetahuan domain untuk mengekstrak wawasan dari data.' },
-            
+
             // FEB Programs
             { faculty: 'FEB', name: 'S1 – Akuntansi', icon: 'calculator', color: 'yellow', description: 'Mempelajari prinsip akuntansi untuk menghasilkan laporan keuangan yang akurat dan relevan.' },
             { faculty: 'FEB', name: 'S1 – Akuntansi Keuangan Publik', icon: 'file-invoice-dollar', color: 'yellow', description: 'Spesialisasi akuntansi yang fokus pada pengelolaan keuangan sektor publik dan pemerintahan.' },
@@ -362,7 +396,7 @@
             { faculty: 'FEB', name: 'S1 – Ekonomi Syariah', icon: 'hand-holding-usd', color: 'yellow', description: 'Mempelajari prinsip ekonomi Islam dan penerapannya dalam lembaga keuangan syariah.' },
             { faculty: 'FEB', name: 'S1 – Manajemen', icon: 'briefcase', color: 'yellow', description: 'Mengembangkan keterampilan manajerial untuk mengelola organisasi secara efektif dan efisien.' },
             { faculty: 'FEB', name: 'S1 – Pariwisata', icon: 'umbrella-beach', color: 'yellow', description: 'Mempelajari manajemen industri pariwisata untuk mengembangkan destinasi yang berkelanjutan.' },
-            
+
             // SPs Programs
             { faculty: 'SPs', name: 'S2 – Studi Lingkungan', icon: 'leaf', color: 'red', description: 'Mempelajari isu lingkungan secara multidisiplin untuk pengelolaan lingkungan yang berkelanjutan.' },
             { faculty: 'SPs', name: 'S2 – Manajemen Perikanan', icon: 'fish', color: 'red', description: 'Mengembangkan strategi pengelolaan sumber daya perikanan yang berkelanjutan dan bertanggung jawab.' },
@@ -375,21 +409,21 @@
         ];
 
         // Initialize the page with all programs
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             renderPrograms(programs);
-            
+
             // Mobile menu toggle
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            
-            mobileMenuButton.addEventListener('click', function() {
+
+            mobileMenuButton.addEventListener('click', function () {
                 mobileMenu.classList.toggle('hidden');
             });
-            
+
             // Search functionality
             const facultyFilter = document.getElementById('faculty-filter');
             const programSearch = document.getElementById('program-search');
-            
+
             facultyFilter.addEventListener('change', filterPrograms);
             programSearch.addEventListener('input', filterPrograms);
         });
@@ -398,26 +432,26 @@
         function filterPrograms() {
             const faculty = document.getElementById('faculty-filter').value;
             const searchTerm = document.getElementById('program-search').value.toLowerCase();
-            
+
             let filteredPrograms = programs;
-            
+
             // Filter by faculty
             if (faculty !== 'all') {
                 filteredPrograms = filteredPrograms.filter(program => program.faculty === faculty);
             }
-            
+
             // Filter by search term
             if (searchTerm) {
-                filteredPrograms = filteredPrograms.filter(program => 
-                    program.name.toLowerCase().includes(searchTerm) || 
+                filteredPrograms = filteredPrograms.filter(program =>
+                    program.name.toLowerCase().includes(searchTerm) ||
                     program.description.toLowerCase().includes(searchTerm)
                 );
             }
-            
+
             // Show no results message if no programs match
             const noResults = document.getElementById('no-results');
             const facultyContainer = document.getElementById('faculty-container');
-            
+
             if (filteredPrograms.length === 0) {
                 noResults.classList.remove('hidden');
                 facultyContainer.classList.add('hidden');
@@ -434,7 +468,7 @@
             document.querySelectorAll('.faculty-section .grid').forEach(grid => {
                 grid.innerHTML = '';
             });
-            
+
             // Group programs by faculty
             const programsByFaculty = {};
             programsToRender.forEach(program => {
@@ -443,26 +477,26 @@
                 }
                 programsByFaculty[program.faculty].push(program);
             });
-            
+
             // Render programs for each faculty
             for (const faculty in programsByFaculty) {
                 const facultySection = document.querySelector(`.faculty-section[data-faculty="${faculty}"] .grid`);
-                
+
                 programsByFaculty[faculty].forEach(program => {
                     // Highlight search term in program name and description
                     let highlightedName = program.name;
                     let highlightedDesc = program.description;
-                    
+
                     if (searchTerm) {
                         const regex = new RegExp(searchTerm, 'gi');
-                        highlightedName = program.name.replace(regex, match => 
+                        highlightedName = program.name.replace(regex, match =>
                             `<span class="search-highlight">${match}</span>`
                         );
-                        highlightedDesc = program.description.replace(regex, match => 
+                        highlightedDesc = program.description.replace(regex, match =>
                             `<span class="search-highlight">${match}</span>`
                         );
                     }
-                    
+
                     const programCard = document.createElement('div');
                     programCard.className = `program-card bg-white rounded-lg overflow-hidden border border-gray-200`;
                     programCard.innerHTML = `
@@ -502,4 +536,5 @@
         }
     </script>
 </body>
+
 </html>
