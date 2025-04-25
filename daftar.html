@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pendaftaran Mahasiswa UT Mandalika</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Gaya CSS Anda (sama seperti sebelumnya) */
@@ -137,6 +139,7 @@
             from {
                 transform: rotate(0deg);
             }
+
             to {
                 transform: rotate(360deg);
             }
@@ -145,76 +148,80 @@
 </head>
 
 <body class="bg-gray-50">
-  <!-- Header/Navigation -->
-  <header class="sticky top-0 z-50 bg-white shadow-md">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-        <div class="flex items-center">
-            <img 
-            src="https://h2rsi9anqnqbkvkf.public.blob.vercel-storage.com/logo%20png-ZrL40pGfMwfAfzTRn55W3PnAxdjHLe.png" 
-            alt="UTM Logo" 
-            class="w-20 h-20 mr-3 object-contain" />
-        
-            <h1 class="text-xl md:text-2xl font-bold text-blue-900">SALUT MANDALIKA JEPARA</h1>
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://h2rsi9anqnqbkvkf.public.blob.vercel-storage.com/logo%20png-ZrL40pGfMwfAfzTRn55W3PnAxdjHLe.png"
+                    alt="UTM Logo" class="w-20 h-20 mr-3 object-contain" />
+
+                <h1 class="text-xl md:text-2xl font-bold text-blue-900">SALUT MANDALIKA JEPARA</h1>
+            </div>
+
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6 items-center">
+                    <li><a href="index.html#beranda"
+                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
+                    <li><a href="index.html#tentang"
+                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
+                    <li><a href="index.html#program"
+                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a>
+                    </li>
+                    <li><a href="index.html#pendaftaran"
+                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Pendaftaran</a></li>
+                    <li><a href="index.html#kontak"
+                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
+                    <li>
+                        <a href="daftar.html"
+                            class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md flex items-center">
+                            <span>Daftar</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="md:hidden text-blue-900" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
         </div>
 
-        <nav class="hidden md:block">
-            <ul class="flex space-x-6 items-center">
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white w-full py-4 px-4 shadow-lg" id="mobile-menu">
+            <ul class="space-y-4">
                 <li><a href="index.html#beranda"
-                        class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
+                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
                 <li><a href="index.html#tentang"
-                        class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
+                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
                 <li><a href="index.html#program"
-                        class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a>
+                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a>
                 </li>
                 <li><a href="index.html#pendaftaran"
-                        class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Pendaftaran</a></li>
+                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Pendaftaran</a>
+                </li>
                 <li><a href="index.html#kontak"
-                        class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
-                <li>
-                    <a href="daftar.html" 
-                       class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md flex items-center">
-                        <span>Daftar</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
+                <li class="mt-6">
+                    <a href="daftar.html"
+                        class="inline-block bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md w-full text-center">
+                        <span>Daftar Sekarang</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 inline" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
                         </svg>
                     </a>
                 </li>
             </ul>
-        </nav>
+        </div>
+    </header>
 
-        <button class="md:hidden text-blue-900" id="mobile-menu-button">
-            <i class="fas fa-bars text-2xl"></i>
-        </button>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div class="md:hidden hidden bg-white w-full py-4 px-4 shadow-lg" id="mobile-menu">
-        <ul class="space-y-4">
-            <li><a href="index.html#beranda"
-                    class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
-            <li><a href="index.html#tentang"
-                    class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
-            <li><a href="index.html#program"
-                    class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a>
-            </li>
-            <li><a href="index.html#pendaftaran"
-                    class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Pendaftaran</a>
-            </li>
-            <li><a href="index.html#kontak"
-                    class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
-            <li class="mt-6">
-                <a href="daftar.html" 
-                   class="inline-block bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md w-full text-center">
-                    <span>Daftar Sekarang</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 inline" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </li>
-        </ul>
-    </div>
-</header>
-    
     <div class="container mx-auto px-4 py-8 max-w-4xl">
         <!-- Header Section -->
         <div class="header-gradient rounded-xl shadow-lg p-6 mb-8 text-center text-white">
@@ -225,23 +232,33 @@
         <!-- Progress Indicator -->
         <div class="flex justify-between items-center mb-8 px-4 relative">
             <div class="progress-step flex flex-col items-center flex-1 relative">
-                <div class="step-number w-8 h-8 rounded-full bg-blue-100 border-2 border-blue-500 flex items-center justify-center text-blue-700 font-semibold z-10">1</div>
+                <div
+                    class="step-number w-8 h-8 rounded-full bg-blue-100 border-2 border-blue-500 flex items-center justify-center text-blue-700 font-semibold z-10">
+                    1</div>
                 <div class="step-title text-xs mt-2 text-blue-700 font-medium">Program Studi</div>
             </div>
             <div class="progress-step flex flex-col items-center flex-1 relative">
-                <div class="step-number w-8 h-8 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center text-gray-500 font-semibold z-10">2</div>
+                <div
+                    class="step-number w-8 h-8 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center text-gray-500 font-semibold z-10">
+                    2</div>
                 <div class="step-title text-xs mt-2 text-gray-500">Data Pribadi</div>
             </div>
             <div class="progress-step flex flex-col items-center flex-1 relative">
-                <div class="step-number w-8 h-8 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center text-gray-500 font-semibold z-10">3</div>
+                <div
+                    class="step-number w-8 h-8 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center text-gray-500 font-semibold z-10">
+                    3</div>
                 <div class="step-title text-xs mt-2 text-gray-500">Pendidikan</div>
             </div>
             <div class="progress-step flex flex-col items-center flex-1 relative">
-                <div class="step-number w-8 h-8 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center text-gray-500 font-semibold z-10">4</div>
+                <div
+                    class="step-number w-8 h-8 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center text-gray-500 font-semibold z-10">
+                    4</div>
                 <div class="step-title text-xs mt-2 text-gray-500">Kontak</div>
             </div>
             <div class="progress-step flex flex-col items-center flex-1 relative">
-                <div class="step-number w-8 h-8 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center text-gray-500 font-semibold z-10">5</div>
+                <div
+                    class="step-number w-8 h-8 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center text-gray-500 font-semibold z-10">
+                    5</div>
                 <div class="step-title text-xs mt-2 text-gray-500">Pekerjaan</div>
             </div>
         </div>
@@ -256,11 +273,14 @@
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label for="jurusan" class="block text-sm font-medium text-blue-700 mb-2 required-field">Jurusan / Prodi Yang Diinginkan</label>
-                            <input type="text" id="jurusan" name="jurusan" required 
-                                   class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
-                                   placeholder="Masukkan jurusan yang diinginkan">
-                            <p class="text-xs text-gray-500 mt-2">Contoh: Manajemen, Ilmu Komunikasi, Teknik Informatika</p>
+                            <label for="jurusan"
+                                class="block text-sm font-medium text-blue-700 mb-2 required-field">Jurusan / Prodi Yang
+                                Diinginkan</label>
+                            <input type="text" id="jurusan" name="jurusan" required
+                                class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
+                                placeholder="Masukkan jurusan yang diinginkan">
+                            <p class="text-xs text-gray-500 mt-2">Contoh: Manajemen, Ilmu Komunikasi, Teknik Informatika
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -272,35 +292,42 @@
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label for="nama" class="block text-sm font-medium text-blue-700 mb-2 required-field">Nama Lengkap</label>
-                            <input type="text" id="nama" name="nama" required 
-                                   class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
-                                   placeholder="Masukkan nama lengkap">
+                            <label for="nama" class="block text-sm font-medium text-blue-700 mb-2 required-field">Nama
+                                Lengkap</label>
+                            <input type="text" id="nama" name="nama" required
+                                class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
+                                placeholder="Masukkan nama lengkap">
                         </div>
                         <div>
-                            <label for="tempat-lahir" class="block text-sm font-medium text-blue-700 mb-2 required-field">Tempat Lahir</label>
-                            <input type="text" id="tempat-lahir" name="tempat-lahir" required 
-                                   class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
-                                   placeholder="Masukkan tempat lahir">
+                            <label for="tempat-lahir"
+                                class="block text-sm font-medium text-blue-700 mb-2 required-field">Tempat Lahir</label>
+                            <input type="text" id="tempat-lahir" name="tempat-lahir" required
+                                class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
+                                placeholder="Masukkan tempat lahir">
                         </div>
                         <div>
-                            <label for="tanggal-lahir" class="block text-sm font-medium text-blue-700 mb-2 required-field">Tanggal Lahir</label>
-                            <input type="date" id="tanggal-lahir" name="tanggal-lahir" required 
-                                   class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500">
+                            <label for="tanggal-lahir"
+                                class="block text-sm font-medium text-blue-700 mb-2 required-field">Tanggal
+                                Lahir</label>
+                            <input type="date" id="tanggal-lahir" name="tanggal-lahir" required
+                                class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500">
                         </div>
                         <div>
-                            <label for="jenis-kelamin" class="block text-sm font-medium text-blue-700 mb-2 required-field">Jenis Kelamin</label>
-                            <select id="jenis-kelamin" name="jenis-kelamin" required 
-                                    class="select-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500">
+                            <label for="jenis-kelamin"
+                                class="block text-sm font-medium text-blue-700 mb-2 required-field">Jenis
+                                Kelamin</label>
+                            <select id="jenis-kelamin" name="jenis-kelamin" required
+                                class="select-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500">
                                 <option value="" selected disabled>Pilih Jenis Kelamin</option>
                                 <option value="Laki-laki">Laki-laki</option>
                                 <option value="Perempuan">Perempuan</option>
                             </select>
                         </div>
                         <div>
-                            <label for="agama" class="block text-sm font-medium text-blue-700 mb-2 required-field">Agama</label>
-                            <select id="agama" name="agama" required 
-                                    class="select-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500">
+                            <label for="agama"
+                                class="block text-sm font-medium text-blue-700 mb-2 required-field">Agama</label>
+                            <select id="agama" name="agama" required
+                                class="select-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500">
                                 <option value="" selected disabled>Pilih Agama</option>
                                 <option value="Islam">Islam</option>
                                 <option value="Kristen Protestan">Kristen Protestan</option>
@@ -312,9 +339,11 @@
                             </select>
                         </div>
                         <div>
-                            <label for="status-perkawinan" class="block text-sm font-medium text-blue-700 mb-2 required-field">Status Perkawinan</label>
-                            <select id="status-perkawinan" name="status-perkawinan" required 
-                                    class="select-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500">
+                            <label for="status-perkawinan"
+                                class="block text-sm font-medium text-blue-700 mb-2 required-field">Status
+                                Perkawinan</label>
+                            <select id="status-perkawinan" name="status-perkawinan" required
+                                class="select-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500">
                                 <option value="" selected disabled>Pilih Status Perkawinan</option>
                                 <option value="Belum Menikah">Belum Menikah</option>
                                 <option value="Menikah">Menikah</option>
@@ -322,17 +351,20 @@
                             </select>
                         </div>
                         <div>
-                            <label for="nik" class="block text-sm font-medium text-blue-700 mb-2 required-field">NIK</label>
-                            <input type="text" id="nik" name="nik" required 
-                                   class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
-                                   placeholder="Masukkan NIK (16 digit)" pattern="[0-9]{16}" maxlength="16">
+                            <label for="nik"
+                                class="block text-sm font-medium text-blue-700 mb-2 required-field">NIK</label>
+                            <input type="text" id="nik" name="nik" required
+                                class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
+                                placeholder="Masukkan NIK (16 digit)" pattern="[0-9]{16}" maxlength="16">
                             <p class="text-xs text-gray-500 mt-2">Nomor KTP 16 digit tanpa spasi</p>
                         </div>
                         <div>
-                            <label for="nama-ibu" class="block text-sm font-medium text-blue-700 mb-2 required-field">Nama Ibu Kandung</label>
-                            <input type="text" id="nama-ibu" name="nama-ibu" required 
-                                   class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
-                                   placeholder="Masukkan nama ibu kandung">
+                            <label for="nama-ibu"
+                                class="block text-sm font-medium text-blue-700 mb-2 required-field">Nama Ibu
+                                Kandung</label>
+                            <input type="text" id="nama-ibu" name="nama-ibu" required
+                                class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
+                                placeholder="Masukkan nama ibu kandung">
                         </div>
                     </div>
                 </div>
@@ -344,9 +376,11 @@
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label for="ijasah" class="block text-sm font-medium text-blue-700 mb-2 required-field">Ijazah Terakhir untuk Daftar UT</label>
-                            <select id="ijasah" name="ijasah" required 
-                                    class="select-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500">
+                            <label for="ijasah"
+                                class="block text-sm font-medium text-blue-700 mb-2 required-field">Ijazah Terakhir
+                                untuk Daftar UT</label>
+                            <select id="ijasah" name="ijasah" required
+                                class="select-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500">
                                 <option value="" selected disabled>Pilih Jenis Ijazah</option>
                                 <option value="SMA">SMA/MA/SMK</option>
                                 <option value="Ponpes">Ponpes</option>
@@ -366,37 +400,46 @@
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="relative">
-                            <label for="no-wa" class="block text-sm font-medium text-blue-700 mb-2 required-field">No WA Aktif</label>
+                            <label for="no-wa" class="block text-sm font-medium text-blue-700 mb-2 required-field">No WA
+                                Aktif</label>
                             <div class="relative">
-                                <input type="tel" id="no-wa" name="no-wa" pattern="[0-9]{10,14}" required 
-                                       class="input-field w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
-                                       placeholder="Contoh: 081234567890">
-                                <i class="fab fa-whatsapp absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-700"></i>
+                                <input type="tel" id="no-wa" name="no-wa" pattern="[0-9]{10,14}" required
+                                    class="input-field w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
+                                    placeholder="Contoh: 081234567890">
+                                <i
+                                    class="fab fa-whatsapp absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-700"></i>
                             </div>
                         </div>
                         <div class="relative">
-                            <label for="email" class="block text-sm font-medium text-blue-700 mb-2 required-field">Email Aktif</label>
+                            <label for="email" class="block text-sm font-medium text-blue-700 mb-2 required-field">Email
+                                Aktif</label>
                             <div class="relative">
-                                <input type="email" id="email" name="email" required 
-                                       class="input-field w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
-                                       placeholder="Masukkan email aktif">
-                                <i class="fas fa-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-700"></i>
+                                <input type="email" id="email" name="email" required
+                                    class="input-field w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
+                                    placeholder="Masukkan email aktif">
+                                <i
+                                    class="fas fa-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-700"></i>
                             </div>
                         </div>
                         <div class="relative">
-                            <label for="alamat" class="block text-sm font-medium text-blue-700 mb-2 required-field">Alamat Rumah/Instansi Terdekat</label>
+                            <label for="alamat"
+                                class="block text-sm font-medium text-blue-700 mb-2 required-field">Alamat
+                                Rumah/Instansi Terdekat</label>
                             <div class="relative">
-                                <input type="text" id="alamat" name="alamat" required 
-                                       class="input-field w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
-                                       placeholder="Masukkan alamat rumah/instansi">
-                                <i class="fas fa-home absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-700"></i>
+                                <input type="text" id="alamat" name="alamat" required
+                                    class="input-field w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
+                                    placeholder="Masukkan alamat rumah/instansi">
+                                <i
+                                    class="fas fa-home absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-700"></i>
                             </div>
                         </div>
                         <div>
-                            <label for="akun-medsos" class="block text-sm font-medium text-blue-700 mb-2 required-field">Akun Medsos yang Dimiliki</label>
-                            <input type="text" id="akun-medsos" name="akun-medsos" required 
-                                   class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
-                                   placeholder="Sebutkan semua akun medsos (TikTok, Instagram, FB, Twitter, dll)">
+                            <label for="akun-medsos"
+                                class="block text-sm font-medium text-blue-700 mb-2 required-field">Akun Medsos yang
+                                Dimiliki</label>
+                            <input type="text" id="akun-medsos" name="akun-medsos" required
+                                class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
+                                placeholder="Sebutkan semua akun medsos (TikTok, Instagram, FB, Twitter, dll)">
                         </div>
                     </div>
                 </div>
@@ -408,16 +451,19 @@
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label for="pekerjaan" class="block text-sm font-medium text-blue-700 mb-2 required-field">Pekerjaan</label>
-                            <input type="text" id="pekerjaan" name="pekerjaan" required 
-                                   class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
-                                   placeholder="Masukkan pekerjaan">
+                            <label for="pekerjaan"
+                                class="block text-sm font-medium text-blue-700 mb-2 required-field">Pekerjaan</label>
+                            <input type="text" id="pekerjaan" name="pekerjaan" required
+                                class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
+                                placeholder="Masukkan pekerjaan">
                         </div>
                         <div>
-                            <label for="instansi-kerja" class="block text-sm font-medium text-blue-700 mb-2 required-field">Instansi Kerja (tempat kerja)</label>
-                            <input type="text" id="instansi-kerja" name="instansi-kerja" required 
-                                   class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
-                                   placeholder="Masukkan instansi kerja">
+                            <label for="instansi-kerja"
+                                class="block text-sm font-medium text-blue-700 mb-2 required-field">Instansi Kerja
+                                (tempat kerja)</label>
+                            <input type="text" id="instansi-kerja" name="instansi-kerja" required
+                                class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500"
+                                placeholder="Masukkan instansi kerja">
                         </div>
                     </div>
                 </div>
@@ -425,16 +471,16 @@
                 <!-- Ending Message -->
                 <div class="bg-blue-50 border-l-4 border-yellow-400 rounded-lg p-4 mb-8">
                     <p class="text-sm mb-2 flex items-start">
-                        <i class="fas fa-info-circle text-blue-700 mr-2 mt-1"></i> 
-                        Setelah pendaftaran, Anda akan diundang untuk bergabung dengan grup WhatsApp mahasiswa baru. 
+                        <i class="fas fa-info-circle text-blue-700 mr-2 mt-1"></i>
+                        Setelah pendaftaran, Anda akan diundang untuk bergabung dengan grup WhatsApp mahasiswa baru.
                         Mohon menuliskan nama dan jurusan Anda di grup tersebut sebagai salam pembuka perkenalan.
                     </p>
                     <p class="text-sm">Semoga sukses... Aamiin</p>
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" id="submitBtn" 
-                        class="submit-btn w-full md:w-auto mx-auto px-8 py-3 rounded-lg text-white font-semibold flex items-center justify-center">
+                <button type="submit" id="submitBtn"
+                    class="submit-btn w-full md:w-auto mx-auto px-8 py-3 rounded-lg text-white font-semibold flex items-center justify-center">
                     <i class="fas fa-paper-plane mr-2"></i> Daftar UT
                 </button>
 
@@ -444,31 +490,34 @@
     </div>
 
     <!-- Success Popup -->
-    <div class="popup-overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 opacity-0 invisible" id="successPopup">
+    <div class="popup-overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 opacity-0 invisible"
+        id="successPopup">
         <div class="popup-content bg-white rounded-xl p-8 max-w-md w-full relative">
-            <span class="popup-close absolute top-4 right-4 text-gray-500 text-2xl cursor-pointer hover:text-blue-700" id="closePopup">×</span>
+            <span class="popup-close absolute top-4 right-4 text-gray-500 text-2xl cursor-pointer hover:text-blue-700"
+                id="closePopup">×</span>
             <div class="popup-icon text-green-500 text-5xl mb-4">
                 <i class="fas fa-check-circle"></i>
             </div>
             <h3 class="popup-title text-xl font-semibold text-blue-700 mb-3">Pendaftaran Berhasil!</h3>
             <p class="popup-message text-gray-600 mb-6">
-                Setelah masuk grup, tolong, menuliskan nama dan jurusan di grup tersebut sebagai salam pembuka perkenalan.
+                Setelah masuk grup, tolong, menuliskan nama dan jurusan di grup tersebut sebagai salam pembuka
+                perkenalan.
             </p>
-            <a href="https://chat.whatsapp.com/Etu4OQVbbZa7wqxb50ql8P" target="_blank" 
-               class="whatsapp-btn w-full px-6 py-3 rounded-lg bg-green-500 text-white font-semibold flex items-center justify-center">
+            <a href="https://chat.whatsapp.com/Etu4OQVbbZa7wqxb50ql8P" target="_blank"
+                class="whatsapp-btn w-full px-6 py-3 rounded-lg bg-green-500 text-white font-semibold flex items-center justify-center">
                 <i class="fab fa-whatsapp mr-2"></i> Gabung Grup WhatsApp
             </a>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Kode untuk menu mobile (BARU DITAMBAHKAN)
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
 
             if (mobileMenuButton && mobileMenu) { // Pastikan elemen ditemukan
-                mobileMenuButton.addEventListener('click', function() {
+                mobileMenuButton.addEventListener('click', function () {
                     mobileMenu.classList.toggle('hidden'); // Toggle class 'hidden'
                 });
             } else {
@@ -481,22 +530,22 @@
             const successPopup = document.getElementById('successPopup');
             const closePopup = document.getElementById('closePopup');
             const scriptURL = 'https://script.google.com/macros/s/AKfycbxr5K7Dy6hMaqIJzGUlzIFXyTgN9pEXedOpNzOWfuqtHPffnaQjldotgAx4VGPwxFmcHA/exec';
-            
+
             // Progress indicator functionality
             const formSections = document.querySelectorAll('.form-section');
             const progressSteps = document.querySelectorAll('.progress-step');
-            
+
             // Function to update active step based on scroll position
             function updateActiveStep() {
                 let currentSectionIndex = 0;
-                
+
                 formSections.forEach((section, index) => {
                     const rect = section.getBoundingClientRect();
                     if (rect.top <= 200) {
                         currentSectionIndex = index;
                     }
                 });
-                
+
                 progressSteps.forEach((step, index) => {
                     if (index <= currentSectionIndex) {
                         step.querySelector('.step-number').classList.remove('bg-gray-100', 'border-gray-300', 'text-gray-500');
@@ -511,7 +560,7 @@
                     }
                 });
             }
-            
+
             // Automatic step navigation
             progressSteps.forEach((step, index) => {
                 step.addEventListener('click', () => {
@@ -520,50 +569,50 @@
                     }
                 });
             });
-            
+
             // Input validation helpers
             const nikInput = document.getElementById('nik');
             const noWaInput = document.getElementById('no-wa');
-            
+
             // Only allow numbers in NIK field
-            nikInput.addEventListener('input', function() {
+            nikInput.addEventListener('input', function () {
                 this.value = this.value.replace(/[^0-9]/g, '');
                 if (this.value.length > 16) {
                     this.value = this.value.slice(0, 16);
                 }
             });
-            
+
             // Only allow numbers in WA field
-            noWaInput.addEventListener('input', function() {
+            noWaInput.addEventListener('input', function () {
                 this.value = this.value.replace(/[^0-9]/g, '');
                 if (this.value.length > 14) {
                     this.value = this.value.slice(0, 14);
                 }
             });
-            
-                        // Form submission
-                        form.addEventListener('submit', async (e) => {
+
+            // Form submission
+            form.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                
+
                 // Disable submit button to prevent duplicate submissions
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '<i class="fas fa-spinner animate-spin mr-2"></i> Mengirim...';
-                
+
                 const formData = new FormData(form);
-                
+
                 try {
                     await fetch(scriptURL, {
                         method: 'POST',
                         body: formData,
                     });
-                    
+
                     // Show success popup
                     successPopup.classList.remove('invisible', 'opacity-0');
                     successPopup.classList.add('visible', 'opacity-100');
-                    
+
                     // Keep button disabled to prevent duplicate submissions
                     submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Terkirim';
-                    
+
                 } catch (error) {
                     console.error('Error:', error);
                     alert('Pengiriman gagal. Silakan coba lagi.');
@@ -571,13 +620,13 @@
                     submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Daftar UT';
                 }
             });
-            
+
             // Close popup when X is clicked
             closePopup.addEventListener('click', () => {
                 successPopup.classList.remove('visible', 'opacity-100');
                 successPopup.classList.add('invisible', 'opacity-0');
             });
-            
+
             // Close popup when clicking outside
             window.addEventListener('click', (e) => {
                 if (e.target === successPopup) {
@@ -585,14 +634,15 @@
                     successPopup.classList.add('invisible', 'opacity-0');
                 }
             });
-            
+
             // Update active step on scroll
             window.addEventListener('scroll', updateActiveStep);
-            
+
             // Initial update
             updateActiveStep();
         });
-        
+
     </script>
 </body>
+
 </html>
