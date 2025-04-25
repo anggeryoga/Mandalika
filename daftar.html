@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Gaya CSS Anda (sama seperti sebelumnya) */
         :root {
             --primary-color: #004e92;
             --secondary-color: #003d73;
@@ -144,61 +145,75 @@
 </head>
 
 <body class="bg-gray-50">
-    <!-- Header/Navigation -->
-    <header class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <img 
-                src="https://h2rsi9anqnqbkvkf.public.blob.vercel-storage.com/logo%20png-ZrL40pGfMwfAfzTRn55W3PnAxdjHLe.png" 
-                alt="UTM Logo" 
-                class="w-20 h-20 mr-3 object-contain" />
-            
-                <h1 class="text-xl md:text-2xl font-bold text-blue-900">SALUT MANDALIKA JEPARA</h1>
-            </div>
-
-            <nav class="hidden md:block">
-                <ul class="flex space-x-8">
-                    <li><a href="index.html#beranda"
-                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
-                    <li><a href="index.html#tentang"
-                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
-                    <li><a href="index.html#program"
-                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a>
-                    </li>
-                    <li><a href="index.html#pendaftaran"
-                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Pendaftaran</a></li>
-                    <li><a href="index.html#kontak"
-                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
-                            <li><a href="daftar.html"
-                                class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Daftar</a></li>
-                </ul>
-            </nav>
-
-            <button class="md:hidden text-blue-900" id="mobile-menu-button">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+  <!-- Header/Navigation -->
+  <header class="sticky top-0 z-50 bg-white shadow-md">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center">
+            <img 
+            src="https://h2rsi9anqnqbkvkf.public.blob.vercel-storage.com/logo%20png-ZrL40pGfMwfAfzTRn55W3PnAxdjHLe.png" 
+            alt="UTM Logo" 
+            class="w-20 h-20 mr-3 object-contain" />
+        
+            <h1 class="text-xl md:text-2xl font-bold text-blue-900">SALUT MANDALIKA JEPARA</h1>
         </div>
 
-        <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-white w-full py-4 px-4 shadow-lg" id="mobile-menu">
-            <ul class="space-y-4">
+        <nav class="hidden md:block">
+            <ul class="flex space-x-6 items-center">
                 <li><a href="index.html#beranda"
-                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
+                        class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
                 <li><a href="index.html#tentang"
-                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
+                        class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
                 <li><a href="index.html#program"
-                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a>
+                        class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a>
                 </li>
                 <li><a href="index.html#pendaftaran"
-                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Pendaftaran</a>
-                </li>
+                        class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Pendaftaran</a></li>
                 <li><a href="index.html#kontak"
-                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
-                        <li><a href="daftar.html"
-                            class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Daftar</a></li>
+                        class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
+                <li>
+                    <a href="daftar.html" 
+                       class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md flex items-center">
+                        <span>Daftar</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </li>
             </ul>
-        </div>
-    </header>
+        </nav>
+
+        <button class="md:hidden text-blue-900" id="mobile-menu-button">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="md:hidden hidden bg-white w-full py-4 px-4 shadow-lg" id="mobile-menu">
+        <ul class="space-y-4">
+            <li><a href="index.html#beranda"
+                    class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
+            <li><a href="index.html#tentang"
+                    class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
+            <li><a href="index.html#program"
+                    class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a>
+            </li>
+            <li><a href="index.html#pendaftaran"
+                    class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Pendaftaran</a>
+            </li>
+            <li><a href="index.html#kontak"
+                    class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
+            <li class="mt-6">
+                <a href="daftar.html" 
+                   class="inline-block bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md w-full text-center">
+                    <span>Daftar Sekarang</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 inline" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </div>
+</header>
     
     <div class="container mx-auto px-4 py-8 max-w-4xl">
         <!-- Header Section -->
@@ -434,7 +449,7 @@
     <!-- Success Popup -->
     <div class="popup-overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 opacity-0 invisible" id="successPopup">
         <div class="popup-content bg-white rounded-xl p-8 max-w-md w-full relative">
-            <span class="popup-close absolute top-4 right-4 text-gray-500 text-2xl cursor-pointer hover:text-blue-700" id="closePopup">&times;</span>
+            <span class="popup-close absolute top-4 right-4 text-gray-500 text-2xl cursor-pointer hover:text-blue-700" id="closePopup">×</span>
             <div class="popup-icon text-green-500 text-5xl mb-4">
                 <i class="fas fa-check-circle"></i>
             </div>
@@ -451,6 +466,19 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Kode untuk menu mobile (BARU DITAMBAHKAN)
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) { // Pastikan elemen ditemukan
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden'); // Toggle class 'hidden'
+                });
+            } else {
+                console.error("Tombol menu mobile atau menu mobile tidak ditemukan.");
+            }
+            // Akhir kode menu mobile
+
             const form = document.getElementById('partnership-form');
             const submitBtn = document.getElementById('submitBtn');
             const successPopup = document.getElementById('successPopup');
@@ -516,8 +544,8 @@
                 }
             });
             
-            // Form submission
-            form.addEventListener('submit', async (e) => {
+                        // Form submission
+                        form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
                 // Disable submit button to prevent duplicate submissions
