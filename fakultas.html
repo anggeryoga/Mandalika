@@ -33,12 +33,13 @@
     <!-- Header/Navigation -->
     <header class="sticky top-0 z-50 bg-white shadow-md">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="https://h2rsi9anqnqbkvkf.public.blob.vercel-storage.com/logo%20png-ZrL40pGfMwfAfzTRn55W3PnAxdjHLe.png"
-                    alt="UTM Logo" class="w-20 h-20 mr-3 object-contain" />
-
-                <h1 class="text-xl md:text-2xl font-bold text-blue-900">SALUT MANDALIKA JEPARA</h1>
-            </div>
+            <a href="index.html">
+                <div class="flex items-center">
+                    <img src="https://h2rsi9anqnqbkvkf.public.blob.vercel-storage.com/logo%20png-ZrL40pGfMwfAfzTRn55W3PnAxdjHLe.png"
+                        alt="UTM Logo" class="w-20 h-20 mr-3 object-contain" />
+                    <h1 class="text-xl md:text-2xl font-bold text-blue-900">Salut Mandalika Jepara</h1>
+                </div>
+            </a>
 
             <nav class="hidden md:block">
                 <ul class="flex space-x-6 items-center">
@@ -423,7 +424,7 @@
             const programSearch = document.getElementById('program-search');
 
             facultyFilter.addEventListener('change', filterPrograms);
-            programSearch.addEventListener            ('input', filterPrograms);
+            programSearch.addEventListener('input', filterPrograms);
         });
 
         // Filter programs based on faculty and search term
