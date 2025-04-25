@@ -350,62 +350,60 @@
     <script>
         // Program data
         const programs = [
-            // FHISIP Programs
-            { faculty: 'FHISIP', name: 'D3 – Perpajakan', icon: 'file-invoice-dollar', color: 'blue', description: 'Program studi yang mempersiapkan lulusan untuk memiliki kompetensi di bidang perpajakan dengan pendekatan praktis.' },
-            { faculty: 'FHISIP', name: 'D4 – Kearsipan', icon: 'archive', color: 'blue', description: 'Program studi yang fokus pada pengelolaan arsip dan dokumen penting untuk kebutuhan organisasi modern.' },
-            { faculty: 'FHISIP', name: 'S1 – Ilmu Administrasi Bisnis', icon: 'briefcase', color: 'blue', description: 'Mengembangkan kompetensi di bidang administrasi bisnis untuk mendukung operasional perusahaan secara efektif.' },
-            { faculty: 'FHISIP', name: 'S1 – Ilmu Administrasi Negara', icon: 'landmark', color: 'blue', description: 'Mempersiapkan ahli administrasi yang mampu mengelola birokrasi pemerintahan secara profesional.' },
-            { faculty: 'FHISIP', name: 'S1 – Ilmu Hukum', icon: 'gavel', color: 'blue', description: 'Mengembangkan pemahaman mendalam tentang sistem hukum dan penerapannya dalam masyarakat.' },
-            { faculty: 'FHISIP', name: 'S1 – Ilmu Komunikasi', icon: 'comments', color: 'blue', description: 'Mengembangkan keterampilan komunikasi efektif untuk berbagai konteks profesional dan media.' },
-            { faculty: 'FHISIP', name: 'S1 – Ilmu Pemerintahan', icon: 'university', color: 'blue', description: 'Mempelajari teori dan praktik pemerintahan untuk membangun tata kelola yang baik dan demokratis.' },
-            { faculty: 'FHISIP', name: 'S1 – Ilmu Perpustakaan', icon: 'book', color: 'blue', description: 'Mengembangkan kompetensi dalam pengelolaan sistem informasi dan perpustakaan di era digital.' },
-            { faculty: 'FHISIP', name: 'S1 – Perpajakan', icon: 'file-alt', color: 'blue', description: 'Program studi yang mendalami aspek teoritis dan praktis dalam bidang perpajakan dan akuntansi pajak.' },
-            { faculty: 'FHISIP', name: 'S1 – Sastra Inggris Bidang Minat Penerjemah', icon: 'language', color: 'blue', description: 'Mengembangkan kompetensi bahasa Inggris dan keterampilan penerjemahan untuk kebutuhan profesional.' },
-            { faculty: 'FHISIP', name: 'S1 – Sosiologi', icon: 'users', color: 'blue', description: 'Mempelajari struktur sosial, perubahan sosial, dan interaksi manusia dalam masyarakat modern.' },
-
-            // FKIP Programs
-            { faculty: 'FKIP', name: 'S1 – PGSD', icon: 'chalkboard-teacher', color: 'green', description: 'Pendidikan Guru Sekolah Dasar mempersiapkan calon guru SD yang profesional dan berkarakter.' },
-            { faculty: 'FKIP', name: 'S1 – PPAUD', icon: 'child', color: 'green', description: 'Pendidikan Guru Pendidikan Anak Usia Dini untuk pengembangan pendidikan anak usia dini yang berkualitas.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Bahasa dan Sastra Indonesia', icon: 'book-open', color: 'green', description: 'Mengembangkan kompetensi pengajaran bahasa dan sastra Indonesia untuk berbagai jenjang pendidikan.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Bahasa Inggris', icon: 'globe-americas', color: 'green', description: 'Mempersiapkan guru bahasa Inggris yang kompeten dengan penguasaan bahasa dan metodologi pengajaran.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Biologi', icon: 'dna', color: 'green', description: 'Mengembangkan guru biologi yang menguasai konsep biologi dan strategi pengajarannya.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Ekonomi', icon: 'chart-line', color: 'green', description: 'Mempersiapkan guru ekonomi yang memahami konsep ekonomi dan mampu mengajarkannya secara efektif.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Fisika', icon: 'atom', color: 'green', description: 'Mengembangkan kompetensi guru fisika dengan penguasaan konsep dan eksperimen fisika.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Kimia', icon: 'flask', color: 'green', description: 'Mempersiapkan guru kimia yang menguasai konsep kimia dan mampu melakukan eksperimen laboratorium.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Matematika', icon: 'square-root-alt', color: 'green', description: 'Mengembangkan guru matematika yang mampu menjelaskan konsep matematika secara jelas dan menarik.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Pancasila dan Kewarganegaraan', icon: 'flag', color: 'green', description: 'Mempersiapkan guru PPKn yang mampu menanamkan nilai-nilai Pancasila dan kewarganegaraan.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Agama Islam', icon: 'mosque', color: 'green', description: 'Mengembangkan guru agama Islam yang memahami ajaran Islam dan metodologi pengajarannya.' },
-            { faculty: 'FKIP', name: 'S1 – Teknologi Pendidikan', icon: 'laptop-code', color: 'green', description: 'Mempelajari pemanfaatan teknologi dalam proses pembelajaran untuk meningkatkan efektivitas pendidikan.' },
+            // FEB Programs
+            { faculty: 'FEB', name: 'S1 – Manajemen', degree: 'S.M.', icon: 'briefcase', color: 'yellow', description: 'Mengembangkan keterampilan manajerial untuk mengelola organisasi secara efektif dan efisien.' },
+            { faculty: 'FEB', name: 'S1 – Ekonomi Pembangunan', degree: 'S.E.', icon: 'chart-line', color: 'yellow', description: 'Mempelajari teori dan kebijakan ekonomi untuk mendorong pembangunan yang berkelanjutan.' },
+            { faculty: 'FEB', name: 'S1 – Ekonomi Syariah', degree: 'S.E.', icon: 'hand-holding-usd', color: 'yellow', description: 'Mempelajari prinsip ekonomi Islam dan penerapannya dalam lembaga keuangan syariah.' },
+            { faculty: 'FEB', name: 'S1 – Akuntansi', degree: 'S.Ak.', icon: 'calculator', color: 'yellow', description: 'Mempelajari prinsip akuntansi untuk menghasilkan laporan keuangan yang akurat dan relevan.' },
+            { faculty: 'FEB', name: 'S1 – Akuntansi Keuangan Publik', degree: 'S.Ak.', icon: 'file-invoice-dollar', color: 'yellow', description: 'Spesialisasi akuntansi yang fokus pada pengelolaan keuangan sektor publik dan pemerintahan.' },
+            { faculty: 'FEB', name: 'S1 – Pariwisata', degree: 'S.Par.', icon: 'umbrella-beach', color: 'yellow', description: 'Mempelajari manajemen industri pariwisata untuk mengembangkan destinasi yang berkelanjutan.' },
 
             // FST Programs
-            { faculty: 'FST', name: 'S1 – Agribisnis (Minat Pertanian)', icon: 'tractor', color: 'purple', description: 'Mempelajari bisnis pertanian modern dengan pendekatan agribisnis untuk meningkatkan produktivitas.' },
-            { faculty: 'FST', name: 'S1 – Agribisnis (Minat Peternakan)', icon: 'paw', color: 'purple', description: 'Fokus pada pengembangan bisnis peternakan dengan manajemen modern dan teknologi terkini.' },
-            { faculty: 'FST', name: 'S1 – Agribisnis (Minat Perikanan)', icon: 'fish', color: 'purple', description: 'Mempelajari bisnis perikanan dari hulu ke hilir dengan pendekatan agribisnis yang berkelanjutan.' },
-            { faculty: 'FST', name: 'S1 – Biologi', icon: 'microscope', color: 'purple', description: 'Mempelajari kehidupan pada berbagai tingkat organisasi dari molekul hingga ekosistem.' },
-            { faculty: 'FST', name: 'S1 – Matematika', icon: 'calculator', color: 'purple', description: 'Mengembangkan pemahaman mendalam tentang teori matematika dan aplikasinya dalam berbagai bidang.' },
-            { faculty: 'FST', name: 'S1 – Perencanaan Wilayah dan Kota', icon: 'city', color: 'purple', description: 'Mempelajari perencanaan tata ruang untuk menciptakan wilayah dan kota yang berkelanjutan dan layak huni.' },
-            { faculty: 'FST', name: 'S1 – Sistem Informasi', icon: 'database', color: 'purple', description: 'Mengintegrasikan teknologi informasi dengan proses bisnis untuk menciptakan solusi sistem informasi.' },
-            { faculty: 'FST', name: 'S1 – Statistika', icon: 'chart-bar', color: 'purple', description: 'Mempelajari metode pengumpulan, analisis, dan interpretasi data untuk pengambilan keputusan.' },
-            { faculty: 'FST', name: 'S1 – Teknologi Pangan', icon: 'utensils', color: 'purple', description: 'Mempelajari pengolahan, pengawetan, dan pengembangan produk pangan yang aman dan bergizi.' },
-            { faculty: 'FST', name: 'S1 – Sains Data', icon: 'chart-pie', color: 'purple', description: 'Menggabungkan statistik, ilmu komputer, dan pengetahuan domain untuk mengekstrak wawasan dari data.' },
+            { faculty: 'FST', name: 'S1 – Statistika', degree: 'S.Si.', icon: 'chart-bar', color: 'purple', description: 'Mempelajari metode pengumpulan, analisis, dan interpretasi data untuk pengambilan keputusan.' },
+            { faculty: 'FST', name: 'S1 – Matematika', degree: 'S.Si.', icon: 'calculator', color: 'purple', description: 'Mengembangkan pemahaman mendalam tentang teori matematika dan aplikasinya dalam berbagai bidang.' },
+            { faculty: 'FST', name: 'S1 – Biologi', degree: 'S.Si.', icon: 'microscope', color: 'purple', description: 'Mempelajari kehidupan pada berbagai tingkat organisasi dari molekul hingga ekosistem.' },
+            { faculty: 'FST', name: 'S1 – Teknologi Pangan', degree: 'S.TP.', icon: 'utensils', color: 'purple', description: 'Mempelajari pengolahan, pengawetan, dan pengembangan produk pangan yang aman dan bergizi.' },
+            { faculty: 'FST', name: 'S1 – Agribisnis', degree: 'S.P.', icon: 'tractor', color: 'purple', description: 'Mempelajari bisnis pertanian modern dengan pendekatan agribisnis untuk meningkatkan produktivitas.' },
+            { faculty: 'FST', name: 'S1 – Perencanaan Wilayah dan Kota', degree: 'S.T.', icon: 'city', color: 'purple', description: 'Mempelajari perencanaan tata ruang untuk menciptakan wilayah dan kota yang berkelanjutan dan layak huni.' },
+            { faculty: 'FST', name: 'S1 – Sistem Informasi', degree: 'S.Kom.', icon: 'database', color: 'purple', description: 'Mengintegrasikan teknologi informasi dengan proses bisnis untuk menciptakan solusi sistem informasi.' },
 
-            // FEB Programs
-            { faculty: 'FEB', name: 'S1 – Akuntansi', icon: 'calculator', color: 'yellow', description: 'Mempelajari prinsip akuntansi untuk menghasilkan laporan keuangan yang akurat dan relevan.' },
-            { faculty: 'FEB', name: 'S1 – Akuntansi Keuangan Publik', icon: 'file-invoice-dollar', color: 'yellow', description: 'Spesialisasi akuntansi yang fokus pada pengelolaan keuangan sektor publik dan pemerintahan.' },
-            { faculty: 'FEB', name: 'S1 – Ekonomi Pembangunan', icon: 'chart-line', color: 'yellow', description: 'Mempelajari teori dan kebijakan ekonomi untuk mendorong pembangunan yang berkelanjutan.' },
-            { faculty: 'FEB', name: 'S1 – Ekonomi Syariah', icon: 'hand-holding-usd', color: 'yellow', description: 'Mempelajari prinsip ekonomi Islam dan penerapannya dalam lembaga keuangan syariah.' },
-            { faculty: 'FEB', name: 'S1 – Manajemen', icon: 'briefcase', color: 'yellow', description: 'Mengembangkan keterampilan manajerial untuk mengelola organisasi secara efektif dan efisien.' },
-            { faculty: 'FEB', name: 'S1 – Pariwisata', icon: 'umbrella-beach', color: 'yellow', description: 'Mempelajari manajemen industri pariwisata untuk mengembangkan destinasi yang berkelanjutan.' },
+            // FHISIP Programs
+            { faculty: 'FHISIP', name: 'D4 – Kearsipan (D4)', degree: 'S.Ars.', icon: 'archive', color: 'blue', description: 'Program studi yang fokus pada pengelolaan arsip dan dokumen penting untuk kebutuhan organisasi modern.' },
+            { faculty: 'FHISIP', name: 'D3 – Perpajakan (D3)', degree: 'A.Md.Pjk.', icon: 'file-invoice-dollar', color: 'blue', description: 'Program studi yang mempersiapkan lulusan untuk memiliki kompetensi di bidang perpajakan dengan pendekatan praktis.' },
+            { faculty: 'FHISIP', name: 'S1 – Administrasi Publik', degree: 'S.A.P.', icon: 'landmark', color: 'blue', description: 'Mempersiapkan ahli administrasi yang mampu mengelola birokrasi pemerintahan secara profesional.' },
+            { faculty: 'FHISIP', name: 'S1 – Administrasi Bisnis', degree: 'S.A.B.', icon: 'briefcase', color: 'blue', description: 'Mengembangkan kompetensi di bidang administrasi bisnis untuk mendukung operasional perusahaan secara efektif.' },
+            { faculty: 'FHISIP', name: 'S1 – Hukum', degree: 'S.H.', icon: 'gavel', color: 'blue', description: 'Mengembangkan pemahaman mendalam tentang sistem hukum dan penerapannya dalam masyarakat.' },
+            { faculty: 'FHISIP', name: 'S1 – Ilmu Pemerintahan', degree: 'S.I.P.', icon: 'university', color: 'blue', description: 'Mempelajari teori dan praktik pemerintahan untuk membangun tata kelola yang baik dan demokratis.' },
+            { faculty: 'FHISIP', name: 'S1 – Ilmu Komunikasi', degree: 'S.I.Kom.', icon: 'comments', color: 'blue', description: 'Mengembangkan keterampilan komunikasi efektif untuk berbagai konteks profesional dan media.' },
+            { faculty: 'FHISIP', name: 'S1 – Ilmu Perpustakaan', degree: 'S.I.Pus.', icon: 'book', color: 'blue', description: 'Mengembangkan kompetensi dalam pengelolaan sistem informasi dan perpustakaan di era digital.' },
+            { faculty: 'FHISIP', name: 'S1 – Sosiologi', degree: 'S.Sos.', icon: 'users', color: 'blue', description: 'Mempelajari struktur sosial, perubahan sosial, dan interaksi manusia dalam masyarakat modern.' },
+            { faculty: 'FHISIP', name: 'S1 – Sastra Inggris', degree: 'S.S.', icon: 'language', color: 'blue', description: 'Mengembangkan kompetensi bahasa Inggris dan keterampilan penerjemahan untuk kebutuhan profesional.' },
+
+            // FKIP Programs
+            { faculty: 'FKIP', name: 'S1 – Pendidikan Bahasa dan Sastra Indonesia', degree: 'S.Pd.', icon: 'book-open', color: 'green', description: 'Mengembangkan kompetensi pengajaran bahasa dan sastra Indonesia untuk berbagai jenjang pendidikan.' },
+            { faculty: 'FKIP', name: 'S1 – Pendidikan Bahasa Inggris', degree: 'S.Pd.', icon: 'globe-americas', color: 'green', description: 'Mempersiapkan guru bahasa Inggris yang kompeten dengan penguasaan bahasa dan metodologi pengajaran.' },
+            { faculty: 'FKIP', name: 'S1 – Pendidikan Biologi', degree: 'S.Pd.', icon: 'dna', color: 'green', description: 'Mengembangkan guru biologi yang menguasai konsep biologi dan strategi pengajarannya.' },
+            { faculty: 'FKIP', name: 'S1 – Pendidikan Fisika', degree: 'S.Pd.', icon: 'atom', color: 'green', description: 'Mengembangkan kompetensi guru fisika dengan penguasaan konsep dan eksperimen fisika.' },
+            { faculty: 'FKIP', name: 'S1 – Pendidikan Kimia', degree: 'S.Pd.', icon: 'flask', color: 'green', description: 'Mempersiapkan guru kimia yang menguasai konsep kimia dan mampu melakukan eksperimen laboratorium.' },
+            { faculty: 'FKIP', name: 'S1 – Pendidikan Matematika', degree: 'S.Pd.', icon: 'square-root-alt', color: 'green', description: 'Mengembangkan guru matematika yang mampu menjelaskan konsep matematika secara jelas dan menarik.' },
+            { faculty: 'FKIP', name: 'S1 – Pendidikan Ekonomi', degree: 'S.Pd.', icon: 'chart-line', color: 'green', description: 'Mempersiapkan guru ekonomi yang memahami konsep ekonomi dan mampu mengajarkannya secara efektif.' },
+            { faculty: 'FKIP', name: 'S1 – Pendidikan Pancasila dan Kewarganegaraan', degree: 'S.Pd.', icon: 'flag', color: 'green', description: 'Mempersiapkan guru PPKn yang mampu menanamkan nilai-nilai Pancasila dan kewarganegaraan.' },
+            { faculty: 'FKIP', name: 'S1 – Teknologi Pendidikan', degree: 'S.Pd.', icon: 'laptop-code', color: 'green', description: 'Mempelajari pemanfaatan teknologi dalam proses pembelajaran untuk meningkatkan efektivitas pendidikan.' },
+            { faculty: 'FKIP', name: 'S1 – Pendidikan Guru Sekolah Dasar (PGSD)', degree: 'S.Pd.', icon: 'chalkboard-teacher', color: 'green', description: 'Pendidikan Guru Sekolah Dasar mempersiapkan calon guru SD yang profesional dan berkarakter.' },
+            { faculty: 'FKIP', name: 'S1 – Pendidikan Guru Pendidikan Anak Usia Dini (PGPAUD)', degree: 'S.Pd.', icon: 'child', color: 'green', description: 'Pendidikan Guru Pendidikan Anak Usia Dini untuk pengembangan pendidikan anak usia dini yang berkualitas.' },
+            { faculty: 'FKIP', name: 'Program Pendidikan Profesi Guru (PPG)', degree: 'Gr.', icon: 'user-graduate', color: 'green', description: 'Program untuk mendapatkan sertifikasi guru profesional.' },
+            { faculty: 'FKIP', name: 'S1 – Pendidikan Agama Islam (PAI)', degree: 'S.Pd.I.', icon: 'mosque', color: 'green', description: 'Mengembangkan guru agama Islam yang memahami ajaran Islam dan metodologi pengajarannya.' },
 
             // SPs Programs
-            { faculty: 'SPs', name: 'S2 – Studi Lingkungan', icon: 'leaf', color: 'red', description: 'Mempelajari isu lingkungan secara multidisiplin untuk pengelolaan lingkungan yang berkelanjutan.' },
-            { faculty: 'SPs', name: 'S2 – Manajemen Perikanan', icon: 'fish', color: 'red', description: 'Mengembangkan strategi pengelolaan sumber daya perikanan yang berkelanjutan dan bertanggung jawab.' },
-            { faculty: 'SPs', name: 'S2 – Administrasi Publik', icon: 'landmark', color: 'red', description: 'Mendalami teori dan praktik administrasi publik untuk meningkatkan tata kelola pemerintahan.' },
-            { faculty: 'SPs', name: 'S2 – Manajemen', icon: 'briefcase', color: 'red', description: 'Mengembangkan pemikiran strategis dan keterampilan manajerial tingkat lanjut untuk kepemimpinan.' },
-            { faculty: 'SPs', name: 'S2 – Pendidikan Dasar', icon: 'school', color: 'red', description: 'Mendalami teori dan praktik pendidikan dasar untuk meningkatkan kualitas pembelajaran di sekolah dasar.' },
-            { faculty: 'SPs', name: 'S2 – Pendidikan Matematika', icon: 'square-root-alt', color: 'red', description: 'Mengembangkan pendekatan inovatif dalam pengajaran matematika untuk berbagai jenjang pendidikan.' },
-            { faculty: 'SPs', name: 'S2 – Pendidikan Bahasa Inggris', icon: 'globe-americas', color: 'red', description: 'Mendalami metodologi pengajaran bahasa Inggris dan pengembangan materi pembelajaran yang efektif.' },
-            { faculty: 'SPs', name: 'S2 – Pendidikan Anak Usia Dini', icon: 'child', color: 'red', description: 'Mendalami teori dan praktik pendidikan anak usia dini untuk pengembangan program PAUD yang berkualitas.' }
+            { faculty: 'SPs', name: 'S2 – Magister Studi Lingkungan', degree: 'M.Si.', icon: 'leaf', color: 'red', description: 'Mempelajari isu lingkungan secara multidisiplin untuk pengelolaan lingkungan yang berkelanjutan.' },
+            { faculty: 'SPs', name: 'S2 – Magister Manajemen Perikanan', degree: 'M.M.P.', icon: 'fish', color: 'red', description: 'Mengembangkan strategi pengelolaan sumber daya perikanan yang berkelanjutan dan bertanggung jawab.' },
+            { faculty: 'SPs', name: 'S2 – Magister Administrasi Publik', degree: 'M.A.P.', icon: 'landmark', color: 'red', description: 'Mendalami teori dan praktik administrasi publik untuk meningkatkan tata kelola pemerintahan.' },
+            { faculty: 'SPs', name: 'S2 – Magister Manajemen', degree: 'M.M.', icon: 'briefcase', color: 'red', description: 'Mengembangkan pemikiran strategis dan keterampilan manajerial tingkat lanjut untuk kepemimpinan.' },
+            { faculty: 'SPs', name: 'S2 – Magister Pendidikan Dasar', degree: 'M.Pd.', icon: 'school', color: 'red', description: 'Mendalami teori dan praktik pendidikan dasar untuk meningkatkan kualitas pembelajaran di sekolah dasar.' },
+            { faculty: 'SPs', name: 'S2 – Magister Pendidikan Matematika', degree: 'M.Pd.', icon: 'square-root-alt', color: 'red', description: 'Mengembangkan pendekatan inovatif dalam pengajaran matematika untuk berbagai jenjang pendidikan.' },
+            { faculty: 'SPs', name: 'S2 – Magister Pendidikan Bahasa Inggris', degree: 'M.Pd.', icon: 'globe-americas', color: 'red', description: 'Mendalami metodologi pengajaran bahasa Inggris dan pengembangan materi pembelajaran yang efektif.' },
+            { faculty: 'SPs', name: 'S2 – Magister Pendidikan Anak Usia Dini', degree: 'M.Pd.', icon: 'child', color: 'red', description: 'Mendalami teori dan praktik pendidikan anak usia dini untuk pengembangan program PAUD yang berkualitas.' },
+            { faculty: 'SPs', name: 'S2 – Magister Hukum', degree: 'M.H.', icon: 'gavel', color: 'red', description: 'Mendalami berbagai aspek hukum untuk meningkatkan pemahaman dan penerapan hukum yang berkeadilan.' }
         ];
 
         // Initialize the page with all programs
@@ -425,7 +423,7 @@
             const programSearch = document.getElementById('program-search');
 
             facultyFilter.addEventListener('change', filterPrograms);
-            programSearch.addEventListener('input', filterPrograms);
+            programSearch.addEventListener            ('input', filterPrograms);
         });
 
         // Filter programs based on faculty and search term
@@ -501,11 +499,12 @@
                     programCard.className = `program-card bg-white rounded-lg overflow-hidden border border-gray-200`;
                     programCard.innerHTML = `
                         <div class="p-5">
-                            <div class="flex items-center mb-3">
+                            <div class="flex flex-col items-start mb-3">
                                 <div class="bg-${program.color}-100 p-2 rounded-lg mr-3">
                                     <i class="fas fa-${program.icon} text-${program.color}-600 text-lg"></i>
                                 </div>
                                 <h3 class="text-lg font-semibold text-gray-800">${highlightedName}</h3>
+                                <p class="text-sm text-gray-500 italic">${program.degree}</p>
                             </div>
                             <p class="text-gray-600 text-sm mb-4">${highlightedDesc}</p>
                             <div class="flex justify-between items-center">
