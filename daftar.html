@@ -616,7 +616,8 @@
     <script>
         flatpickr("#tanggal-lahir", {
             dateFormat: "d/m/Y",
-            maxDate: "today"
+            maxDate: "today",
+            disableMobile: true  // ⬅️ ini dia biar nggak fallback ke native input di HP
         });
     </script>
     <script>
