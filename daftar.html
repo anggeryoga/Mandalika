@@ -36,6 +36,8 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/assets/favicon.png" sizes="32x32" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
     <!-- Structured Data JSON-LD -->
     <script type="application/ld+json">
 {
@@ -384,7 +386,7 @@
                                 class="block text-sm font-medium text-blue-700 mb-2 required-field">Tanggal
                                 Lahir</label>
                             <input type="text" id="tanggal-lahir" name="tanggal-lahir" required
-                                placeholder="DD/MM/YYYY (contoh: 02/11/2004)"
+                                placeholder="Pilih tanggal"
                                 class="input-field w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500">
                         </div>
                         <div>
@@ -610,7 +612,13 @@
             </a>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("#tanggal-lahir", {
+            dateFormat: "d/m/Y",
+            maxDate: "today"
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Kode untuk menu mobile (BARU DITAMBAHKAN)
@@ -823,57 +831,6 @@
                 option.textContent = program.name;
                 jurusanSelect.appendChild(option);
             });
-        });
-    </script>
-    <script>
-        document.getElementById('tanggal-lahir').addEventListener('input', function (e) {
-            let value = e.target.value;
-
-            // Menghapus karakter selain angka dan slash
-            value = value.replace(/[^\d\/]/g, '');
-
-            // Menambahkan slash otomatis setelah DD dan MM
-            if (value.length >= 2 && value.charAt(2) !== '/') {
-                value = value.substring(0, 2) + '/' + value.substring(2);
-            }
-            if (value.length >= 5 && value.charAt(5) !== '/') {
-                value = value.substring(0, 5) + '/' + value.substring(5);
-            }
-
-            // Memastikan tidak lebih dari 10 karakter (DD/MM/YYYY)
-            if (value.length > 10) {
-                value = value.substring(0, 10);
-            }
-
-            e.target.value = value;
-        });
-
-        // Validasi saat form disubmit
-        document.getElementById('form-anda').addEventListener('submit', function (e) {
-            const input = document.getElementById('tanggal-lahir');
-            const datePattern = /^(\d{2})\/(\d{2})\/(\d{4})$/;
-
-            if (!datePattern.test(input.value)) {
-                e.preventDefault();
-                alert('Format tanggal lahir harus DD/MM/YYYY');
-                return;
-            }
-
-            // Memvalidasi tanggal yang valid
-            const matches = input.value.match(datePattern);
-            const day = parseInt(matches[1], 10);
-            const month = parseInt(matches[2], 10) - 1; // bulan dimulai dari 0
-            const year = parseInt(matches[3], 10);
-
-            const date = new Date(year, month, day);
-
-            if (date.getDate() !== day ||
-                date.getMonth() !== month ||
-                date.getFullYear() !== year ||
-                month > 11 || day > 31) {
-                e.preventDefault();
-                alert('Tanggal lahir tidak valid');
-            }
         });
     </script>
 </body>
