@@ -353,22 +353,32 @@
             <p class="text-gray-500 mt-1">Simak informasi lengkap tentang SALUT melalui video berikut.</p>
         </div>
 
-        <!-- 
-    Kontainer Video Card yang Responsif
-    CATATAN: Padding diubah menjadi `p-1` agar lebih tipis.
--->
-        <div class="max-w-sm mx-auto bg-white rounded-2xl shadow-xl overflow-hidden p-1 mb-12">
-            <!-- 
-        Kontainer untuk menjaga rasio aspek video (9:16 untuk video vertikal)
-        Ini membuat iframe responsif tanpa merusak bentuknya.
-    -->
-            <div class="relative aspect-[9/16]">
-                <iframe class="absolute top-0 left-0 w-full h-full"
-                    src="https://www.tiktok.com/embed/v2/7479443101484977416?lang=id-ID&autoplay=1&loop=1&mute=1"
-                    allow="autoplay; encrypted-media;" frameborder="0" allowfullscreen>
-                </iframe>
+        <!-- Kontainer Video Card yang Responsif -->
+        <div class="max-w-sm mx-auto mb-12">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden p-1">
+                <!-- Kontainer untuk menjaga rasio aspek video (9:16) -->
+                <div class="relative aspect-[9/16]">
+                    <iframe class="absolute top-0 left-0 w-full h-full"
+                        src="https://www.tiktok.com/embed/v2/7479443101484977416?lang=id-ID&autoplay=1&loop=1&mute=1"
+                        allow="autoplay; encrypted-media;" frameborder="0" allowfullscreen>
+                    </iframe>
+                </div>
             </div>
+
+            <!-- PETUNJUK VISUAL (Opsional tapi direkomendasikan) -->
+            <p class="text-center text-xs text-gray-500 mt-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path d="M7 10a3 3 0 11-6 0 3 3 0 016 0zM13 10a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.333 5.333a1 1 0 00-1.333 1.334L9.333 8l-1.333 1.333a1 1 0 101.333 1.334L10.667 8l1.333-1.333a1 1 0 10-1.333-1.334L9.333 5.333z"
+                        clip-rule="evenodd" />
+                </svg>
+                Video berputar otomatis tanpa suara. Klik ikon speaker pada video untuk mengaktifkan audio.
+            </p>
         </div>
+
+        <!-- ===== AKHIR BAGIAN VIDEO TIKTOK ===== -->
 
 
 
