@@ -355,24 +355,21 @@
 
         <!-- 
     Kontainer Video Card yang Responsif
-    CATATAN: Class `p-2` telah dihapus dari div ini agar tidak ada padding.
+    CATATAN: Padding diubah menjadi `p-1` agar lebih tipis.
 -->
-        <div class="max-w-sm mx-auto bg-white rounded-2xl shadow-xl overflow-hidden mb-12">
-            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@univterbuka/video/7479443101484977416"
-                data-video-id="7479443101484977416" style="width: 100%; height: auto;">
-                <!-- 
-            CATATAN: Caption dan semua hashtag telah dihapus dari section ini.
-            Hanya menyisakan nama akun dan judul singkat.
-        -->
-                <section>
-                    <a target="_blank" title="@univterbuka"
-                        href="https://www.tiktok.com/@univterbuka?refer=embed">@univterbuka</a> 🎓 Pusat Bantuan
-                    Kuliahmu? Ya, SALUT!
-                </section>
-            </blockquote>
+        <div class="max-w-sm mx-auto bg-white rounded-2xl shadow-xl overflow-hidden p-1 mb-12">
+            <!-- 
+        Kontainer untuk menjaga rasio aspek video (9:16 untuk video vertikal)
+        Ini membuat iframe responsif tanpa merusak bentuknya.
+    -->
+            <div class="relative aspect-[9/16]">
+                <iframe class="absolute top-0 left-0 w-full h-full"
+                    src="https://www.tiktok.com/embed/v2/7479443101484977416?lang=id-ID&autoplay=1&loop=1&mute=1"
+                    allow="autoplay; encrypted-media;" frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
         </div>
 
-        <!-- ===== AKHIR BAGIAN VIDEO TIKTOK ===== -->
 
 
 
