@@ -472,18 +472,20 @@
                 </div>
 
                 <div class="text-center p-6">
-                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mx-auto mb-6">
-                      <i class="fas fa-book-open text-3xl"></i>
+                    <div
+                        class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 mx-auto mb-6">
+                        <i class="fas fa-book-open text-3xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-blue-900 mb-3">Dukungan Belajar</h3>
                     <p class="text-gray-600 mb-4">
-                      Panduan, modul, & tutorial untuk belajar mandiri tetap semangat.  
-                      Kamu bisa akses langsung platform pembelajaran resmi kami di:
+                        Panduan, modul, & tutorial untuk belajar mandiri tetap semangat.
+                        Kamu bisa akses langsung platform pembelajaran resmi kami di:
                     </p>
-                    <a href="https://elearning.ut.ac.id" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
-                      eLearning Universitas Terbuka
+                    <a href="https://elearning.ut.ac.id" target="_blank" rel="noopener noreferrer"
+                        class="inline-block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
+                        eLearning Universitas Terbuka
                     </a>
-                  </div>
+                </div>
             </div>
         </div>
     </section>
@@ -616,16 +618,17 @@
                 <div
                     class="tabs flex flex-col md:flex-row justify-center items-center md:space-x-4 space-y-2 md:space-y-0 mb-6">
 
+                    <!-- 1. Tambahkan kelas 'active' pada tombol Non RPL -->
                     <button
-                        class="tab-button bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-semibold py-3 px-6 rounded-full transition-colors duration-300 inline-block focus:outline-none"
+                        class="tab-button active bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-semibold py-3 px-6 rounded-full transition-colors duration-300 inline-block focus:outline-none"
                         data-tab="non-keguruan">Non RPL</button>
                     <button
                         class="tab-button bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-semibold py-3 px-6 rounded-full transition-colors duration-300 inline-block focus:outline-none"
                         data-tab="rpl">RPL</button>
                 </div>
 
-
-                <div id="non-keguruan" class="tab-content">
+                <!-- 2. Tambahkan kelas 'active' pada konten Non RPL -->
+                <div id="non-keguruan" class="tab-content active">
                     <h4 class="text-lg font-semibold mb-2">Syarat Pendaftaran:</h4>
                     <div class="grid grid-cols-1 gap-4 text-left">
                         <div class="flex items-start">
@@ -642,6 +645,7 @@
                             </div>
                             <p>File Foto berwarna</p>
                         </div>
+                        <!-- ... sisa konten non-rpl ... -->
                         <div class="flex items-start">
                             <div
                                 class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
@@ -676,6 +680,7 @@
                 <div id="rpl" class="tab-content">
                     <h4 class="text-lg font-semibold mb-2">Syarat Pendaftaran:</h4>
                     <div class="grid grid-cols-1 gap-4 text-left">
+                        <!-- ... konten rpl lengkap ... -->
                         <div class="flex items-start">
                             <div
                                 class="bg-yellow-400 text-blue-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
@@ -771,20 +776,22 @@
                 </div>
             </div>
             <script>
-                // JavaScript untuk Tab
+                // Ambil semua tombol dan konten
                 const tabButtons = document.querySelectorAll('.tab-button');
                 const tabContents = document.querySelectorAll('.tab-content');
 
+                // Tambahkan event listener untuk setiap tombol
                 tabButtons.forEach(button => {
                     button.addEventListener('click', () => {
-                        // Nonaktifkan semua tombol dan konten
+                        // 1. Non-aktifkan semua tombol dan konten terlebih dahulu
                         tabButtons.forEach(btn => btn.classList.remove('active'));
                         tabContents.forEach(content => content.classList.remove('active'));
 
-                        // Aktifkan tombol dan konten yang sesuai
-                        const tabId = button.dataset.tab;
+                        // 2. Aktifkan tombol yang diklik dan konten yang sesuai
                         button.classList.add('active');
-                        document.getElementById(tabId).classList.add('active');
+                        const targetTabId = button.getAttribute('data-tab');
+                        const targetContent = document.getElementById(targetTabId);
+                        targetContent.classList.add('active');
                     });
                 });
             </script>
