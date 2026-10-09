@@ -1,0 +1,46 @@
+# ============================================================
+#  UT SALUT Mandalika Jepara - konfigurasi Apache
+#  Clean URL: /fakultas  ->  fakultas.html
+# ============================================================
+
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # --- Jangan proses file/folder yang benar-benar ada ---
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # --- Redirect permanen: /x.html -> /x (kecuali index.html) ---
+    RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+    RewriteCond %{REQUEST_URI} !^/index\.html$ [NC]
+    RewriteRule ^ /%1 [R=301,L,NE]
+
+    # --- Layani URL tanpa ekstensi dari file .html yang ada ---
+    RewriteCond %{REQUEST_FILENAME}\.html -f
+    RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+# --- Cache untuk aset statis (CSS/JS/font/gambar) ---
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css            "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType font/woff2          "access plus 1 year"
+    ExpiresByType image/png           "access plus 6 months"
+    ExpiresByType image/jpeg          "access plus 6 months"
+    ExpiresByType image/webp          "access plus 6 months"
+</IfModule>
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript text/plain
+</IfModule>
+
+# --- Header keamanan dasar ---
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

@@ -5,567 +5,584 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fakultas - Universitas Terbuka Mandalika</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description"
+        content="Daftar fakultas dan program studi Universitas Terbuka Mandalika Jepara - jenjang diploma, sarjana, dan pascasarjana.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Favicon (32x32) -->
     <link rel="icon" type="image/png" href="assets/favicon.png" sizes="32x32">
-
-    <!-- Optional untuk Apple Devices -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png">
-
-    <!-- Optional untuk dark/light theme di browser -->
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#002EE6">
+    <link rel="stylesheet" href="assets/salut.css?v=90ee1a39">
 
     <style>
-        .program-card {
-            transition: all 0.2s ease;
+        /* ---- halaman fakultas ---- */
+        .pagehero {
+            position: relative; overflow: hidden; color: #fff; text-align: center;
+            background: var(--navy);
+            padding-block: clamp(40px, 5vw, 68px) clamp(52px, 6.5vw, 88px);
+        }
+        /* Panel diagonal tipis di sudut kanan atas */
+        .pagehero::before {
+            content: ''; position: absolute; z-index: 0;
+            top: 0; right: 0; width: min(42vw, 560px); height: 100%;
+            background: rgba(255, 255, 255, .05);
+            clip-path: polygon(38% 0, 100% 0, 100% 100%, 0 100%);
+            pointer-events: none;
+        }
+        /* Cincin dekoratif kuning di kiri bawah */
+        .pagehero::after {
+            content: ''; position: absolute; z-index: 0;
+            width: min(460px, 76vw); height: min(460px, 76vw);
+            bottom: -260px; left: -140px; border-radius: 50%;
+            border: 1px solid rgba(255, 230, 0, .28);
+            pointer-events: none;
+        }
+        .pagehero__inner { position: relative; z-index: 2; max-width: 760px; margin-inline: auto; }
+        .pagehero h1 { font-size: var(--fs-h1); font-weight: var(--fw-bold); letter-spacing: -.025em; line-height: 1.16; margin: 0 0 1rem; }
+        .pagehero h1 .hl { color: var(--yellow); }
+        .pagehero p { color: rgba(255,255,255,.84); font-size: var(--fs-lead); margin: 0 auto; max-width: 62ch; }
+
+        /* Baris statistik pada hero — kartu berisi dengan pemisah antar kolom */
+        .pagehero__stats {
+            display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+            max-width: 560px; margin: clamp(24px, 3vw, 36px) auto 0;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .14);
+            border-radius: var(--r-lg);
+            padding: var(--sp-4) var(--sp-3);
+            text-align: left;
+        }
+        .pagehero__stats > div + div {
+            border-left: 1px solid rgba(255, 255, 255, .16); padding-left: var(--sp-3);
+        }
+        .pagehero__stat-num {
+            display: block; font-size: var(--fs-num); font-weight: var(--fw-bold);
+            color: var(--yellow); line-height: 1.05; letter-spacing: -.02em;
+        }
+        .pagehero__stat-label {
+            display: block; margin-top: 4px; font-size: var(--fs-sm);
+            color: rgba(255, 255, 255, .78); line-height: 1.4;
+        }
+        @media (max-width: 480px) {
+            .pagehero__stats { gap: 10px; padding: var(--sp-2); }
+            .pagehero__stats > div + div { padding-left: 10px; }
+            .pagehero__stat-label { font-size: 12px; }
         }
 
-        .program-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        .searchbar { position: relative; z-index: 3; margin-top: clamp(-3.4rem, -4.6vw, -2.6rem); }
+
+        /* Section per fakultas */
+        .fac { margin-bottom: clamp(2.25rem, 4.5vw, 3.25rem); }
+        .fac__head {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+            gap: 1rem; padding-bottom: 1.1rem; margin-bottom: 1.6rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .fac__title {
+            display: flex; align-items: center; gap: .85rem;
+            font-size: clamp(1.1rem, 2.4vw, 1.4rem); font-weight: var(--fw-bold);
+            color: var(--navy); margin: 0; letter-spacing: -.015em; line-height: var(--lh-tight);
+        }
+        .fac__icon {
+            flex-shrink: 0; width: 46px; height: 46px; border-radius: var(--r-md);
+            display: grid; place-items: center; font-size: var(--fs-lead); 
+            background: var(--navy-50); color: var(--navy);
+        }
+        .fac__count {
+            font-size: var(--fs-xs);  font-weight: var(--fw-bold); letter-spacing: .03em;
+            padding: .35rem .85rem; border-radius: var(--r-pill);
+            background: var(--navy-50); color: var(--navy); border: 1px solid var(--cyan-100);
+            white-space: nowrap;
         }
 
-        .gradient-bg {
-            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        /* Kartu program */
+        .prog {
+            background: var(--white); border: 1px solid var(--border); border-radius: var(--r-md);
+            padding: 1.15rem 1.25rem; height: 100%;
+            display: flex; flex-direction: column;
+            box-shadow: var(--sh-xs);
+            transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
         }
+        /* Selang-seling tint per fakultas supaya daftar tidak monoton putih */
+        .faculty-section:nth-of-type(even) .prog { background: var(--bg); }
+        .prog:hover { transform: translateY(-3px); box-shadow: var(--sh-md); border-color: var(--navy); }
+        .prog__top { display: flex; align-items: flex-start; gap: .85rem; margin-bottom: .75rem; }
+        .prog__icon {
+            flex-shrink: 0; width: 42px; height: 42px; border-radius: var(--r-sm);
+            display: grid; place-items: center; font-size: var(--fs-body); 
+            background: var(--navy-50); color: var(--navy);
+        }
+        .prog__name { font-size: var(--fs-sm);  font-weight: var(--fw-bold); color: var(--text); margin: 0 0 .2rem; line-height: var(--lh-snug); }
+        .prog__degree { font-size: var(--fs-sm);  font-style: italic; color: var(--text-2); margin: 0; }
+        .prog__desc { font-size: var(--fs-sm);  color: var(--text-2); line-height: var(--lh-body); margin: 0 0 1rem; flex-grow: 1; }
+        .prog__foot {
+            display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+            padding-top: .85rem; border-top: 1px solid var(--border);
+        }
+        .prog__tag {
+            font-size: var(--fs-xs);  font-weight: var(--fw-bold); letter-spacing: .03em;
+            padding: .28rem .7rem; border-radius: var(--r-pill);
+            background: var(--navy-50); color: var(--navy);
+        }
+        .prog__link {
+            font-size: var(--fs-sm);  font-weight: var(--fw-bold); color: var(--navy);
+            display: inline-flex; align-items: center; gap: .3rem;
+            transition: gap var(--dur) var(--ease), color var(--dur) var(--ease);
+        }
+        .prog__link:hover { gap: .55rem; color: var(--yellow-600); }
 
-        .search-highlight {
-            background-color: #fef08a;
-            padding: 0 2px;
-            border-radius: 2px;
-        }
+        .search-highlight { background: var(--yellow-100); color: var(--yellow-600); padding: 0 2px; border-radius: 3px; }
+        .no-res { text-align: center; padding: 3.5rem 1rem; }
+        .no-res i { font-size: var(--fs-h1); color: var(--text-2); margin-bottom: 1rem; display: block; }
     </style>
 </head>
 
-<body class="bg-gray-50">
-    <!-- Header/Navigation -->
-    <header class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html">
-                <div class="flex items-center">
-                    <img src="https://h2rsi9anqnqbkvkf.public.blob.vercel-storage.com/logout-dAaGl3fDQOq9I8u8WX07hfTTmHwSHI.png"
-                        alt="UTM Logo" class="w-20 h-20 mr-3 object-contain" />
-                    <h1 class="text-xl md:text-2xl font-bold text-blue-900">Salut Mandalika Jepara</h1>
-                </div>
+<body>
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="site-head">
+        <div class="wrap site-head__inner">
+                        <a href="/" class="brand" aria-label="UT Salut Mandalika Jepara - Beranda">
+                <img class="brand__logo"
+                    src="https://h2rsi9anqnqbkvkf.public.blob.vercel-storage.com/logout-dAaGl3fDQOq9I8u8WX07hfTTmHwSHI.png"
+                    alt="Logo Universitas Terbuka">
+                <span class="brand__text">
+                    <span class="brand__name">UT SALUT Mandalika</span>
+                    <span class="brand__tag">Sentra Layanan Universitas Terbuka</span>
+                </span>
             </a>
 
-            <nav class="hidden md:block">
-                <ul class="flex space-x-6 items-center">
-                    <li><a href="index.html#beranda"
-                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
-                    <li><a href="index.html#tentang"
-                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
-                    <li><a href="fakultas.html"
-                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a>
-                    </li>
-                    <li><a href="https://myut.ut.ac.id"
-                            class="text-yellow-500 hover:text-yellow-600 transition-all font-semibold" target="_blank"
-                            rel="noopener noreferrer">My UT</a></li>
-                    <li><a href="gallery.html"
-                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Gallery</a></li>
-                    <li><a href="index.html#kontak"
-                            class="text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
-                    <li>
-                        <a href="daftar.html"
-                            class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md flex items-center">
-                            <span>Daftar</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </a>
+                        <nav class="nav" aria-label="Navigasi utama">
+                <ul class="nav__list">
+                    <li><a href="/#beranda" class="nav__link">Beranda</a></li>
+                    <li><a href="/#tentang" class="nav__link">Profil</a></li>
+                    <li><a href="/fakultas" class="nav__link">Program Studi</a></li>
+                    <li><a href="/#layanan" class="nav__link">Layanan</a></li>
+                    <li><a href="/gallery" class="nav__link">Berita</a></li>
+                    <li><a href="/#kontak" class="nav__link">Kontak</a></li>
+                    <li style="margin-left:10px">
+                        <a href="/daftar" class="btn btn--gold"><span>Daftar Kuliah</span></a>
                     </li>
                 </ul>
             </nav>
 
-            <button class="md:hidden text-blue-900" id="mobile-menu-button">
-                <i class="fas fa-bars text-2xl"></i>
+            <button class="nav-toggle" type="button" aria-label="Buka menu" aria-expanded="false"
+                aria-controls="menu-mobile">
+                <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
         </div>
 
-        <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-white w-full py-4 px-4 shadow-lg" id="mobile-menu">
-            <ul class="space-y-4">
-                <li><a href="index.html#beranda"
-                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Beranda</a></li>
-                <li><a href="index.html#tentang"
-                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Tentang</a></li>
-                <li><a href="fakultas.html"
-                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Program Studi</a>
-                </li>
-                <li><a href="https://myut.ut.ac.id"
-                        class="block text-yellow-500 hover:text-yellow-600 transition-all font-semibold" target="_blank"
-                        rel="noopener noreferrer">My UT</a>
-                </li>
-                <li><a href="gallery.html"
-                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Gallery</a>
-                </li>
-                <li><a href="index.html#kontak"
-                        class="block text-blue-900 hover:text-yellow-400 transition-all font-medium">Kontak</a></li>
-                <li class="mt-6">
-                    <a href="daftar.html"
-                        class="inline-block bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md w-full text-center">
-                        <span>Daftar Sekarang</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 inline" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </a>
-                </li>
-            </ul>
+                <div class="nav-drawer" id="menu-mobile">
+            <div class="nav-drawer__inner">
+                <ul class="nav-drawer__list">
+                    <li><a href="/#beranda" class="nav-drawer__link">Beranda</a></li>
+                    <li><a href="/#tentang" class="nav-drawer__link">Profil</a></li>
+                    <li><a href="/fakultas" class="nav-drawer__link">Program Studi</a></li>
+                    <li><a href="/#layanan" class="nav-drawer__link">Layanan</a></li>
+                    <li><a href="/gallery" class="nav-drawer__link">Berita</a></li>
+                    <li><a href="/#kontak" class="nav-drawer__link">Kontak</a></li>
+                </ul>
+                <div class="nav-drawer__cta">
+                    <a href="/daftar" class="btn btn--gold btn--block">Daftar Kuliah</a>
+                </div>
+            </div>
         </div>
     </header>
 
-
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-        <!-- Search Section -->
-        <section class="mb-12">
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6">Cari Program Studi</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label for="faculty-search" class="block text-sm font-medium text-gray-700 mb-2">Cari
-                            berdasarkan Fakultas</label>
-                        <div class="relative">
-                            <select id="faculty-filter"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                                <option value="all">Semua Fakultas</option>
-                                <option value="FHISIP">Fakultas Hukum, Ilmu Sosial dan Ilmu Politik</option>
-                                <option value="FKIP">Fakultas Keguruan dan Ilmu Pendidikan</option>
-                                <option value="FST">Fakultas Sains dan Teknologi</option>
-                                <option value="FEB">Fakultas Ekonomi dan Bisnis</option>
-                                <option value="SPs">Program Pascasarjana</option>
-                            </select>
-                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                <i class="fas fa-university text-gray-400"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="program-search" class="block text-sm font-medium text-gray-700 mb-2">Cari
-                            berdasarkan Nama Program</label>
-                        <div class="relative">
-                            <input type="text" id="program-search" placeholder="Masukkan nama program..."
-                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
-                                <i class="fas fa-search text-gray-400"></i>
-                            </div>
-                        </div>
-                    </div>
+    <!-- ===================== PAGE HERO ===================== -->
+    <section class="pagehero">
+        <div class="wrap pagehero__inner">
+            <span class="eyebrow"><i class="fas fa-book" aria-hidden="true"></i> Akademik</span>
+            <h1>Fakultas &amp; <span class="hl">Program Studi</span></h1>
+            <p>Jelajahi pilihan fakultas dan program studi Universitas Terbuka Mandalika - dari diploma, sarjana,
+                hingga pascasarjana.</p>
+            <div class="pagehero__stats">
+                <div>
+                    <span class="pagehero__stat-num">4</span>
+                    <span class="pagehero__stat-label">Fakultas jenjang S1</span>
                 </div>
-                <div class="mt-4 flex items-center text-sm text-gray-500">
-                    <i class="fas fa-info-circle mr-2"></i>
-                    <span>Gunakan filter di atas untuk menemukan program studi yang sesuai</span>
+                <div>
+                    <span class="pagehero__stat-num">S2</span>
+                    <span class="pagehero__stat-label">Sekolah Pascasarjana</span>
+                </div>
+                <div>
+                    <span class="pagehero__stat-num">49</span>
+                    <span class="pagehero__stat-label">Program studi</span>
                 </div>
             </div>
-        </section>
-
-        <!-- Faculty Sections -->
-        <div id="faculty-container">
-            <!-- Faculty of Law and Social Sciences -->
-            <section class="mb-12 faculty-section" data-faculty="FHISIP">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-2xl font-bold text-gray-800">
-                        <i class="fas fa-balance-scale mr-3 text-blue-600"></i>
-                        Fakultas Hukum, Ilmu Sosial dan Ilmu Politik
-                    </h2>
-                    <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">12 Program</span>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- Program cards will be inserted here by JavaScript -->
-                </div>
-            </section>
-
-            <!-- Faculty of Education -->
-            <section class="mb-12 faculty-section" data-faculty="FKIP">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-2xl font-bold text-gray-800">
-                        <i class="fas fa-chalkboard-teacher mr-3 text-green-600"></i>
-                        Fakultas Keguruan dan Ilmu Pendidikan
-                    </h2>
-                    <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">12
-                        Program</span>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- Program cards will be inserted here by JavaScript -->
-                </div>
-            </section>
-
-            <!-- Faculty of Science and Technology -->
-            <section class="mb-12 faculty-section" data-faculty="FST">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-2xl font-bold text-gray-800">
-                        <i class="fas fa-flask mr-3 text-purple-600"></i>
-                        Fakultas Sains dan Teknologi
-                    </h2>
-                    <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">10
-                        Program</span>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- Program cards will be inserted here by JavaScript -->
-                </div>
-            </section>
-
-            <!-- Faculty of Economics and Business -->
-            <section class="mb-12 faculty-section" data-faculty="FEB">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-2xl font-bold text-gray-800">
-                        <i class="fas fa-chart-line mr-3 text-yellow-600"></i>
-                        Fakultas Ekonomi dan Bisnis
-                    </h2>
-                    <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">6
-                        Program</span>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- Program cards will be inserted here by JavaScript -->
-                </div>
-            </section>
-
-            <!-- Graduate Program -->
-            <section class="mb-12 faculty-section" data-faculty="SPs">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-2xl font-bold text-gray-800">
-                        <i class="fas fa-graduation-cap mr-3 text-red-600"></i>
-                        Program Pascasarjana
-                    </h2>
-                    <span class="bg-red-100 text-red-800 text-sm font-medium px-3 py-1 rounded-full">8 Program</span>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- Program cards will be inserted here by JavaScript -->
-                </div>
-            </section>
         </div>
+    </section>
 
-        <!-- No Results Message (Hidden by default) -->
-        <div id="no-results" class="hidden text-center py-12">
-            <i class="fas fa-search text-4xl text-gray-400 mb-4"></i>
-            <h3 class="text-xl font-semibold text-gray-600 mb-2">Program studi tidak ditemukan</h3>
-            <p class="text-gray-500">Coba gunakan kata kunci yang berbeda atau pilih fakultas lain</p>
-        </div>
-
-        <!-- CTA Section -->
-        <section class="gradient-bg text-white rounded-xl p-8 md:p-12 mb-12 relative overflow-hidden">
-            <div class="relative z-10">
-                <div class="max-w-4xl mx-auto text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Tertarik untuk Bergabung?</h2>
-                    <p class="text-xl text-blue-200 mb-8">Pilih program studi yang sesuai dengan minat dan bakat Anda,
-                        dan mulailah perjalanan akademik Anda di Universitas Terbuka Mandalika.</p>
-                    <div class="flex flex-col sm:flex-row justify-center gap-4">
-                        <a href="daftar.html"
-                            class="px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition">Daftar
-                            Sekarang</a>
-                        <a href="#"
-                            class="px-8 py-3 border border-white text-white font-semibold rounded-full hover:bg-white hover:bg-opacity-10 transition">Hubungi
-                            Kami</a>
-                    </div>
+    <!-- ===================== PENCARIAN ===================== -->
+    <div class="wrap searchbar">
+        <div class="card" style="max-width:900px;margin-inline:auto;box-shadow: var(--sh-md)">
+            <h2 style="font-size: var(--fs-lead);font-weight:700;color:var(--navy);margin:0 0 1.25rem">Cari Program Studi
+            </h2>
+            <div class="grid grid--2">
+                <div class="field" style="margin:0">
+                    <label class="field__label" for="faculty-filter">Cari berdasarkan Fakultas</label>
+                    <select id="faculty-filter" class="select">
+                        <option value="all">Semua Fakultas</option>
+                        <option value="FHISIP">Fakultas Hukum, Ilmu Sosial dan Ilmu Politik</option>
+                        <option value="FKIP">Fakultas Keguruan dan Ilmu Pendidikan</option>
+                        <option value="FST">Fakultas Sains dan Teknologi</option>
+                        <option value="FEB">Fakultas Ekonomi dan Bisnis</option>
+                        <option value="SPs">Program Pascasarjana</option>
+                    </select>
+                </div>
+                <div class="field" style="margin:0">
+                    <label class="field__label" for="program-search">Cari berdasarkan Nama Program</label>
+                    <input type="text" id="program-search" class="input" placeholder="Masukkan nama program...">
                 </div>
             </div>
-        </section>
+            <p class="muted" style="font-size: var(--fs-sm);margin:1rem 0 0">
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+                Gunakan filter di atas untuk menemukan program studi yang sesuai
+            </p>
+        </div>
+    </div>
+
+    <!-- ===================== DAFTAR PROGRAM ===================== -->
+    <main class="section section--gold">
+        <div class="wrap">
+            <div id="faculty-container">
+                <section class="fac faculty-section" data-faculty="FHISIP">
+                    <div class="fac__head">
+                        <h2 class="fac__title">
+                            <span class="fac__icon"><i class="fas fa-balance-scale" aria-hidden="true"></i></span>
+                            Fakultas Hukum, Ilmu Sosial dan Ilmu Politik
+                        </h2>
+                        <span class="fac__count">10 Program</span>
+                    </div>
+                    <div class="grid grid--3" data-slot="FHISIP"></div>
+                </section>
+
+                <section class="fac faculty-section" data-faculty="FKIP">
+                    <div class="fac__head">
+                        <h2 class="fac__title">
+                            <span class="fac__icon"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></span>
+                            Fakultas Keguruan dan Ilmu Pendidikan
+                        </h2>
+                        <span class="fac__count">13 Program</span>
+                    </div>
+                    <div class="grid grid--3" data-slot="FKIP"></div>
+                </section>
+
+                <section class="fac faculty-section" data-faculty="FST">
+                    <div class="fac__head">
+                        <h2 class="fac__title">
+                            <span class="fac__icon"><i class="fas fa-flask" aria-hidden="true"></i></span>
+                            Fakultas Sains dan Teknologi
+                        </h2>
+                        <span class="fac__count">8 Program</span>
+                    </div>
+                    <div class="grid grid--3" data-slot="FST"></div>
+                </section>
+
+                <section class="fac faculty-section" data-faculty="FEB">
+                    <div class="fac__head">
+                        <h2 class="fac__title">
+                            <span class="fac__icon"><i class="fas fa-chart-line" aria-hidden="true"></i></span>
+                            Fakultas Ekonomi dan Bisnis
+                        </h2>
+                        <span class="fac__count">7 Program</span>
+                    </div>
+                    <div class="grid grid--3" data-slot="FEB"></div>
+                </section>
+
+                <section class="fac faculty-section" data-faculty="SPs">
+                    <div class="fac__head">
+                        <h2 class="fac__title">
+                            <span class="fac__icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></span>
+                            Program Pascasarjana
+                        </h2>
+                        <span class="fac__count">11 Program</span>
+                    </div>
+                    <div class="grid grid--3" data-slot="SPs"></div>
+                </section>
+            </div>
+
+            <!-- Pesan bila tidak ada hasil -->
+            <div id="no-results" class="no-res" style="display:none">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <h3 style="font-size: var(--fs-lead);font-weight:700;color:var(--text);margin:0 0 .5rem">Program studi tidak
+                    ditemukan</h3>
+                <p class="muted" style="margin:0">Coba gunakan kata kunci yang berbeda atau pilih fakultas lain</p>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta" style="margin-top:clamp(2rem,4vw,3rem)">
+                <h2 class="cta__title">Tertarik untuk Bergabung?</h2>
+                <p class="cta__text">Pilih program studi yang sesuai dengan minat dan bakat Anda,
+                    dan mulailah perjalanan akademik Anda di Universitas Terbuka Mandalika.</p>
+                <div class="cta__actions">
+                    <a href="/daftar" class="btn btn--gold btn--lg">Daftar Sekarang</a>
+                    <a href="/#kontak" class="btn btn--ghost-light btn--lg">Hubungi Kami</a>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <!-- Footer -->
-    <footer id="kontak" class="bg-blue-950 text-white pt-12 pb-8">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+    <!-- ===================== FOOTER ===================== -->
+    <footer id="kontak" class="foot">
+        <div class="wrap">
+            <div class="foot__grid">
                 <div>
-                    <div class="flex items-center mb-4">
+                    <div class="foot__brand">
                         <img src="https://h2rsi9anqnqbkvkf.public.blob.vercel-storage.com/logo%20ut%20-5Lmkckg9zmeFKxmBpQ3Yn1e16qdBj7.png"
-                            alt="UTM Logo" class="w-12 h-12 rounded-full mr-3 object-cover" />
-                        <h3 class="text-xl font-bold">Salut Mandalika Jepara</h3>
+                            alt="Logo Salut Mandalika">
+                        <p class="foot__name">Salut Mandalika Jepara</p>
                     </div>
-                    <p class="text-blue-200 mb-4">Pendidikan tinggi berkualitas yang bisa diakses secara fleksibel untuk
+                    <p class="foot__desc">Pendidikan tinggi berkualitas yang bisa diakses secara fleksibel untuk
                         semua kalangan.</p>
-                    <div class="flex space-x-4">
+                    <div class="socials">
                         <a href="https://www.instagram.com/ut_mandalikajepara/" target="_blank"
-                            class="text-white hover:text-yellow-400 transition-all">
-                            <i class="fab fa-instagram"></i>
+                            rel="noopener noreferrer" class="social" aria-label="Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
-                        <a href="https://wa.me/+6285225617090" target="_blank"
-                            class="text-white hover:text-yellow-400 transition-all">
-                            <i class="fab fa-whatsapp"></i>
+                        <a href="https://wa.me/+6285225617090" target="_blank" rel="noopener noreferrer" class="social"
+                            aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
                         </a>
-                        <a href="https://www.tiktok.com/@utmandalikajepara" target="_blank"
-                            class="text-white hover:text-yellow-400 transition-all">
-                            <i class="fa-brands fa-tiktok"></i>
+                        <a href="https://www.tiktok.com/@utmandalikajepara" target="_blank" rel="noopener noreferrer"
+                            class="social" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
+
                 <div>
-                    <h4 class="text-lg font-bold mb-4">Link Cepat</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#beranda" class="text-blue-200 hover:text-yellow-400 transition-all">Beranda</a>
-                        </li>
-                        <li><a href="#tentang" class="text-blue-200 hover:text-yellow-400 transition-all">Tentang
-                                Kami</a></li>
-                        <li><a href="#program" class="text-blue-200 hover:text-yellow-400 transition-all">Program
-                                Studi</a></li>
-                        <li><a href="#pendaftaran"
-                                class="text-blue-200 hover:text-yellow-400 transition-all">Pendaftaran</a></li>
-                        <li><a href="#" class="text-blue-200 hover:text-yellow-400 transition-all">Portal Mahasiswa</a>
-                        </li>
+                    <h4 class="foot__h">Link Cepat</h4>
+                    <ul class="foot__list">
+                        <li><a href="/#beranda">Beranda</a></li>
+                        <li><a href="/#tentang">Tentang Kami</a></li>
+                        <li><a href="/#program">Program Studi</a></li>
+                        <li><a href="/#pendaftaran">Pendaftaran</a></li>
+                        <li><a href="#">Portal Mahasiswa</a></li>
                     </ul>
                 </div>
+
                 <div>
-                    <h4 class="text-lg font-bold mb-4">Akademik</h4>
-                    <div>
-                        <h5 class="text-md font-semibold mb-2 border-b border-blue-500 pb-2">1. Fakultas (Jenjang
-                            Sarjana/S1)</h5>
-                        <p class="text-blue-200">Fakultas Ekonomi dan Bisnis (FEB)</p>
-                        <p class="text-blue-200">Fakultas Keguruan dan Ilmu Pendidikan (FKIP)</p>
-                        <p class="text-blue-200">Fakultas Sains dan Teknologi (FST)</p>
-                        <p class="text-blue-200">Fakultas Hukum, Ilmu Sosial, dan Ilmu Politik (FHISIP)</p>
-                    </div>
-                    <div class="mt-4">
-                        <h5 class="text-md font-semibold mb-2 border-b border-blue-500 pb-2">2. Sekolah Pascasarjana
-                            (Jenjang S2)</h5>
-                        <p class="text-blue-200">Sekolah Pascasarjana (SPs)</p>
-                    </div>
+                    <h4 class="foot__h">Akademik</h4>
+                    <h5 style="font-size: var(--fs-sm);font-weight:650;color:#fff;margin:0 0 .7rem">1. Fakultas (Jenjang
+                        Sarjana/S1)</h5>
+                    <ul class="foot__list">
+                        <li><span>Fakultas Ekonomi dan Bisnis (FEB)</span></li>
+                        <li><span>Fakultas Keguruan dan Ilmu Pendidikan (FKIP)</span></li>
+                        <li><span>Fakultas Sains dan Teknologi (FST)</span></li>
+                        <li><span>Fakultas Hukum, Ilmu Sosial dan Ilmu Politik (FHISIP)</span></li>
+                    </ul>
+                    <h5 style="font-size: var(--fs-sm);font-weight:650;color:#fff;margin:1.35rem 0 .7rem">2. Sekolah
+                        Pascasarjana
+                        (Jenjang S2)</h5>
+                    <ul class="foot__list">
+                        <li><span>Sekolah Pascasarjana (SPs)</span></li>
+                    </ul>
                 </div>
+
                 <div>
-                    <h4 class="text-lg font-bold mb-4">Kontak Kami</h4>
-                    <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-yellow-400 mt-1 mr-3"></i>
-                            <span class="text-blue-200">Jl. Raya Jepara - Pati KM 17, Blok ruko No.3, Sekuro, Kec.
+                    <h4 class="foot__h">Kontak Kami</h4>
+                    <ul class="foot__list">
+                        <li style="display:flex;gap:.7rem;align-items:flex-start">
+                            <i class="fas fa-map-marker-alt" style="color:var(--yellow);margin-top:.28rem"
+                                aria-hidden="true"></i>
+                            <span>Jl. Raya Jepara - Pati KM 17, Blok ruko No.3, Sekuro, Kec.
                                 Mlonggo, Kabupaten Jepara, Jawa Tengah 59452</span>
                         </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-phone-alt text-yellow-400 mt-1 mr-3"></i>
-                            <span class="text-blue-200">+62 852-2561-7090</span>
+                        <li style="display:flex;gap:.7rem;align-items:flex-start">
+                            <i class="fas fa-phone-alt" style="color:var(--yellow);margin-top:.28rem"
+                                aria-hidden="true"></i>
+                            <a href="tel:+6285225617090">+62 852-2561-7090</a>
                         </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-envelope text-yellow-400 mt-1 mr-3"></i>
-                            <span class="text-blue-200">salutmandalika@gmail.com</span>
+                        <li style="display:flex;gap:.7rem;align-items:flex-start">
+                            <i class="fas fa-envelope" style="color:var(--yellow);margin-top:.28rem"
+                                aria-hidden="true"></i>
+                            <a href="mailto:salutmandalika@gmail.com">salutmandalika@gmail.com</a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-blue-800 pt-8">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <p class="text-blue-300 mb-4 md:mb-0">© 2025 Salut Mandalika Jepara. All rights reserved.</p>
-                    <div class="flex space-x-6">
-                        <a href="#" class="text-blue-300 hover:text-white transition-all">Kebijakan Privasi</a>
-                        <a href="#" class="text-blue-300 hover:text-white transition-all">Syarat & Ketentuan</a>
-                        <a href="#" class="text-blue-300 hover:text-white transition-all">Peta Situs</a>
-                    </div>
+
+            <div class="foot__bottom">
+                <p style="margin:0">© 2025 Salut Mandalika Jepara. All rights reserved.</p>
+                <div class="foot__legal">
+                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Syarat &amp; Ketentuan</a>
+                    <a href="#">Peta Situs</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <button class="to-top" type="button" aria-label="Kembali ke atas">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
     <script>
-        // Program data
+        /* ===== Data program studi - TIDAK diubah ===== */
         const programs = [
             // FEB Programs
             {
                 faculty: 'FEB',
-                name: 'S1 – Kewirausahaan',
+                name: 'S1 - Kewirausahaan',
                 degree: 'S.Kw.',
                 icon: 'lightbulb',
                 color: 'orange',
                 description: 'Membekali mahasiswa dengan pengetahuan dan keterampilan untuk menciptakan, mengelola, dan mengembangkan usaha secara inovatif dan berkelanjutan.'
             },
 
-            { faculty: 'FEB', name: 'S1 – Manajemen', degree: 'S.M.', icon: 'briefcase', color: 'yellow', description: 'Mengembangkan keterampilan manajerial untuk mengelola organisasi secara efektif dan efisien.' },
-            { faculty: 'FEB', name: 'S1 – Ekonomi Pembangunan', degree: 'S.E.', icon: 'chart-line', color: 'yellow', description: 'Mempelajari teori dan kebijakan ekonomi untuk mendorong pembangunan yang berkelanjutan.' },
-            { faculty: 'FEB', name: 'S1 – Ekonomi Syariah', degree: 'S.E.', icon: 'hand-holding-usd', color: 'yellow', description: 'Mempelajari prinsip ekonomi Islam dan penerapannya dalam lembaga keuangan syariah.' },
-            { faculty: 'FEB', name: 'S1 – Akuntansi', degree: 'S.Ak.', icon: 'calculator', color: 'yellow', description: 'Mempelajari prinsip akuntansi untuk menghasilkan laporan keuangan yang akurat dan relevan.' },
-            { faculty: 'FEB', name: 'S1 – Akuntansi Keuangan Publik', degree: 'S.Ak.', icon: 'file-invoice-dollar', color: 'yellow', description: 'Spesialisasi akuntansi yang fokus pada pengelolaan keuangan sektor publik dan pemerintahan.' },
-            { faculty: 'FEB', name: 'S1 – Pariwisata', degree: 'S.Par.', icon: 'umbrella-beach', color: 'yellow', description: 'Mempelajari manajemen industri pariwisata untuk mengembangkan destinasi yang berkelanjutan.' },
+            { faculty: 'FEB', name: 'S1 - Manajemen', degree: 'S.M.', icon: 'briefcase', color: 'yellow', description: 'Mengembangkan keterampilan manajerial untuk mengelola organisasi secara efektif dan efisien.' },
+            { faculty: 'FEB', name: 'S1 - Ekonomi Pembangunan', degree: 'S.E.', icon: 'chart-line', color: 'yellow', description: 'Mempelajari teori dan kebijakan ekonomi untuk mendorong pembangunan yang berkelanjutan.' },
+            { faculty: 'FEB', name: 'S1 - Ekonomi Syariah', degree: 'S.E.', icon: 'hand-holding-usd', color: 'yellow', description: 'Mempelajari prinsip ekonomi Islam dan penerapannya dalam lembaga keuangan syariah.' },
+            { faculty: 'FEB', name: 'S1 - Akuntansi', degree: 'S.Ak.', icon: 'calculator', color: 'yellow', description: 'Mempelajari prinsip akuntansi untuk menghasilkan laporan keuangan yang akurat dan relevan.' },
+            { faculty: 'FEB', name: 'S1 - Akuntansi Keuangan Publik', degree: 'S.Ak.', icon: 'file-invoice-dollar', color: 'yellow', description: 'Spesialisasi akuntansi yang fokus pada pengelolaan keuangan sektor publik dan pemerintahan.' },
+            { faculty: 'FEB', name: 'S1 - Pariwisata', degree: 'S.Par.', icon: 'umbrella-beach', color: 'yellow', description: 'Mempelajari manajemen industri pariwisata untuk mengembangkan destinasi yang berkelanjutan.' },
 
             // FST Programs
             {
                 faculty: 'FST',
-                name: 'S1 – Sains Data',
+                name: 'S1 - Sains Data',
                 degree: 'S.Si.',
                 icon: 'database',
                 color: 'teal',
                 description: 'Mengintegrasikan statistika, matematika, dan ilmu komputer untuk mengolah serta menganalisis big data menjadi informasi yang bernilai.'
             },
 
-            { faculty: 'FST', name: 'S1 – Statistika', degree: 'S.Si.', icon: 'chart-bar', color: 'purple', description: 'Mempelajari metode pengumpulan, analisis, dan interpretasi data untuk pengambilan keputusan.' },
-            { faculty: 'FST', name: 'S1 – Matematika', degree: 'S.Si.', icon: 'calculator', color: 'purple', description: 'Mengembangkan pemahaman mendalam tentang teori matematika dan aplikasinya dalam berbagai bidang.' },
-            { faculty: 'FST', name: 'S1 – Biologi', degree: 'S.Si.', icon: 'microscope', color: 'purple', description: 'Mempelajari kehidupan pada berbagai tingkat organisasi dari molekul hingga ekosistem.' },
-            { faculty: 'FST', name: 'S1 – Teknologi Pangan', degree: 'S.TP.', icon: 'utensils', color: 'purple', description: 'Mempelajari pengolahan, pengawetan, dan pengembangan produk pangan yang aman dan bergizi.' },
-            { faculty: 'FST', name: 'S1 – Agribisnis', degree: 'S.P.', icon: 'tractor', color: 'purple', description: 'Mempelajari bisnis pertanian modern dengan pendekatan agribisnis untuk meningkatkan produktivitas.' },
-            { faculty: 'FST', name: 'S1 – Perencanaan Wilayah dan Kota', degree: 'S.T.', icon: 'city', color: 'purple', description: 'Mempelajari perencanaan tata ruang untuk menciptakan wilayah dan kota yang berkelanjutan dan layak huni.' },
-            { faculty: 'FST', name: 'S1 – Sistem Informasi', degree: 'S.Kom.', icon: 'database', color: 'purple', description: 'Mengintegrasikan teknologi informasi dengan proses bisnis untuk menciptakan solusi sistem informasi.' },
+            { faculty: 'FST', name: 'S1 - Statistika', degree: 'S.Si.', icon: 'chart-bar', color: 'purple', description: 'Mempelajari metode pengumpulan, analisis, dan interpretasi data untuk pengambilan keputusan.' },
+            { faculty: 'FST', name: 'S1 - Matematika', degree: 'S.Si.', icon: 'calculator', color: 'purple', description: 'Mengembangkan pemahaman mendalam tentang teori matematika dan aplikasinya dalam berbagai bidang.' },
+            { faculty: 'FST', name: 'S1 - Biologi', degree: 'S.Si.', icon: 'microscope', color: 'purple', description: 'Mempelajari kehidupan pada berbagai tingkat organisasi dari molekul hingga ekosistem.' },
+            { faculty: 'FST', name: 'S1 - Teknologi Pangan', degree: 'S.TP.', icon: 'utensils', color: 'purple', description: 'Mempelajari pengolahan, pengawetan, dan pengembangan produk pangan yang aman dan bergizi.' },
+            { faculty: 'FST', name: 'S1 - Agribisnis', degree: 'S.P.', icon: 'tractor', color: 'purple', description: 'Mempelajari bisnis pertanian modern dengan pendekatan agribisnis untuk meningkatkan produktivitas.' },
+            { faculty: 'FST', name: 'S1 - Perencanaan Wilayah dan Kota', degree: 'S.T.', icon: 'city', color: 'purple', description: 'Mempelajari perencanaan tata ruang untuk menciptakan wilayah dan kota yang berkelanjutan dan layak huni.' },
+            { faculty: 'FST', name: 'S1 - Sistem Informasi', degree: 'S.Kom.', icon: 'database', color: 'purple', description: 'Mengintegrasikan teknologi informasi dengan proses bisnis untuk menciptakan solusi sistem informasi.' },
 
             // FHISIP Programs
-            { faculty: 'FHISIP', name: 'D4 – Kearsipan (D4)', degree: 'S.Ars.', icon: 'archive', color: 'blue', description: 'Program studi yang fokus pada pengelolaan arsip dan dokumen penting untuk kebutuhan organisasi modern.' },
-            { faculty: 'FHISIP', name: 'D3 – Perpajakan (D3)', degree: 'A.Md.Pjk.', icon: 'file-invoice-dollar', color: 'blue', description: 'Program studi yang mempersiapkan lulusan untuk memiliki kompetensi di bidang perpajakan dengan pendekatan praktis.' },
-            { faculty: 'FHISIP', name: 'S1 – Administrasi Publik', degree: 'S.A.P.', icon: 'landmark', color: 'blue', description: 'Mempersiapkan ahli administrasi yang mampu mengelola birokrasi pemerintahan secara profesional.' },
-            { faculty: 'FHISIP', name: 'S1 – Administrasi Bisnis', degree: 'S.A.B.', icon: 'briefcase', color: 'blue', description: 'Mengembangkan kompetensi di bidang administrasi bisnis untuk mendukung operasional perusahaan secara efektif.' },
-            { faculty: 'FHISIP', name: 'S1 – Hukum', degree: 'S.H.', icon: 'gavel', color: 'blue', description: 'Mengembangkan pemahaman mendalam tentang sistem hukum dan penerapannya dalam masyarakat.' },
-            { faculty: 'FHISIP', name: 'S1 – Ilmu Pemerintahan', degree: 'S.I.P.', icon: 'university', color: 'blue', description: 'Mempelajari teori dan praktik pemerintahan untuk membangun tata kelola yang baik dan demokratis.' },
-            { faculty: 'FHISIP', name: 'S1 – Ilmu Komunikasi', degree: 'S.I.Kom.', icon: 'comments', color: 'blue', description: 'Mengembangkan keterampilan komunikasi efektif untuk berbagai konteks profesional dan media.' },
-            { faculty: 'FHISIP', name: 'S1 – Ilmu Perpustakaan', degree: 'S.I.Pus.', icon: 'book', color: 'blue', description: 'Mengembangkan kompetensi dalam pengelolaan sistem informasi dan perpustakaan di era digital.' },
-            { faculty: 'FHISIP', name: 'S1 – Sosiologi', degree: 'S.Sos.', icon: 'users', color: 'blue', description: 'Mempelajari struktur sosial, perubahan sosial, dan interaksi manusia dalam masyarakat modern.' },
-            { faculty: 'FHISIP', name: 'S1 – Sastra Inggris', degree: 'S.S.', icon: 'language', color: 'blue', description: 'Mengembangkan kompetensi bahasa Inggris dan keterampilan penerjemahan untuk kebutuhan profesional.' },
+            { faculty: 'FHISIP', name: 'D4 - Kearsipan', degree: 'S.Ars.', icon: 'archive', color: 'blue', description: 'Program studi yang fokus pada pengelolaan arsip dan dokumen penting untuk kebutuhan organisasi modern.' },
+            { faculty: 'FHISIP', name: 'D3 - Perpajakan', degree: 'A.Md.Pjk.', icon: 'file-invoice-dollar', color: 'blue', description: 'Program studi yang mempersiapkan lulusan untuk memiliki kompetensi di bidang perpajakan dengan pendekatan praktis.' },
+            { faculty: 'FHISIP', name: 'S1 - Administrasi Publik', degree: 'S.A.P.', icon: 'landmark', color: 'blue', description: 'Mempersiapkan ahli administrasi yang mampu mengelola birokrasi pemerintahan secara profesional.' },
+            { faculty: 'FHISIP', name: 'S1 - Administrasi Bisnis', degree: 'S.A.B.', icon: 'briefcase', color: 'blue', description: 'Mengembangkan kompetensi di bidang administrasi bisnis untuk mendukung operasional perusahaan secara efektif.' },
+            { faculty: 'FHISIP', name: 'S1 - Hukum', degree: 'S.H.', icon: 'gavel', color: 'blue', description: 'Mengembangkan pemahaman mendalam tentang sistem hukum dan penerapannya dalam masyarakat.' },
+            { faculty: 'FHISIP', name: 'S1 - Ilmu Pemerintahan', degree: 'S.I.P.', icon: 'university', color: 'blue', description: 'Mempelajari teori dan praktik pemerintahan untuk membangun tata kelola yang baik dan demokratis.' },
+            { faculty: 'FHISIP', name: 'S1 - Ilmu Komunikasi', degree: 'S.I.Kom.', icon: 'comments', color: 'blue', description: 'Mengembangkan keterampilan komunikasi efektif untuk berbagai konteks profesional dan media.' },
+            { faculty: 'FHISIP', name: 'S1 - Ilmu Perpustakaan', degree: 'S.I.Pus.', icon: 'book', color: 'blue', description: 'Mengembangkan kompetensi dalam pengelolaan sistem informasi dan perpustakaan di era digital.' },
+            { faculty: 'FHISIP', name: 'S1 - Sosiologi', degree: 'S.Sos.', icon: 'users', color: 'blue', description: 'Mempelajari struktur sosial, perubahan sosial, dan interaksi manusia dalam masyarakat modern.' },
+            { faculty: 'FHISIP', name: 'S1 - Sastra Inggris', degree: 'S.S.', icon: 'language', color: 'blue', description: 'Mengembangkan kompetensi bahasa Inggris dan keterampilan penerjemahan untuk kebutuhan profesional.' },
 
             // FKIP Programs
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Bahasa dan Sastra Indonesia', degree: 'S.Pd.', icon: 'book-open', color: 'green', description: 'Mengembangkan kompetensi pengajaran bahasa dan sastra Indonesia untuk berbagai jenjang pendidikan.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Bahasa Inggris', degree: 'S.Pd.', icon: 'globe-americas', color: 'green', description: 'Mempersiapkan guru bahasa Inggris yang kompeten dengan penguasaan bahasa dan metodologi pengajaran.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Biologi', degree: 'S.Pd.', icon: 'dna', color: 'green', description: 'Mengembangkan guru biologi yang menguasai konsep biologi dan strategi pengajarannya.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Fisika', degree: 'S.Pd.', icon: 'atom', color: 'green', description: 'Mengembangkan kompetensi guru fisika dengan penguasaan konsep dan eksperimen fisika.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Kimia', degree: 'S.Pd.', icon: 'flask', color: 'green', description: 'Mempersiapkan guru kimia yang menguasai konsep kimia dan mampu melakukan eksperimen laboratorium.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Matematika', degree: 'S.Pd.', icon: 'square-root-alt', color: 'green', description: 'Mengembangkan guru matematika yang mampu menjelaskan konsep matematika secara jelas dan menarik.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Ekonomi', degree: 'S.Pd.', icon: 'chart-line', color: 'green', description: 'Mempersiapkan guru ekonomi yang memahami konsep ekonomi dan mampu mengajarkannya secara efektif.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Pancasila dan Kewarganegaraan', degree: 'S.Pd.', icon: 'flag', color: 'green', description: 'Mempersiapkan guru PPKn yang mampu menanamkan nilai-nilai Pancasila dan kewarganegaraan.' },
-            { faculty: 'FKIP', name: 'S1 – Teknologi Pendidikan', degree: 'S.Pd.', icon: 'laptop-code', color: 'green', description: 'Mempelajari pemanfaatan teknologi dalam proses pembelajaran untuk meningkatkan efektivitas pendidikan.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Guru Sekolah Dasar (PGSD)', degree: 'S.Pd.', icon: 'chalkboard-teacher', color: 'green', description: 'Pendidikan Guru Sekolah Dasar mempersiapkan calon guru SD yang profesional dan berkarakter.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Guru Pendidikan Anak Usia Dini (PGPAUD)', degree: 'S.Pd.', icon: 'child', color: 'green', description: 'Pendidikan Guru Pendidikan Anak Usia Dini untuk pengembangan pendidikan anak usia dini yang berkualitas.' },
+            { faculty: 'FKIP', name: 'S1 - Pendidikan Bahasa dan Sastra Indonesia', degree: 'S.Pd.', icon: 'book-open', color: 'green', description: 'Mengembangkan kompetensi pengajaran bahasa dan sastra Indonesia untuk berbagai jenjang pendidikan.' },
+            { faculty: 'FKIP', name: 'S1 - Pendidikan Bahasa Inggris', degree: 'S.Pd.', icon: 'globe-americas', color: 'green', description: 'Mempersiapkan guru bahasa Inggris yang kompeten dengan penguasaan bahasa dan metodologi pengajaran.' },
+            { faculty: 'FKIP', name: 'S1 - Pendidikan Biologi', degree: 'S.Pd.', icon: 'dna', color: 'green', description: 'Mengembangkan guru biologi yang menguasai konsep biologi dan strategi pengajarannya.' },
+            { faculty: 'FKIP', name: 'S1 - Pendidikan Fisika', degree: 'S.Pd.', icon: 'atom', color: 'green', description: 'Mengembangkan kompetensi guru fisika dengan penguasaan konsep dan eksperimen fisika.' },
+            { faculty: 'FKIP', name: 'S1 - Pendidikan Kimia', degree: 'S.Pd.', icon: 'flask', color: 'green', description: 'Mempersiapkan guru kimia yang menguasai konsep kimia dan mampu melakukan eksperimen laboratorium.' },
+            { faculty: 'FKIP', name: 'S1 - Pendidikan Matematika', degree: 'S.Pd.', icon: 'square-root-alt', color: 'green', description: 'Mengembangkan guru matematika yang mampu menjelaskan konsep matematika secara jelas dan menarik.' },
+            { faculty: 'FKIP', name: 'S1 - Pendidikan Ekonomi', degree: 'S.Pd.', icon: 'chart-line', color: 'green', description: 'Mempersiapkan guru ekonomi yang memahami konsep ekonomi dan mampu mengajarkannya secara efektif.' },
+            { faculty: 'FKIP', name: 'S1 - Pendidikan Pancasila dan Kewarganegaraan', degree: 'S.Pd.', icon: 'flag', color: 'green', description: 'Mempersiapkan guru PPKn yang mampu menanamkan nilai-nilai Pancasila dan kewarganegaraan.' },
+            { faculty: 'FKIP', name: 'S1 - Teknologi Pendidikan', degree: 'S.Pd.', icon: 'laptop-code', color: 'green', description: 'Mempelajari pemanfaatan teknologi dalam proses pembelajaran untuk meningkatkan efektivitas pendidikan.' },
+            { faculty: 'FKIP', name: 'S1 - Pendidikan Guru Sekolah Dasar (PGSD)', degree: 'S.Pd.', icon: 'chalkboard-teacher', color: 'green', description: 'Pendidikan Guru Sekolah Dasar mempersiapkan calon guru SD yang profesional dan berkarakter.' },
+            { faculty: 'FKIP', name: 'S1 - Pendidikan Guru Pendidikan Anak Usia Dini (PGPAUD)', degree: 'S.Pd.', icon: 'child', color: 'green', description: 'Pendidikan Guru Pendidikan Anak Usia Dini untuk pengembangan pendidikan anak usia dini yang berkualitas.' },
             { faculty: 'FKIP', name: 'Program Pendidikan Profesi Guru (PPG)', degree: 'Gr.', icon: 'user-graduate', color: 'green', description: 'Program untuk mendapatkan sertifikasi guru profesional.' },
-            { faculty: 'FKIP', name: 'S1 – Pendidikan Agama Islam (PAI)', degree: 'S.Pd.I.', icon: 'mosque', color: 'green', description: 'Mengembangkan guru agama Islam yang memahami ajaran Islam dan metodologi pengajarannya.' },
+            { faculty: 'FKIP', name: 'S1 - Pendidikan Agama Islam (PAI)', degree: 'S.Pd.I.', icon: 'mosque', color: 'green', description: 'Mengembangkan guru agama Islam yang memahami ajaran Islam dan metodologi pengajarannya.' },
 
             // SPs Programs
-            { faculty: 'SPs', name: 'S3 – Doktor Ilmu Manajemen', degree: 'M.Si.', icon: 'briefcase', color: 'red', description: 'Mempelajari isu lingkungan secara multidisiplin untuk pengelolaan lingkungan yang berkelanjutan.' },
-            { faculty: 'SPs', name: 'S3 – Doktor Administrasi Publik', degree: 'M.M.P.', icon: 'landmark', color: 'red', description: 'Mengembangkan strategi pengelolaan sumber daya perikanan yang berkelanjutan dan bertanggung jawab.' },
-            { faculty: 'SPs', name: 'S2 – Magister Studi Lingkungan', degree: 'M.Si.', icon: 'leaf', color: 'red', description: 'Mempelajari isu lingkungan secara multidisiplin untuk pengelolaan lingkungan yang berkelanjutan.' },
-            { faculty: 'SPs', name: 'S2 – Magister Manajemen Perikanan', degree: 'M.M.P.', icon: 'fish', color: 'red', description: 'Mengembangkan strategi pengelolaan sumber daya perikanan yang berkelanjutan dan bertanggung jawab.' },
-            { faculty: 'SPs', name: 'S2 – Magister Administrasi Publik', degree: 'M.A.P.', icon: 'landmark', color: 'red', description: 'Mendalami teori dan praktik administrasi publik untuk meningkatkan tata kelola pemerintahan.' },
-            { faculty: 'SPs', name: 'S2 – Magister Manajemen', degree: 'M.M.', icon: 'briefcase', color: 'red', description: 'Mengembangkan pemikiran strategis dan keterampilan manajerial tingkat lanjut untuk kepemimpinan.' },
-            { faculty: 'SPs', name: 'S2 – Magister Pendidikan Dasar', degree: 'M.Pd.', icon: 'school', color: 'red', description: 'Mendalami teori dan praktik pendidikan dasar untuk meningkatkan kualitas pembelajaran di sekolah dasar.' },
-            { faculty: 'SPs', name: 'S2 – Magister Pendidikan Matematika', degree: 'M.Pd.', icon: 'square-root-alt', color: 'red', description: 'Mengembangkan pendekatan inovatif dalam pengajaran matematika untuk berbagai jenjang pendidikan.' },
-            { faculty: 'SPs', name: 'S2 – Magister Pendidikan Bahasa Inggris', degree: 'M.Pd.', icon: 'globe-americas', color: 'red', description: 'Mendalami metodologi pengajaran bahasa Inggris dan pengembangan materi pembelajaran yang efektif.' },
-            { faculty: 'SPs', name: 'S2 – Magister Pendidikan Anak Usia Dini', degree: 'M.Pd.', icon: 'child', color: 'red', description: 'Mendalami teori dan praktik pendidikan anak usia dini untuk pengembangan program PAUD yang berkualitas.' },
-            { faculty: 'SPs', name: 'S2 – Magister Hukum', degree: 'M.H.', icon: 'gavel', color: 'red', description: 'Mendalami berbagai aspek hukum untuk meningkatkan pemahaman dan penerapan hukum yang berkeadilan.' }
+            { faculty: 'SPs', name: 'S3 - Doktor Ilmu Manajemen', degree: 'Dr.', icon: 'briefcase', color: 'red', description: 'Mendalami teori dan praktik manajemen tingkat lanjut untuk mengembangkan pemikiran strategis dan kepemimpinan organisasi.' },
+            { faculty: 'SPs', name: 'S3 - Doktor Administrasi Publik', degree: 'Dr.', icon: 'landmark', color: 'red', description: 'Mendalami teori dan praktik administrasi publik untuk meningkatkan tata kelola pemerintahan dan kebijakan publik.' },
+            { faculty: 'SPs', name: 'S2 - Magister Studi Lingkungan', degree: 'M.Si.', icon: 'leaf', color: 'red', description: 'Mempelajari isu lingkungan secara multidisiplin untuk pengelolaan lingkungan yang berkelanjutan.' },
+            { faculty: 'SPs', name: 'S2 - Magister Manajemen Perikanan', degree: 'M.M.P.', icon: 'fish', color: 'red', description: 'Mengembangkan strategi pengelolaan sumber daya perikanan yang berkelanjutan dan bertanggung jawab.' },
+            { faculty: 'SPs', name: 'S2 - Magister Administrasi Publik', degree: 'M.A.P.', icon: 'landmark', color: 'red', description: 'Mendalami teori dan praktik administrasi publik untuk meningkatkan tata kelola pemerintahan.' },
+            { faculty: 'SPs', name: 'S2 - Magister Manajemen', degree: 'M.M.', icon: 'briefcase', color: 'red', description: 'Mengembangkan pemikiran strategis dan keterampilan manajerial tingkat lanjut untuk kepemimpinan.' },
+            { faculty: 'SPs', name: 'S2 - Magister Pendidikan Dasar', degree: 'M.Pd.', icon: 'school', color: 'red', description: 'Mendalami teori dan praktik pendidikan dasar untuk meningkatkan kualitas pembelajaran di sekolah dasar.' },
+            { faculty: 'SPs', name: 'S2 - Magister Pendidikan Matematika', degree: 'M.Pd.', icon: 'square-root-alt', color: 'red', description: 'Mengembangkan pendekatan inovatif dalam pengajaran matematika untuk berbagai jenjang pendidikan.' },
+            { faculty: 'SPs', name: 'S2 - Magister Pendidikan Bahasa Inggris', degree: 'M.Pd.', icon: 'globe-americas', color: 'red', description: 'Mendalami metodologi pengajaran bahasa Inggris dan pengembangan materi pembelajaran yang efektif.' },
+            { faculty: 'SPs', name: 'S2 - Magister Pendidikan Anak Usia Dini', degree: 'M.Pd.', icon: 'child', color: 'red', description: 'Mendalami teori dan praktik pendidikan anak usia dini untuk pengembangan program PAUD yang berkualitas.' },
+            { faculty: 'SPs', name: 'S2 - Magister Hukum', degree: 'M.H.', icon: 'gavel', color: 'red', description: 'Mendalami berbagai aspek hukum untuk meningkatkan pemahaman dan penerapan hukum yang berkeadilan.' }
         ];
 
-        // Initialize the page with all programs
-        document.addEventListener('DOMContentLoaded', function () {
-            renderPrograms(programs);
-
-            // Mobile menu toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            mobileMenuButton.addEventListener('click', function () {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            // Search functionality
-            const facultyFilter = document.getElementById('faculty-filter');
-            const programSearch = document.getElementById('program-search');
-
-            facultyFilter.addEventListener('change', filterPrograms);
-            programSearch.addEventListener('input', filterPrograms);
-        });
-
-        // Filter programs based on faculty and search term
-        function filterPrograms() {
-            const faculty = document.getElementById('faculty-filter').value;
-            const searchTerm = document.getElementById('program-search').value.toLowerCase();
-
-            let filteredPrograms = programs;
-
-            // Filter by faculty
-            if (faculty !== 'all') {
-                filteredPrograms = filteredPrograms.filter(program => program.faculty === faculty);
-            }
-
-            // Filter by search term
-            if (searchTerm) {
-                filteredPrograms = filteredPrograms.filter(program =>
-                    program.name.toLowerCase().includes(searchTerm) ||
-                    program.description.toLowerCase().includes(searchTerm)
-                );
-            }
-
-            // Show no results message if no programs match
-            const noResults = document.getElementById('no-results');
-            const facultyContainer = document.getElementById('faculty-container');
-
-            if (filteredPrograms.length === 0) {
-                noResults.classList.remove('hidden');
-                facultyContainer.classList.add('hidden');
-            } else {
-                noResults.classList.add('hidden');
-                facultyContainer.classList.remove('hidden');
-                renderPrograms(filteredPrograms, searchTerm);
-            }
-        }
-
-        // Render programs to the page
-        function renderPrograms(programsToRender, searchTerm = '') {
-            // Clear existing program cards
-            document.querySelectorAll('.faculty-section .grid').forEach(grid => {
-                grid.innerHTML = '';
-            });
-
-            // Group programs by faculty
-            const programsByFaculty = {};
-            programsToRender.forEach(program => {
-                if (!programsByFaculty[program.faculty]) {
-                    programsByFaculty[program.faculty] = [];
-                }
-                programsByFaculty[program.faculty].push(program);
-            });
-
-            // Render programs for each faculty
-            for (const faculty in programsByFaculty) {
-                const facultySection = document.querySelector(`.faculty-section[data-faculty="${faculty}"] .grid`);
-
-                programsByFaculty[faculty].forEach(program => {
-                    // Highlight search term in program name and description
-                    let highlightedName = program.name;
-                    let highlightedDesc = program.description;
-
-                    if (searchTerm) {
-                        const regex = new RegExp(searchTerm, 'gi');
-                        highlightedName = program.name.replace(regex, match =>
-                            `<span class="search-highlight">${match}</span>`
-                        );
-                        highlightedDesc = program.description.replace(regex, match =>
-                            `<span class="search-highlight">${match}</span>`
-                        );
-                    }
-
-                    const programCard = document.createElement('div');
-                    programCard.className = `program-card bg-white rounded-lg overflow-hidden border border-gray-200`;
-                    programCard.innerHTML = `
-                        <div class="p-5">
-                            <div class="flex flex-col items-start mb-3">
-                                <div class="bg-${program.color}-100 p-2 rounded-lg mr-3">
-                                    <i class="fas fa-${program.icon} text-${program.color}-600 text-lg"></i>
-                                </div>
-                                <h3 class="text-lg font-semibold text-gray-800">${highlightedName}</h3>
-                                <p class="text-sm text-gray-500 italic">${program.degree}</p>
-                            </div>
-                            <p class="text-gray-600 text-sm mb-4">${highlightedDesc}</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-xs font-medium text-${program.color}-600 bg-${program.color}-100 px-2 py-1 rounded-full">
-                                    ${getFacultyName(program.faculty)}
-                                </span>
-                                <a href="daftar.html" class="text-sm font-medium text-${program.color}-600 hover:text-${program.color}-800 transition">
-                                    Detail <i class="fas fa-chevron-right ml-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                    `;
-                    facultySection.appendChild(programCard);
-                });
-            }
-        }
-
-        // Get full faculty name from code
+        /* ===== Isi halaman ===== */
         function getFacultyName(code) {
-            const faculties = {
-                'FHISIP': 'FHISIP',
-                'FKIP': 'FKIP',
-                'FST': 'FST',
-                'FEB': 'FEB',
-                'SPs': 'Pascasarjana'
-            };
+            const faculties = { 'FHISIP': 'FHISIP', 'FKIP': 'FKIP', 'FST': 'FST', 'FEB': 'FEB', 'SPs': 'Pascasarjana' };
             return faculties[code] || code;
         }
+
+        function renderPrograms(list, searchTerm) {
+            // Kosongkan setiap slot fakultas
+            document.querySelectorAll('[data-slot]').forEach(function (slot) { slot.innerHTML = ''; });
+
+            const term = (searchTerm || '').trim();
+            const re = term ? new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi') : null;
+
+            const byFaculty = {};
+            list.forEach(function (p) {
+                (byFaculty[p.faculty] = byFaculty[p.faculty] || []).push(p);
+            });
+
+            Object.keys(byFaculty).forEach(function (fac) {
+                const slot = document.querySelector('[data-slot="' + fac + '"]');
+                const section = document.querySelector('.faculty-section[data-faculty="' + fac + '"]');
+                if (!slot) return;
+
+                if (section) section.style.display = '';
+                slot.style.display = '';
+
+                byFaculty[fac].forEach(function (p) {
+                    const mark = function (text) {
+                        if (!re) return text;
+                        return text.replace(re, function (m) { return '<span class="search-highlight">' + m + '</span>'; });
+                    };
+
+                    const el = document.createElement('article');
+                    el.className = 'prog';
+                    el.innerHTML =
+                        '<div class="prog__top">' +
+                            '<span class="prog__icon"><i class="fas fa-' + p.icon + '" aria-hidden="true"></i></span>' +
+                            '<span>' +
+                                '<h3 class="prog__name">' + mark(p.name) + '</h3>' +
+                                '<p class="prog__degree">' + p.degree + '</p>' +
+                            '</span>' +
+                        '</div>' +
+                        '<p class="prog__desc">' + mark(p.description) + '</p>' +
+                        '<div class="prog__foot">' +
+                            '<span class="prog__tag">' + getFacultyName(p.faculty) + '</span>' +
+                            '<a href="/daftar" class="prog__link">Detail <i class="fas fa-chevron-right" aria-hidden="true"></i></a>' +
+                        '</div>';
+                    slot.appendChild(el);
+                });
+            });
+        }
+
+        function filterPrograms() {
+            const faculty = document.getElementById('faculty-filter').value;
+            const searchTerm = document.getElementById('program-search').value;
+
+            // Sembunyikan seluruh section dulu, render ulang yang cocok
+            document.querySelectorAll('.faculty-section').forEach(function (s) { s.style.display = 'none'; });
+
+            let list = programs;
+            if (faculty !== 'all') list = list.filter(function (p) { return p.faculty === faculty; });
+
+            const q = searchTerm.trim().toLowerCase();
+            if (q) {
+                list = list.filter(function (p) {
+                    return p.name.toLowerCase().indexOf(q) !== -1 ||
+                           p.description.toLowerCase().indexOf(q) !== -1 ||
+                           p.degree.toLowerCase().indexOf(q) !== -1;
+                });
+            }
+
+            const noResults = document.getElementById('no-results');
+            if (list.length === 0) {
+                noResults.style.display = '';
+                document.getElementById('faculty-container').style.display = 'none';
+            } else {
+                noResults.style.display = 'none';
+                document.getElementById('faculty-container').style.display = '';
+                renderPrograms(list, searchTerm);
+            }
+        }
+
+        renderPrograms(programs, '');
+        document.getElementById('faculty-filter').addEventListener('change', filterPrograms);
+        document.getElementById('program-search').addEventListener('input', filterPrograms);
     </script>
+    <script src="assets/salut.js?v=9b52354f" defer></script>
 </body>
 
 </html>

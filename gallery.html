@@ -5,657 +5,527 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galeri UT Mandalika</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <meta name="description"
+        content="Dokumentasi momen terbaik dari seluruh aktivitas kami - akademik, kampus, dan komunitas.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Favicon (32x32) -->
     <link rel="icon" type="image/png" href="assets/favicon.png" sizes="32x32">
-
-    <!-- Optional untuk Apple Devices -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png">
-
-    <!-- Optional untuk dark/light theme di browser -->
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#002EE6">
+    <link rel="stylesheet" href="assets/salut.css?v=90ee1a39">
 
     <style>
-        :root {
-            --primary-color: #2563eb;
-            --primary-dark: #1d4ed8;
-            --accent-color: #f59e0b;
-            --accent-light: #fcd34d;
-            --dark-color: #1e293b;
-            --light-color: #f8fafc;
-            --gray-light: #e2e8f0;
-            --gray-medium: #94a3b8;
-            --gray-dark: #64748b;
+        /* ---- khusus halaman galeri ---- */
+        .pagehero {
+            position: relative; overflow: hidden; color: #fff; text-align: center;
+            background: var(--navy);
+            padding-block: clamp(40px, 5vw, 72px) clamp(44px, 5vw, 76px);
         }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light-color);
-            color: var(--dark-color);
-            line-height: 1.6;
+        .pagehero::before {
+            content: ''; position: absolute; width: min(460px, 76vw); height: min(460px, 76vw);
+            top: -200px; right: -130px; border-radius: 50%;
+            border: 1px solid rgba(255, 199, 44, .30);
         }
-
-        .gallery-item-img {
-            aspect-ratio: 4/3;
+        .pagehero__inner { position: relative; z-index: 2; max-width: 760px; margin-inline: auto; }
+        .pagehero h1 {
+            font-size: var(--fs-h1); font-weight: var(--fw-bold);
+            letter-spacing: -.025em; line-height: 1.16; margin: 0 0 1rem;
         }
+        .pagehero h1 .hl { color: var(--yellow); }
+        .pagehero p { color: rgba(255,255,255,.84); font-size: var(--fs-lead); margin: 0 auto 1.9rem; max-width: 60ch; }
+        .pagehero__actions { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; }
 
-        .gallery-item-img img {
-            transition: transform 0.5s ease;
+        /* Panel filter mengambang menimpa pagehero */
+        .gcard {
+            background: var(--white); border: 1px solid var(--border); border-radius: var(--r-lg);
+            overflow: hidden; box-shadow: var(--sh-xs); cursor: pointer;
+            transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+            display: flex; flex-direction: column;
         }
-
-        .gallery-item:hover .gallery-item-img img {
-            transform: scale(1.05);
+        .gcard:hover { transform: translateY(-3px); box-shadow: var(--sh-md); border-color: var(--navy); }
+        /* Kolom masonry seimbang: JS membagi kartu ke kolom flex
+           sehingga foto tampil utuh (rasio asli) DAN dasar kolom rata */
+        .masonry {
+            display: flex;
+            gap: var(--gap);
+            align-items: flex-start;
         }
-
-        .gallery-item-overlay {
-            background: linear-gradient(to top, rgba(37, 99, 235, 0.3), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .masonry__col {
+            flex: 1 1 0;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap);
         }
-
-        .gallery-item:hover .gallery-item-overlay {
-            opacity: 1;
+        .gcard__img { position: relative; overflow: hidden; background: var(--border); line-height: 0; }
+        /* Rasio asli dipertahankan, tapi foto yang terlalu jangkung dibatasi
+           agar irama grid tetap rapi (bagian tengah yang tampil) */
+        .gcard__img img {
+            width: 100%; height: auto; display: block;
+            max-height: 460px; object-fit: cover; object-position: center 35%;
+            transition: transform .6s var(--ease);
         }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .gcard:hover .gcard__img img { transform: scale(1.05); }
+        @media (max-width: 640px) { .gcard__img img { max-height: 420px; } }
+        .gcard__cat {
+            position: absolute; top: .85rem; left: .85rem;
+            display: inline-flex; align-items: center; gap: .4rem;
+            background: var(--navy); color: #fff;
+            font-size: 10.5px; font-weight: 600; letter-spacing: .1em;
+            line-height: 1;
+            text-transform: uppercase;
+            padding: .62rem 1rem; border-radius: 999px;
+            box-shadow: 0 2px 8px rgba(0,0,0,.35);
         }
-
-        .gallery-item {
-            animation: fadeIn 0.5s ease forwards;
+        .gcard__body { padding: 1.05rem 1.15rem 1.25rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .gcard__title { font-size: var(--fs-body);  font-weight: var(--fw-bold); color: var(--navy); margin: 0 0 .35rem; }
+        .gcard__desc { font-size: var(--fs-sm);  color: var(--text-2); line-height: var(--lh-body); margin: 0 0 .9rem; flex-grow: 1; }
+        .gcard__foot {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-top: .85rem; border-top: 1px solid var(--border);
+            font-size: var(--fs-xs);  color: var(--text-2);
         }
+        .gcard__view { color: var(--navy); font-weight: var(--fw-bold); display: inline-flex; align-items: center; gap: .35rem; }
 
-        /* For staggered animation */
-        .gallery-item:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .gallery-item:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .gallery-item:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .gallery-item:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        .gallery-item:nth-child(5) {
-            animation-delay: 0.5s;
-        }
-
-        .gallery-item:nth-child(6) {
-            animation-delay: 0.6s;
-        }
-
-        .gallery-item:nth-child(7) {
-            animation-delay: 0.7s;
-        }
-
-        .gallery-item:nth-child(8) {
-            animation-delay: 0.8s;
-        }
-
-        /* Modal transition */
+        /* Modal pratinjau */
         .modal {
-            transition: opacity 0.3s ease;
+            position: fixed; inset: 0; z-index: 90;
+            background: rgba(6,14,32,.94);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: opacity var(--dur) var(--ease), visibility var(--dur);
         }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        .modal.is-open { opacity: 1; visibility: visible; }
+        .modal__box { position: relative; width: 100%; max-width: 980px; margin: 1rem; }
+        .modal__img { width: 100%; max-height: 76vh; object-fit: contain; border-radius: var(--r-md); display: block; }
+        .modal__cap {
+            text-align: center; color: #fff; font-size: var(--fs-sm); 
+            margin-top: 1rem; padding-inline: 2.5rem; line-height: var(--lh-body);
         }
-
-        ::-webkit-scrollbar-track {
-            background: var(--gray-light);
+        .modal__count { text-align: center; color: rgba(255,255,255,.55); font-size: var(--fs-sm);  margin-top: .5rem; }
+        .modal__btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 46px; height: 46px; border-radius: 50%; border: 0; cursor: pointer;
+            background: rgba(255,255,255,.14); color: #fff; font-size: var(--fs-body); 
+            display: grid; place-items: center; backdrop-filter: blur(6px);
+            transition: background-color var(--dur) var(--ease);
         }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
-            border-radius: 4px;
+        .modal__btn:hover { background: rgba(255,255,255,.3); }
+        .modal__prev { left: -8px; }
+        .modal__next { right: -8px; }
+        .modal__close {
+            position: absolute; top: -52px; right: 0;
+            width: 42px; height: 42px; border-radius: 50%; border: 0; cursor: pointer;
+            background: rgba(255,255,255,.14); color: #fff; font-size: var(--fs-body); 
+            display: grid; place-items: center;
+            transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
         }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
-        }
+        .modal__close:hover { background: var(--yellow); color: var(--navy); }
+        @media (min-width: 760px) { .modal__prev { left: -60px; } .modal__next { right: -60px; } }
     </style>
 </head>
 
-<body class="min-h-screen flex flex-col">
-    <!-- Header Section -->
-    <header class="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-16 md:py-20 relative overflow-hidden">
-        <div
-            class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')] bg-cover bg-center opacity-20">
+<body>
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="site-head">
+        <div class="wrap site-head__inner">
+                        <a href="/" class="brand" aria-label="UT Salut Mandalika Jepara - Beranda">
+                <img class="brand__logo"
+                    src="https://h2rsi9anqnqbkvkf.public.blob.vercel-storage.com/logout-dAaGl3fDQOq9I8u8WX07hfTTmHwSHI.png"
+                    alt="Logo Universitas Terbuka">
+                <span class="brand__text">
+                    <span class="brand__name">UT SALUT Mandalika</span>
+                    <span class="brand__tag">Sentra Layanan Universitas Terbuka</span>
+                </span>
+            </a>
+
+                        <nav class="nav" aria-label="Navigasi utama">
+                <ul class="nav__list">
+                    <li><a href="/#beranda" class="nav__link">Beranda</a></li>
+                    <li><a href="/#tentang" class="nav__link">Profil</a></li>
+                    <li><a href="/fakultas" class="nav__link">Program Studi</a></li>
+                    <li><a href="/#layanan" class="nav__link">Layanan</a></li>
+                    <li><a href="/gallery" class="nav__link">Berita</a></li>
+                    <li><a href="/#kontak" class="nav__link">Kontak</a></li>
+                    <li style="margin-left:10px">
+                        <a href="/daftar" class="btn btn--gold"><span>Daftar Kuliah</span></a>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="nav-toggle" type="button" aria-label="Buka menu" aria-expanded="false"
+                aria-controls="menu-mobile">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
         </div>
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="max-w-3xl mx-auto text-center">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4 relative inline-block">
-                    Galeri UT Mandalika
-                    <span
-                        class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-yellow-400 rounded-full"></span>
-                </h1>
-                <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto">
-                    Dokumentasi momen terbaik dari seluruh aktivitas kami – akademik, kampus, dan komunitas.
-                </p>
-                <div class="mt-8 flex justify-center space-x-4">
-                    <button
-                        class="px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full font-medium transition-all transform hover:scale-105 shadow-lg">
-                        <i class="fas fa-images mr-2"></i> Jelajahi Galeri
-                    </button>
-                    <button
-                        class="px-6 py-2 bg-white hover:bg-gray-100 text-blue-700 rounded-full font-medium transition-all transform hover:scale-105 shadow-lg">
-                        <a href="index.html" class="flex items-center">
-                            <i class="fas fa-info-circle mr-2"></i> Tentang Kami
-                        </a>
-                    </button>
+
+                <div class="nav-drawer" id="menu-mobile">
+            <div class="nav-drawer__inner">
+                <ul class="nav-drawer__list">
+                    <li><a href="/#beranda" class="nav-drawer__link">Beranda</a></li>
+                    <li><a href="/#tentang" class="nav-drawer__link">Profil</a></li>
+                    <li><a href="/fakultas" class="nav-drawer__link">Program Studi</a></li>
+                    <li><a href="/#layanan" class="nav-drawer__link">Layanan</a></li>
+                    <li><a href="/gallery" class="nav-drawer__link">Berita</a></li>
+                    <li><a href="/#kontak" class="nav-drawer__link">Kontak</a></li>
+                </ul>
+                <div class="nav-drawer__cta">
+                    <a href="/daftar" class="btn btn--gold btn--block">Daftar Kuliah</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Filter Section -->
-    <div class="container mx-auto px-4 -mt-10 relative z-20">
-        <div class="bg-white rounded-xl shadow-xl p-6 max-w-4xl mx-auto">
-            <div class="text-center mb-4">
-                <h2 class="text-lg font-semibold text-gray-700 mb-2">Filter Kategori</h2>
-                <div class="flex flex-wrap justify-center gap-2">
-                    <button
-                        class="filter-btn active px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-medium transition-all hover:bg-blue-700"
-                        data-category="semua">
-                        <i class="fas fa-layer-group mr-1"></i> Semua
-                    </button>
-                    <button
-                        class="filter-btn px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-sm font-medium transition-all"
-                        data-category="kegiatan">
-                        <i class="fas fa-calendar-alt mr-1"></i> Kegiatan
-                    </button>
-                    <button
-                        class="filter-btn px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-sm font-medium transition-all"
-                        data-category="mahasiswa">
-                        <i class="fas fa-users mr-1"></i> Mahasiswa
-                    </button>
-                    <button
-                        class="filter-btn px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-sm font-medium transition-all"
-                        data-category="dokumentasi">
-                        <i class="fas fa-camera mr-1"></i> Dokumentasi
-                    </button>
-                </div>
-            </div>
-            <div class="flex justify-center">
-                <div class="relative w-full max-w-md">
-                    <input type="text" placeholder="Cari foto..."
-                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
-                </div>
+    <!-- ===================== PAGE HERO ===================== -->
+    <section class="pagehero">
+        <div class="wrap pagehero__inner">
+            <span class="eyebrow"><i class="fas fa-images" aria-hidden="true"></i> Dokumentasi Kegiatan</span>
+            <h1>Galeri <span class="hl">UT Mandalika</span></h1>
+            <p>Dokumentasi momen terbaik dari seluruh aktivitas kami - akademik, kampus, dan komunitas.</p>
+            <div class="pagehero__actions">
+                <a href="#galeri" class="btn btn--gold btn--lg"><i class="fas fa-images" aria-hidden="true"></i> Jelajahi
+                    Galeri</a>
+                <a href="/" class="btn btn--ghost-light btn--lg"><i class="fas fa-info-circle"
+                        aria-hidden="true"></i> Tentang Kami</a>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Gallery Section -->
-    <section class="flex-grow py-12">
-        <div class="container mx-auto px-4">
-            <div class="gallery-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-                id="galleryGrid">
-                <!-- Gallery items will be dynamically added here -->
-            </div>
-            <div class="load-more-container text-center mt-12">
-                <button
-                    class="load-more-btn px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-all transform hover:scale-105 shadow-lg"
-                    id="loadMoreBtn">
-                    <i class="fas fa-plus-circle mr-2"></i> Muat Lebih Banyak
+    <!-- ===================== GRID GALERI ===================== -->
+    <section id="galeri" class="section section--sky">
+        <div class="wrap">
+            <div class="masonry" id="galleryGrid"></div>
+
+            <p id="emptyState" class="center muted hide" style="display:none;padding:3rem 0">
+                Tidak ada foto yang cocok dengan pencarian Anda.
+            </p>
+
+            <div class="center mt-2">
+                <button class="btn btn--navy" type="button" id="loadMoreBtn">
+                    <i class="fas fa-plus-circle" aria-hidden="true"></i> Muat Lebih Banyak
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Image Preview Modal -->
-    <div class="modal fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center opacity-0 pointer-events-none"
-        id="imageModal">
-        <div class="modal-content relative max-w-4xl w-full mx-4">
-            <button
-                class="modal-close absolute -top-12 right-0 text-white text-4xl hover:text-yellow-400 transition-all"
-                id="modalClose">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="relative">
-                <img class="modal-img w-full max-h-[80vh] object-contain rounded-lg" id="modalImg" src="" alt="">
-                <div class="modal-caption absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-4 rounded-b-lg"
-                    id="modalCaption"></div>
-            </div>
-            <button
-                class="modal-nav modal-prev absolute left-0 md:-left-16 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all"
-                id="modalPrev">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button
-                class="modal-nav modal-next absolute right-0 md:-right-16 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all"
-                id="modalNext">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-            <div class="text-center mt-4 text-white text-sm opacity-70">
-                <span id="modalCounter">1/12</span>
+    <!-- ===================== CTA ===================== -->
+    <section class="section section--paper">
+        <div class="wrap">
+            <div class="cta">
+                <h2 class="cta__title">Siap Memulai Perjalanan Akademik Anda?</h2>
+                <p class="cta__text">Daftarkan diri Anda sekarang dan raih gelar sarjana
+                    dengan cara yang fleksibel dan terjangkau.</p>
+                <div class="cta__actions">
+                    <a href="/daftar" class="btn btn--gold btn--lg">Daftar Online Sekarang</a>
+                    <a href="/formulir" class="btn btn--ghost-light btn--lg">Formulir Pendaftaran</a>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Floating Action Button -->
-    <div class="fixed bottom-8 right-8 z-40">
-        <button
-            class="w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center shadow-xl transition-all transform hover:scale-110">
-            <i class="fas fa-share-alt text-xl"></i>
-        </button>
-    </div>
+    <!-- ===================== FOOTER ===================== -->
+    <footer id="kontak" class="foot">
+        <div class="wrap">
+            <div class="foot__grid">
+                <div>
+                    <div class="foot__brand">
+                        <img src="https://h2rsi9anqnqbkvkf.public.blob.vercel-storage.com/logo%20ut%20-5Lmkckg9zmeFKxmBpQ3Yn1e16qdBj7.png"
+                            alt="Logo Salut Mandalika">
+                        <p class="foot__name">Salut Mandalika Jepara</p>
+                    </div>
+                    <p class="foot__desc">Pendidikan tinggi berkualitas yang bisa diakses secara fleksibel untuk
+                        semua kalangan.</p>
+                    <div class="socials">
+                        <a href="https://www.instagram.com/ut_mandalikajepara/" target="_blank"
+                            rel="noopener noreferrer" class="social" aria-label="Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://wa.me/+6285225617090" target="_blank" rel="noopener noreferrer" class="social"
+                            aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@utmandalikajepara" target="_blank" rel="noopener noreferrer"
+                            class="social" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
 
-    <!-- Footer -->
-    <footer class="bg-gradient-to-r from-blue-700 to-blue-600 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-8">
-                    <div class="text-2xl font-bold mb-2 flex items-center justify-center">
-                        <i class="fas fa-graduation-cap mr-3"></i>
-                        Universitas Terbuka Mandalika
-                    </div>
-                    <p class="text-blue-200 max-w-2xl mx-auto">
-                        Menjadi perguruan tinggi terbuka dan jarak jauh yang unggul dalam penyelenggaraan pendidikan
-                        tinggi berkualitas.
-                    </p>
+                <div>
+                    <h4 class="foot__h">Link Cepat</h4>
+                    <ul class="foot__list">
+                        <li><a href="/#beranda">Beranda</a></li>
+                        <li><a href="/#tentang">Tentang Kami</a></li>
+                        <li><a href="/#program">Program Studi</a></li>
+                        <li><a href="/#pendaftaran">Pendaftaran</a></li>
+                        <li><a href="#">Portal Mahasiswa</a></li>
+                    </ul>
                 </div>
-                <div class="flex flex-wrap justify-center gap-6 mb-8">
-                    <a href="index.html" class="hover:text-yellow-400 transition-all">
-                        <i class="fas fa-home mr-2"></i> Beranda
-                    </a>
-                    <a href="index.html#tentang" class="hover:text-yellow-400 transition-all">
-                        <i class="fas fa-info-circle mr-2"></i> Tentang Kami
-                    </a>
-                    <a href="fakultas.html" class="hover:text-yellow-400 transition-all">
-                        <i class="fas fa-book mr-2"></i> Akademik
-                    </a>
-                    <a href="index.html#kontak" class="hover:text-yellow-400 transition-all">
-                        <i class="fas fa-envelope mr-2"></i> Kontak
-                    </a>
-                    <a href="#" class="hover:text-yellow-400 transition-all">
-                        <i class="fas fa-newspaper mr-2"></i> Berita
-                    </a>
+
+                <div>
+                    <h4 class="foot__h">Akademik</h4>
+                    <h5 style="font-size: var(--fs-sm);font-weight:650;color:#fff;margin:0 0 .7rem">1. Fakultas (Jenjang
+                        Sarjana/S1)</h5>
+                    <ul class="foot__list">
+                        <li><span>Fakultas Ekonomi dan Bisnis (FEB)</span></li>
+                        <li><span>Fakultas Keguruan dan Ilmu Pendidikan (FKIP)</span></li>
+                        <li><span>Fakultas Sains dan Teknologi (FST)</span></li>
+                        <li><span>Fakultas Hukum, Ilmu Sosial dan Ilmu Politik (FHISIP)</span></li>
+                    </ul>
+                    <h5 style="font-size: var(--fs-sm);font-weight:650;color:#fff;margin:1.35rem 0 .7rem">2. Sekolah
+                        Pascasarjana
+                        (Jenjang S2)</h5>
+                    <ul class="foot__list">
+                        <li><span>Sekolah Pascasarjana (SPs)</span></li>
+                    </ul>
                 </div>
-                <div class="border-t border-blue-500 pt-8">
-                    <div class="flex flex-col md:flex-row justify-between items-center">
-                        <div class="mb-4 md:mb-0">
-                            <div class="flex justify-center md:justify-start space-x-4">
-                                <a href="#"
-                                    class="w-10 h-10 bg-blue-800 hover:bg-blue-900 rounded-full flex items-center justify-center transition-all">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#"
-                                    class="w-10 h-10 bg-blue-800 hover:bg-blue-900 rounded-full flex items-center justify-center transition-all">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#"
-                                    class="w-10 h-10 bg-blue-800 hover:bg-blue-900 rounded-full flex items-center justify-center transition-all">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a href="#"
-                                    class="w-10 h-10 bg-blue-800 hover:bg-blue-900 rounded-full flex items-center justify-center transition-all">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="text-center md:text-right text-blue-200 text-sm">
-                            © 2025 Salut Mandalika Jepara. Hak Cipta Dilindungi.
-                        </div>
-                    </div>
+
+                <div>
+                    <h4 class="foot__h">Kontak Kami</h4>
+                    <ul class="foot__list">
+                        <li style="display:flex;gap:.7rem;align-items:flex-start">
+                            <i class="fas fa-map-marker-alt" style="color:var(--yellow);margin-top:.28rem"
+                                aria-hidden="true"></i>
+                            <span>Jl. Raya Jepara - Pati KM 17, Blok ruko No.3, Sekuro, Kec.
+                                Mlonggo, Kabupaten Jepara, Jawa Tengah 59452</span>
+                        </li>
+                        <li style="display:flex;gap:.7rem;align-items:flex-start">
+                            <i class="fas fa-phone-alt" style="color:var(--yellow);margin-top:.28rem"
+                                aria-hidden="true"></i>
+                            <a href="tel:+6285225617090">+62 852-2561-7090</a>
+                        </li>
+                        <li style="display:flex;gap:.7rem;align-items:flex-start">
+                            <i class="fas fa-envelope" style="color:var(--yellow);margin-top:.28rem"
+                                aria-hidden="true"></i>
+                            <a href="mailto:salutmandalika@gmail.com">salutmandalika@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="foot__bottom">
+                <p style="margin:0">© 2025 Salut Mandalika Jepara. All rights reserved.</p>
+                <div class="foot__legal">
+                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Syarat &amp; Ketentuan</a>
+                    <a href="#">Peta Situs</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- ===================== MODAL ===================== -->
+    <div class="modal" id="imageModal" role="dialog" aria-modal="true" aria-label="Pratinjau foto">
+        <div class="modal__box">
+            <button class="modal__close" type="button" id="modalClose" aria-label="Tutup">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <img class="modal__img" id="modalImg" src="" alt="">
+            <p class="modal__cap" id="modalCaption"></p>
+            <p class="modal__count" id="modalCounter"></p>
+            <button class="modal__btn modal__prev" type="button" id="modalPrev" aria-label="Sebelumnya">
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <button class="modal__btn modal__next" type="button" id="modalNext" aria-label="Berikutnya">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+
+    <button class="to-top" type="button" aria-label="Kembali ke atas">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
     <script>
-        // Sample gallery data
+        /* Data galeri - tidak diubah */
         const galleryItems = [
-            {
-                id: 1,
-                image: "assets/amal/amal (1).jpg",
-                title: "Kegiatan Amal",
-                category: "kegiatan",
-                description: "Bakti sosial UT Mandalika, berbagi kebahagiaan."
-            },
-            {
-                id: 2,
-                image: "assets/amal/amal (2).jpg",
-                title: "Kegiatan Amal",
-                category: "kegiatan",
-                description: "Aksi nyata UT Mandalika peduli sesama, sentuhan kasih."
-            },
-            {
-                id: 3,
-                image: "assets/amal/amal (3).jpg",
-                title: "Kegiatan Amal",
-                category: "kegiatan",
-                description: "UT Mandalika hadir, ringankan beban masyarakat."
-            },
-            {
-                id: 4,
-                image: "assets/amal/amal (4).jpg",
-                title: "Kegiatan Amal",
-                category: "mahasiswa",
-                description: "Mahasiswa UT Mandalika beraksi, wujudkan kepedulian."
-            },
-            {
-                id: 5,
-                image: "assets/utfest/utfest (1).jpg",
-                title: "UT Mandalika Feast",
-                category: "mahasiswa",
-                description: "Kemeriahan UT Fest oleh Salut Mandalika, kebersamaan tak terlupakan."
-            },
-            {
-                id: 6,
-                image: "assets/utfest/utfest (2).jpg",
-                title: "UT Mandalika Feast",
-                category: "mahasiswa",
-                description: "Serunya mini games di UT Fest, tawa dan keceriaan."
-            },
-            {
-                id: 7,
-                image: "assets/utfest/utfest (3).jpg",
-                title: "UT Mandalika Feast",
-                category: "mahasiswa",
-                description: "Salut Mandalika hadirkan UT Fest, wadah kreativitas dan persahabatan."
-            },
-            {
-                id: 8,
-                image: "assets/utfest/utfest (4).jpg",
-                title: "UT Mandalika Feast",
-                category: "mahasiswa",
-                description: "Semangat mini games hangatkan suasana UT Fest."
-            },
-            {
-                id: 9,
-                image: "assets/utfest/utfest (5).jpg",
-                title: "UT Mandalika Feast",
-                category: "kegiatan",
-                description: "Sesi foto bersama, kenangan indah UT Fest bersama."
-            },
-            {
-                id: 10,
-                image: "assets/utfest/utfest (6).jpg",
-                title: "UT Mandalika Feast",
-                category: "mahasiswa",
-                description: "Apresiasi pemenang mini games, UT Fest penuh kejutan."
-            },
-            {
-                id: 11,
-                image: "assets/expo/expo (1).jpg",
-                title: "UT Mandalika Expo",
-                category: "dokumentasi",
-                description: "Salut Mandalika sukses gelar UT Expo, inspirasi dan inovasi."
-            },
-            {
-                id: 12,
-                image: "assets/expo/expo (2).jpg",
-                title: "UT Mandalika Expo",
-                category: "dokumentasi",
-                description: "UT Expo, wadah ekspresi dan unjuk gigi mahasiswa."
-            },
-            {
-                id: 13,
-                image: "assets/expo/expo (3).jpg",
-                title: "UT Mandalika Expo",
-                category: "dokumentasi",
-                description: "Semangat UT Expo, kolaborasi dan kreasi tanpa batas."
-            },
-            {
-                id: 14,
-                image: "assets/expo/expo (4).jpg",
-                title: "UT Mandalika Expo",
-                category: "dokumentasi",
-                description: "Liputan UT Expo, momen penting kebersamaan."
-            },
-            {
-                id: 15,
-                image: "assets/expo/expo (5).jpg",
-                title: "UT Mandalika Expo",
-                category: "dokumentasi",
-                description: "UT Expo, acara kebanggaan kampus."
-            },
-            {
-                id: 16,
-                image: "assets/amal/amal (6).jpg",
-                title: "Kegiatan Amal", //Perbaiki title yang salah
-                category: "kegiatan", //Perbaiki category yang salah
-                description: "Kegiatan amal UT Mandalika, Membangun jembatan harapan bagi sesama" //Perbaiki deskripsi yang salah
-            }
+            { id: 1, image: "https://pub-de39447d5fa94ff9b25b8fe3cf8c6a3a.r2.dev/mandalika/galeri/donasi/donasi_1.png", title: "Kegiatan Amal", category: "kegiatan", description: "Bakti sosial UT Mandalika, berbagi kebahagiaan." },
+            { id: 2, image: "https://pub-de39447d5fa94ff9b25b8fe3cf8c6a3a.r2.dev/mandalika/galeri/donasi/donasi_2.png", title: "Kegiatan Amal", category: "kegiatan", description: "Aksi nyata UT Mandalika peduli sesama, sentuhan kasih." },
+            { id: 3, image: "https://pub-de39447d5fa94ff9b25b8fe3cf8c6a3a.r2.dev/mandalika/galeri/donasi/donasi_3.png", title: "Kegiatan Amal", category: "kegiatan", description: "UT Mandalika hadir, ringankan beban masyarakat." },
+            { id: 4, image: "https://pub-de39447d5fa94ff9b25b8fe3cf8c6a3a.r2.dev/mandalika/galeri/donasi/donasi_4.png", title: "Kegiatan Amal", category: "mahasiswa", description: "Mahasiswa UT Mandalika beraksi, wujudkan kepedulian." },
+            { id: 5, image: "https://pub-de39447d5fa94ff9b25b8fe3cf8c6a3a.r2.dev/mandalika/galeri/ut-fest/ut-fest_1.png", title: "UT Mandalika Feast", category: "mahasiswa", description: "Kemeriahan UT Fest oleh Salut Mandalika, kebersamaan tak terlupakan." },
+            { id: 6, image: "https://pub-de39447d5fa94ff9b25b8fe3cf8c6a3a.r2.dev/mandalika/galeri/ut-fest/ut-fest_2.png", title: "UT Mandalika Feast", category: "mahasiswa", description: "Serunya mini games di UT Fest, tawa dan keceriaan." },
+            { id: 7, image: "https://pub-de39447d5fa94ff9b25b8fe3cf8c6a3a.r2.dev/mandalika/galeri/ut-fest/ut-fest_3.png", title: "UT Mandalika Feast", category: "mahasiswa", description: "Salut Mandalika hadirkan UT Fest, wadah kreativitas dan persahabatan." },
+            { id: 8, image: "https://pub-de39447d5fa94ff9b25b8fe3cf8c6a3a.r2.dev/mandalika/galeri/ut-fest/ut-fest_4.png", title: "UT Mandalika Feast", category: "mahasiswa", description: "Semangat mini games hangatkan suasana UT Fest." },
+            { id: 9, image: "https://pub-de39447d5fa94ff9b25b8fe3cf8c6a3a.r2.dev/mandalika/galeri/ut-fest/ut-fest_5.png", title: "UT Mandalika Feast", category: "kegiatan", description: "Sesi foto bersama, kenangan indah UT Fest bersama." },
+            { id: 10, image: "https://pub-de39447d5fa94ff9b25b8fe3cf8c6a3a.r2.dev/mandalika/galeri/ut-fest/ut-fest_6.png", title: "UT Mandalika Feast", category: "mahasiswa", description: "Apresiasi pemenang mini games, UT Fest penuh kejutan." },
+            { id: 11, image: "https://pub-de39447d5fa94ff9b25b8fe3cf8c6a3a.r2.dev/mandalika/galeri/expo/expo_1.png", title: "UT Mandalika Expo", category: "dokumentasi", description: "Salut Mandalika sukses gelar UT Expo, inspirasi dan inovasi." },
+            { id: 12, image: "https://pub-de39447d5fa94ff9b25b8fe3cf8c6a3a.r2.dev/mandalika/galeri/expo/expo_2.png", title: "UT Mandalika Expo", category: "dokumentasi", description: "UT Expo, wadah ekspresi dan unjuk gigi mahasiswa." },
+            { id: 13, image: "https://pub-de39447d5fa94ff9b25b8fe3cf8c6a3a.r2.dev/mandalika/galeri/expo/expo_3.png", title: "UT Mandalika Expo", category: "dokumentasi", description: "Semangat UT Expo, kolaborasi dan kreasi tanpa batas." },
+            { id: 14, image: "https://pub-de39447d5fa94ff9b25b8fe3cf8c6a3a.r2.dev/mandalika/galeri/expo/expo_4.png", title: "UT Mandalika Expo", category: "dokumentasi", description: "Liputan UT Expo, momen penting kebersamaan." },
+            { id: 15, image: "https://pub-de39447d5fa94ff9b25b8fe3cf8c6a3a.r2.dev/mandalika/galeri/expo/expo_5.png", title: "UT Mandalika Expo", category: "dokumentasi", description: "UT Expo, acara kebanggaan kampus." },
+            { id: 16, image: "https://pub-de39447d5fa94ff9b25b8fe3cf8c6a3a.r2.dev/mandalika/galeri/donasi/donasi_5.png", title: "Kegiatan Amal", category: "kegiatan", description: "Kegiatan amal UT Mandalika, Membangun jembatan harapan bagi sesama" }
         ];
 
-        // Variables
-        let currentItems = 8;
-        let currentCategory = 'semua';
-        let currentModalIndex = 0;
-        let filteredItems = [...galleryItems];
+        const STEP = 8;
 
-        // DOM Elements
-        const galleryGrid = document.getElementById('galleryGrid');
+        let shown = STEP;
+        let filteredItems = galleryItems.slice();
+        let modalIndex = 0;
+
+        const grid = document.getElementById('galleryGrid');
+        const emptyState = document.getElementById('emptyState');
         const loadMoreBtn = document.getElementById('loadMoreBtn');
-        const filterBtns = document.querySelectorAll('.filter-btn');
+
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
         const modalCaption = document.getElementById('modalCaption');
-        const modalClose = document.getElementById('modalClose');
-        const modalPrev = document.getElementById('modalPrev');
-        const modalNext = document.getElementById('modalNext');
         const modalCounter = document.getElementById('modalCounter');
-        const searchInput = document.querySelector('input[type="text"]');
 
-        // Initialize gallery
-        function initGallery() {
-            loadGalleryItems();
-            setupEventListeners();
+        function categoryName(c) {
+            const map = { kegiatan: 'Kegiatan', mahasiswa: 'Mahasiswa', dokumentasi: 'Dokumentasi', webinar: 'Webinar', fasilitas: 'Fasilitas' };
+            return map[c] || c;
         }
 
-        // Load gallery items
-        function loadGalleryItems() {
-            galleryGrid.innerHTML = '';
+        function applyFilters() {
+            filteredItems = galleryItems.slice();
+        }
 
-            // Filter items based on current category
-            filteredItems = currentCategory === 'semua'
-                ? galleryItems
-                : galleryItems.filter(item => item.category === currentCategory);
+        function card(item) {
+            const el = document.createElement('article');
+            el.className = 'gcard reveal';
+            el.dataset.id = item.id;
+            el.innerHTML =
+                '<div class="gcard__img">' +
+                    '<img src="' + item.image + '" alt="' + item.title + '" loading="lazy">' +
+                    '<span class="gcard__cat">' + categoryName(item.category) + '</span>' +
+                '</div>' +
+                '<div class="gcard__body">' +
+                    '<h3 class="gcard__title">' + item.title + '</h3>' +
+                    '<p class="gcard__desc">' + item.description + '</p>' +
+                    '<div class="gcard__foot">' +
+                        '<span class="gcard__view"><i class="far fa-eye"></i> Lihat</span>' +
+                    '</div>' +
+                '</div>';
+            el.addEventListener('click', function () { openModal(item.id); });
+            return el;
+        }
 
-            // Display items based on currentItems count
-            const itemsToShow = filteredItems.slice(0, currentItems);
+        /* Jumlah kolom masonry mengikuti lebar layar */
+        function columnCount() {
+            if (window.innerWidth >= 980) return 3;
+            if (window.innerWidth >= 640) return 2;
+            return 1;
+        }
 
-            // Create gallery items
-            itemsToShow.forEach(item => {
-                const galleryItem = createGalleryItem(item);
-                galleryGrid.appendChild(galleryItem);
-            });
+        function makeCols(n) {
+            grid.innerHTML = '';
+            const colsEl = [];
+            for (let i = 0; i < n; i++) {
+                const c = document.createElement('div');
+                c.className = 'masonry__col';
+                grid.appendChild(c);
+                colsEl.push(c);
+            }
+            return colsEl;
+        }
 
-            // Show/hide load more button
-            if (currentItems >= filteredItems.length) {
-                loadMoreBtn.style.display = 'none';
-            } else {
-                loadMoreBtn.style.display = 'block';
+        /* Setelah semua gambar termuat, pindahkan kartu dari kolom tertinggi
+           ke kolom terendah sampai selisihnya kecil => dasar kolom rata. */
+        function balance() {
+            const cols = [].slice.call(grid.querySelectorAll('.masonry__col'));
+            if (cols.length < 2) return;
+            for (let pass = 0; pass < 12; pass++) {
+                const h = cols.map(function (c) { return c.getBoundingClientRect().height; });
+                let hi = 0, lo = 0;
+                for (let i = 1; i < cols.length; i++) {
+                    if (h[i] > h[hi]) hi = i;
+                    if (h[i] < h[lo]) lo = i;
+                }
+                if (h[hi] - h[lo] < 40) break;
+                const last = cols[hi].lastElementChild;
+                if (!last) break;
+                cols[lo].appendChild(cols[hi].removeChild(last));
             }
         }
 
-        // Create gallery item
-        function createGalleryItem(item) {
-            const galleryItem = document.createElement('div');
-            galleryItem.className = 'gallery-item bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1';
-            galleryItem.dataset.id = item.id;
-            galleryItem.dataset.category = item.category;
+        function render(animate) {
+            applyFilters();
+            const slice = filteredItems.slice(0, shown);
+            const colsEl = makeCols(columnCount());
 
-            galleryItem.innerHTML = `
-                <div class="gallery-item-img relative overflow-hidden">
-                    <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
-                    <div class="gallery-item-overlay absolute inset-0"></div>
-                    <div class="absolute top-3 right-3 bg-blue-600 text-white text-xs px-2 py-1 rounded-full">
-                        ${getCategoryName(item.category)}
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="gallery-item-title font-semibold text-blue-800 mb-1">${item.title}</h3>
-                    <p class="gallery-item-description text-sm text-gray-600 line-clamp-2">${item.description}</p>
-                    <div class="mt-3 flex justify-between items-center">
-                        <span class="text-xs text-gray-500">
-                            <i class="far fa-calendar-alt mr-1"></i> ${getRandomDate()}
-                        </span>
-                        <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">
-                            <i class="far fa-eye mr-1"></i> Lihat
-                        </button>
-                    </div>
-                </div>
-            `;
-
-            galleryItem.addEventListener('click', () => openModal(item.id));
-
-            return galleryItem;
-        }
-
-        // Get random date for demo purposes
-        function getRandomDate() {
-            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
-            const year = 2023;
-            const month = months[Math.floor(Math.random() * months.length)];
-            const day = Math.floor(Math.random() * 28) + 1;
-            return `${day} ${month} ${year}`;
-        }
-
-        // Get category name in Indonesian
-        function getCategoryName(category) {
-            const categories = {
-                'kegiatan': 'Kegiatan',
-                'mahasiswa': 'Mahasiswa',
-                'dokumentasi': 'Dokumentasi',
-                'webinar': 'Webinar',
-                'fasilitas': 'Fasilitas'
-            };
-
-            return categories[category] || category;
-        }
-
-        // Set up event listeners
-        function setupEventListeners() {
-            // Load more button
-            loadMoreBtn.addEventListener('click', () => {
-                currentItems += 4;
-                loadGalleryItems();
+            // Sebar awal round-robin, lalu diseimbangkan setelah gambar termuat
+            slice.forEach(function (item, i) {
+                colsEl[i % colsEl.length].appendChild(card(item));
             });
 
-            // Filter buttons
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Update active state
-                    filterBtns.forEach(b => {
-                        b.classList.remove('active', 'bg-blue-600', 'text-white');
-                        b.classList.add('bg-gray-100', 'text-gray-700');
-                    });
-                    btn.classList.add('active', 'bg-blue-600', 'text-white');
-                    btn.classList.remove('bg-gray-100', 'text-gray-700');
+            const empty = filteredItems.length === 0;
+            emptyState.style.display = empty ? 'block' : 'none';
+            grid.style.display = empty ? 'none' : '';
+            loadMoreBtn.style.display = (filteredItems.length > shown) ? '' : 'none';
 
-                    // Update filter
-                    currentCategory = btn.dataset.category;
-                    currentItems = 8;
-                    loadGalleryItems();
-                });
-            });
+            // tampilkan segera bila reveal tidak dipakai
+            if (animate === false) {
+                grid.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-in'); });
+            }
 
-            // Search input
-            searchInput.addEventListener('input', (e) => {
-                const searchTerm = e.target.value.toLowerCase();
-                if (searchTerm.length > 2) {
-                    filteredItems = galleryItems.filter(item =>
-                        item.title.toLowerCase().includes(searchTerm) ||
-                        item.description.toLowerCase().includes(searchTerm) ||
-                        item.category.toLowerCase().includes(searchTerm)
-                    );
-                    currentItems = 8;
-                    loadGalleryItems();
-                } else if (searchTerm.length === 0) {
-                    filteredItems = [...galleryItems];
-                    currentItems = 8;
-                    loadGalleryItems();
-                }
-            });
-
-            // Modal close
-            modalClose.addEventListener('click', closeModal);
-
-            // Modal navigation
-            modalPrev.addEventListener('click', navigateModal(-1));
-            modalNext.addEventListener('click', navigateModal(1));
-
-            // Close modal on outside click
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (!modal.classList.contains('opacity-0')) {
-                    if (e.key === 'Escape') closeModal();
-                    if (e.key === 'ArrowLeft') navigateModal(-1)();
-                    if (e.key === 'ArrowRight') navigateModal(1)();
-                }
+            // Seimbangkan kolom begitu dimensi gambar diketahui
+            const imgs = [].slice.call(grid.querySelectorAll('img'));
+            let pending = imgs.length;
+            if (!pending) { balance(); return; }
+            imgs.forEach(function (im) {
+                if (im.complete) { if (--pending === 0) balance(); return; }
+                im.addEventListener('load', function () { if (--pending === 0) balance(); });
+                im.addEventListener('error', function () { if (--pending === 0) balance(); });
             });
         }
 
-        // Open modal
-        function openModal(id) {
-            const item = galleryItems.find(item => item.id === id);
+        /* Muat lebih banyak */
+        loadMoreBtn.addEventListener('click', function () {
+            shown += 4;
+            render(false);
+        });
+
+        /* ---- Modal ---- */
+        function paintModal() {
+            const item = filteredItems[modalIndex];
             if (!item) return;
-
-            // Find index in filtered items
-            currentModalIndex = filteredItems.findIndex(i => i.id === id);
-
-            // Set modal content
             modalImg.src = item.image;
+            modalImg.alt = item.title;
             modalCaption.textContent = item.description;
-            modalCounter.textContent = `${currentModalIndex + 1}/${filteredItems.length}`;
-
-            // Show modal
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modal.classList.add('opacity-100', 'pointer-events-auto');
+            modalCounter.textContent = (modalIndex + 1) + '/' + filteredItems.length;
+        }
+        function openModal(id) {
+            modalIndex = filteredItems.findIndex(function (i) { return i.id === id; });
+            if (modalIndex < 0) modalIndex = 0;
+            paintModal();
+            modal.classList.add('is-open');
             document.body.style.overflow = 'hidden';
         }
-
-        // Close modal
         function closeModal() {
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            modal.classList.remove('opacity-100', 'pointer-events-auto');
+            modal.classList.remove('is-open');
             document.body.style.overflow = '';
         }
-
-        // Navigate modal
-        function navigateModal(direction) {
-            return () => {
-                currentModalIndex = (currentModalIndex + direction + filteredItems.length) % filteredItems.length;
-                const newItem = filteredItems[currentModalIndex];
-                modalImg.src = newItem.image;
-                modalCaption.textContent = newItem.description;
-                modalCounter.textContent = `${currentModalIndex + 1}/${filteredItems.length}`;
-            };
+        function step(dir) {
+            if (!filteredItems.length) return;
+            modalIndex = (modalIndex + dir + filteredItems.length) % filteredItems.length;
+            paintModal();
         }
 
-        // Initialize gallery on page load
-        document.addEventListener('DOMContentLoaded', initGallery);
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        document.getElementById('modalPrev').addEventListener('click', function () { step(-1); });
+        document.getElementById('modalNext').addEventListener('click', function () { step(1); });
+        modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', function (e) {
+            if (!modal.classList.contains('is-open')) return;
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowLeft') step(-1);
+            if (e.key === 'ArrowRight') step(1);
+        });
+
+        render(false);
+
+        /* Seimbangkan ulang kolom saat ukuran layar berubah */
+        let resizeTimer = null;
+        let lastCols = columnCount();
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                const n = columnCount();
+                if (n !== lastCols) { lastCols = n; render(false); }
+            }, 180);
+        });
     </script>
+    <script src="assets/salut.js?v=9b52354f" defer></script>
 </body>
 
 </html>
