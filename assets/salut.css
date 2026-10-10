@@ -523,6 +523,12 @@ ul, ol { margin: 0; padding: 0; }
   transition: transform var(--dur-slow) var(--ease-out);
 }
 .hero__media:hover .hero__photo { transform: translateY(-3px); }
+/* Foto hero bergaya cut-out: latar lembut + objek utuh (tanpa crop) */
+.hero__photo--cut {
+  background: var(--blue-50);
+  object-fit: contain; object-position: center bottom;
+  padding: clamp(14px, 2.2vw, 30px) 0 0;
+}
 /* Aksen geometris: blok kuning di belakang + garis biru, sejajar & rapi */
 .hero__media::before {
   content: '';
