@@ -525,7 +525,7 @@ ul, ol { margin: 0; padding: 0; }
 .hero__media:hover .hero__photo { transform: translateY(-3px); }
 /* Foto hero bergaya cut-out: latar lembut + objek utuh (tanpa crop) */
 .hero__photo--cut {
-  background: var(--blue-50);
+  background: var(--white);
   object-fit: contain; object-position: center bottom;
   padding: clamp(14px, 2.2vw, 30px) 0 0;
 }
