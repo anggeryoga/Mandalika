@@ -1163,3 +1163,24 @@ ul, ol { margin: 0; padding: 0; }
   }
   .js-reveal .reveal { opacity: 1; transform: none; }
 }
+
+/* ---------- 25. TIM / STRUKTURAL ---------------------------------------- */
+.team { display: grid; gap: var(--gap); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 640px) { .team { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 980px) { .team { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1200px) { .team { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.team__card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--r-lg); overflow: hidden;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.team__card:hover { transform: translateY(-4px); box-shadow: var(--sh-md); border-color: var(--navy-100); }
+.team__photo { aspect-ratio: 3 / 4; width: 100%; object-fit: cover; object-position: top center; display: block; background: var(--navy-50); }
+.team__body { padding: 16px 16px 18px; text-align: center; }
+.team__name { font-size: var(--fs-sm); font-weight: var(--fw-bold); color: var(--navy); line-height: 1.4; margin-bottom: 6px; }
+.team__role {
+  display: inline-block; font-size: var(--fs-xs); font-weight: var(--fw-semi);
+  color: var(--navy); background: var(--yellow-100);
+  border: 1px solid var(--border); border-radius: 999px;
+  padding: 4px 12px; line-height: 1.4;
+}
