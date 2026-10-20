@@ -360,13 +360,13 @@ ul, ol { margin: 0; padding: 0; }
 /* ---------- 6. HEADER / NAVBAR ------------------------------------------ */
 .site-head {
   position: sticky; top: 0; z-index: 60;
-  background: rgba(255, 255, 255, .92);
-  backdrop-filter: saturate(180%) blur(12px);
-  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  background: rgba(255, 255, 255, .75);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
   border-bottom: 1px solid var(--border);
   transition: box-shadow var(--dur) var(--ease), background-color var(--dur) var(--ease);
 }
-.site-head.is-stuck { box-shadow: var(--sh-sm); background: rgba(255, 255, 255, .97); }
+.site-head.is-stuck { box-shadow: var(--sh-sm); background: rgba(255, 255, 255, .9); }
 
 .site-head__inner {
   display: flex; align-items: center; justify-content: space-between;
